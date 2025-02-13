@@ -55,4 +55,5 @@ values ('administrador1@gmail.com', SHA2('admin2530', 256));
 select * from usuarios  ;
 
 delete from usuarios where 23564326;
-;
+
+ALTER TABLE produtos ADD produtos_desconto DECIMAL(5,2) NOT NULL DEFAULT 0;

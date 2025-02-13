@@ -30,6 +30,7 @@
             $descricao = mysqli_real_escape_string($con, $_POST['descricao']);
             $preco = floatval($_POST['preco']);
             $estoque = intval($_POST['estoque']);
+            $desconto = floatval($_POST['desconto']);
 
             //Atualiza a imagem se um novo arquivo for enviado
             if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
@@ -41,9 +42,9 @@
                 if (move_uploaded_file($imagemtmp, $caminhoimagem)){
 
                     //Atualiza os dados do produto, incluindo a imagem
-                    $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ? WHERE produtos_id = ?";
+                    $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ?, produtos_desconto = ? WHERE produtos_id = ?";
                     $stmt = mysqli_prepare($con, $sql);
-                    mysqli_stmt_bind_param($stmt, "ssdisi", $nome, $descricao, $preco, $estoque, $caminhoimagem, $id);
+                    mysqli_stmt_bind_param($stmt, "ssdisii", $nome, $descricao, $preco, $estoque, $caminhoimagem, $desconto, $id);
                 } else {
                     echo "Erro ao fazer upload da imagem.";
                     exit;
@@ -51,9 +52,9 @@
 
                 } else {
                     //Atualiza os dados sem alterar a imagem
-                    $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ? WHERE produtos_id = ?";
+                    $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ?, produtos_desconto = ? WHERE produtos_id = ?";
                     $stmt = mysqli_prepare($con, $sql);
-                    mysqli_stmt_bind_param($stmt, "ssdisi", $nome, $descricao, $preco, $estoque, $caminhoimagem, $id);
+                    mysqli_stmt_bind_param($stmt, "ssdisii", $nome, $descricao, $preco, $estoque, $caminhoimagem, $desconto, $id);
                 }
 
                 //Executa a atualização
@@ -89,6 +90,9 @@
 
             <label for="preco"> Preço: </label>
             <input type="number" name="preco" id="preco" step="0.01" value="<?= $produto['produtos_preco'] ?>" required> <br/> <br/>
+
+            <label for="desconto">Desconto(%): </label>
+            <input type="number" name="desconto" id="desconto" step="0.01" value="<?= htmlspecialchars($produto['produtos_desconto']) ?>" required> <br/> <br/>
 
             <label for="estoque"> Estoque: </label>
             <input type="number" name="estoque" id="estoque" value="<?= $produto['produtos_estoque'] ?>" required> <br/> <br/>
