@@ -1,7 +1,7 @@
 <?PHP
     session_start();
     require('../bd_config.php');
-
+    error_reporting(0);
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         //Recebe os dados do formulário 
@@ -9,7 +9,7 @@
         $descricao = mysqli_real_escape_string($con,$_POST["descricao"]);
         $preco= floatval($_POST["preco"]);
         $estoque= intval($_POST["estoque"]);
-
+        $desconto= floatval($_POST["desconto"]);
         //Processa o Upload da imagem
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
             $imagemtmp = $_FILES['imagem']['tmp_name'];
@@ -20,10 +20,10 @@
             //Move a imagem para a pasta de uploads
             if(move_uploaded_file($imagemtmp, $caminhoimagem)){
                 //Insere os dados no banco
-                $sql = "INSERT INTO produtos (produtos_nome, produtos_descricao, produtos_preco, produtos_imagem, produtos_estoque)
-                VALUES (?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO produtos (produtos_nome, produtos_descricao, produtos_preco, produtos_imagem, produtos_estoque, produtos_desconto)
+                VALUES (?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_prepare($con, $sql);
-                mysqli_stmt_bind_param($stmt, "ssdsi", $nome, $descricao, $preco, $caminhoimagem, $estoque);
+                mysqli_stmt_bind_param($stmt, "ssdsii", $nome, $descricao, $preco, $caminhoimagem, $estoque, $desconto);
                 
                 if (mysqli_stmt_execute($stmt)){
                     $_SESSION['sucesso'] = 'Produto Inserido com sucesso!.';

@@ -31,7 +31,10 @@
 
             <label for="preco"> Preço: </label>
             <input type="number" name="preco" id="preco" step="0.01" required> <br/> <br/>
-                
+            
+            <label for="desconto">Desconto(%): </label>
+            <input type="number" name="desconto" id="desconto" step="0.01" value="0" required> <br/> <br/>
+
             <label for="image"> Imagem: </label>
             <input type="file" name="imagem" id="imagem" accept="image/*" required> <br/> <br/>
 

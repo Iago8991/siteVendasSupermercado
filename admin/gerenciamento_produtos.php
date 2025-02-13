@@ -28,6 +28,7 @@
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Preço</th>
+                        <th>Desconto</th>
                         <th>Estoque</th>
                         <th>Imagem</th>
                         <th>Ações</th>
@@ -40,6 +41,16 @@
                             <td> <?= htmlspecialchars($produto['produtos_nome']) ?></td>
                             <td> <?= htmlspecialchars($produto['produtos_descricao']) ?></td>
                             <td>R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></td>
+                            <td> 
+                                <?php
+                                    if (isset($produto['produtos_desconto']) && $produto['produtos_desconto'] > 0) {
+                                        echo '<span style="color: red;">' . $produto['produtos_desconto'] . '%</span>'; 
+                                    } else {
+                                        echo "Sem desconto";
+                                    }
+                                ?>
+
+                            </td>
                             <td> <?= $produto['produtos_estoque'] ?></td>
                             <td>
                                 <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="Imagem do produto" width="100">
