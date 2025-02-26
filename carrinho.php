@@ -1,4 +1,4 @@
 <?php
-    function calcularprecofinal($preco, $desconto) {}
+    //calculo tilizando javascript
 
 ?>
