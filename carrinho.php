@@ -46,5 +46,17 @@
         
         atualizarTotalCarrinho();
     </script>
+
+<?php
+
+foreach ($carrinho as $produto) {
+    echo '<div class="item" data-preco="' . $produto['produtos_preco'] . '" data-desconto="' . $produto['produtos_desconto'] . '">';
+    echo '<p>' . htmlspecialchars($produto['produtos_nome']) . ' - R$ ' . number_format($produto['produtos_preco'], 2, ',', '.') . '</p>';
+    echo '<p>Desconto: ' . $produto['produtos_desconto'] . '%</p>';
+    echo '</div>';
+}
+?>
+    
+
 </body>
 </html>
