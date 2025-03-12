@@ -1,5 +1,5 @@
 <?PHP 
-    session_start();
+    require('../css/inserirProdutos.css');
     if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
 ?>
 <html> 
@@ -21,7 +21,7 @@
                 unset($_SESSION['sucesso']);
             }
         ?>
-        <form action="inserir_produtos_codigo.php" method="POST" enctype="multipart/form-data">
+        <form action="inserirProdutos_codigo.php" method="POST" enctype="multipart/form-data">
 
             <label for="nome"> Nome: </label>
             <input type="text" name="nome" id="nome" required> <br/> <br/>

@@ -1,6 +1,5 @@
 <?PHP 
-
-    session_start();
+    require('../css/excluirProduto.css');
     require('../bd_config.php');
 
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
@@ -20,8 +19,7 @@
         $resultado = mysqli_stmt_get_result($stmt);
 
         if ($produto = mysqli_fetch_assoc($resultado)) {
-            //$caminhoimagem = $produto['produtos_imagem'];
-            $caminhoimagem = "../upload_produtos/" . $produto['produtos_imagem']; 
+            $caminhoImagem = "../upload_produtos/" . $produto['produtos_imagem']; 
 
             //Exclui o produto do banco de dados.
             $sql_delete = "DELETE FROM produtos WHERE produtos_id = ?";
@@ -30,8 +28,8 @@
 
             if (mysqli_stmt_execute($stmt_delete)) {
                 // Remove a imagem associada ao produto
-                if (file_exists(filename: $caminhoimagem)) {
-                    unlink($caminhoimagem);
+                if (file_exists(filename: $caminhoImagem)) {
+                    unlink($caminhoImagem);
                 }
 
                 $_SESSION['sucesso'] = "Produto excluído com sucesso!";

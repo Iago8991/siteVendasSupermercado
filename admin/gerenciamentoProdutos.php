@@ -1,5 +1,5 @@
 <?PHP 
-    session_start();
+    require('../css/gerenciamentoProdutos.css');
     require('../bd_config.php');
 
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
