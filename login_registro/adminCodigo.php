@@ -1,9 +1,6 @@
 <?PHP 
-
-    session_start();
     require('../bd_config.php');
 
-    
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = mysqli_real_escape_string($con, $_POST['email']);
         $senha = $_POST['senha'];
@@ -22,7 +19,7 @@
         if(hash('SHA256', $senha) === $senha_hash){
             $_SESSION['admin'] = 'logado'; 
             $_SESSION['login'] = 'logado';
-            header ("location: ../pagina_principal.php");
+            header ("location: ../paginaPrincipal.php");
         } else {
             $_SESSION['erro'] = 'Senha incorreta!';
             header("Location: admin.php");
@@ -35,7 +32,7 @@
     }
     mysqli_stmt_close($stmt);
 } else {
-    $_SESSION['erro'] = "método de requisição inválido.";
+    $_SESSION['erro'] = "método de Login inválido.";
     header("Location: admin.php");
     exit;
 }

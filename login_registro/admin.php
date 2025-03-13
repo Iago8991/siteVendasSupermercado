@@ -1,15 +1,15 @@
 <?PHP 
-    session_start();
+    require('../css/admin.css');
 ?>
 <html> 
     <body>
         <?PHP 
-            if (isset($_SESSION['erro'])){
-                echo "<p style='color: red;'>" . $_SESSION['erro'] . "</p>";
-                unset($_SESSION['erro']);
+           if (isset($_SESSION['erro'])){
+            echo "<p style='color: red;'>" . $_SESSION['erro'] . "</p>";
+            unset($_SESSION['erro']);
             }
         ?>
-        <form action="admin_codigo.php" method="POST">
+        <form action="adminCodigo.php" method="POST">
             <label for="email"> E-mail do administrador: </label>
             <input type="text" name="email" id="email" required>
             <br/> <br/> 

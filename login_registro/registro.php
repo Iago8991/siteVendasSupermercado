@@ -1,25 +1,6 @@
 <?php
-session_start();
+    require('../css/registro.css');
 ?>
-
-<style>
-			#registro{
-				background: gray;
-				border-radius: 10px;
-				width: 40%;
-				height: 100%;
-				margin: 0px auto;
-				padding: 5px;
-			}
-            .mensagem{
-                color: red;
-                text-align: center;
-                margin-bottom: 10px;
-            }
-            .mensagem.sucesso{
-                color:green;
-            }
-		</style>
 
 <div id="registro">
     <?php
@@ -27,12 +8,12 @@ session_start();
             echo "<div class = 'mensagem'> {$_SESSION['error']}</div>";
             unset($_SESSION['error']);
         } elseif (isset($_SESSION['sucesso'])) {
-            echo "<div class = 'mensagem sucesso'> {$_SESSION['sucesso']} </div>";
+            echo "<div class = 'mensagemSucesso'> {$_SESSION['sucesso']} </div>";
             unset($_SESSION['sucesso']);
         }
             
     ?>
-    <form action="registro_codigo.php" method="POST"> 
+    <form action="registroCodigo.php" method="POST"> 
 
         <center>
             <label for="nome">NOME:</label>

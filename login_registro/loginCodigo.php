@@ -1,19 +1,17 @@
 <?PHP
-
-    session_start();
     require ("../bd_config.php");
  
     //problema das senhas hashadas sempre que efetuar login.
     /*
-    $sql = "select user_id, user_senha from usuarios";
-    $result = mysqli_query($con, $sql);
+        $sql = "select user_id, user_senha from usuarios";
+        $result = mysqli_query($con, $sql);
 
-    while ($row = mysqli_fetch_assoc($result)){
-        $senhahash = password_hash($row['user_senha'], PASSWORD_DEFAULT);
-        $updatesql = "update usuarios set user_senha = '$senhahash' where user_id = {$row['user_id']}";
-        mysqli_query($con, $updatesql);
-    } 
-        Resolvido.
+        while ($row = mysqli_fetch_assoc($result)){
+            $senhahash = password_hash($row['user_senha'], PASSWORD_DEFAULT);
+            $updatesql = "update usuarios set user_senha = '$senhahash' where user_id = {$row['user_id']}";
+            mysqli_query($con, $updatesql);
+        } 
+            Resolvido.
     */
     
     //Verifica se o formulário foi envaido
@@ -43,7 +41,7 @@
             $_SESSION['user_id'] = $usuario['user_id'];
             $_SESSION['user_nome'] = $usuario['user_nome'];
             $_SESSION['login'] = 'logado';
-            header ("location: ../pagina_principal.php");
+            header ("location: ../paginaPrincipal.php");
             exit;
         } else {
             //Senha incorreta
