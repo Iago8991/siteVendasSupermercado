@@ -1,8 +1,3 @@
-<?php
-session_start();
-
-?>
-
 <a href="login_registro/login.php">Login</a>
 
 <br/>

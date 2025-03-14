@@ -1,9 +1,4 @@
 <?php
-session_start();
-
-?>
-
-<?php
     $host = "localhost";
     $user = "root";
     $password = "";
