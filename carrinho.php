@@ -1,5 +1,6 @@
 <?PHP
     require("bd_config.php");
+    require('/css/carrinho.css');
 ?>
 
 <!DOCTYPE html>
