@@ -1,1 +1,0 @@
-//calculo utilizando javascript agora
