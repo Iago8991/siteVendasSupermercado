@@ -1,6 +1,7 @@
 <?PHP 
+    session_start();
     require('../css/inserirProdutos.css');
-    if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
+    //if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
 ?>
 <html> 
     <head> 
@@ -21,7 +22,7 @@
                 unset($_SESSION['sucesso']);
             }
         ?>
-        <form action="inserirProdutos_codigo.php" method="POST" enctype="multipart/form-data">
+        <form action="inserirProdutosCodigo.php" method="POST" enctype="multipart/form-data">
 
             <label for="nome"> Nome: </label>
             <input type="text" name="nome" id="nome" required> <br/> <br/>
@@ -40,15 +41,32 @@
 
             <label for="estoque"> Estoque: </label>
             <input type="number" name="estoque" id="estoque" required> <br/> <br/>
-        
+            
+            <label for="categoria"> Categoria: </label>
+            <select name="categoria" id="categoria" required>
+                <option value="selecione"> Selecione </option>
+                <option value="alimentos"> Alimentos </option>
+                <option value="carne"> Carne </option>
+                <option value="bebidas"> Bebidas </option>
+                <option value="padaria"> Padaria </option>
+                <option value="vegetal"> Vegetal </option>
+                <option value="fruta"> Fruta </option>
+                <option value="hortifruti"> Hortifrúti (legumes,frutas e relacionados) </option>
+                <option value="alimentosCongelados"> Alimentos Congelados</option>
+                <option value="frios"> Frios </option>
+                <option value="produtosDeLimpeza"> Produtos de Limpeza </option>
+                <option value="higienePessoal"> Higiene Pessoal </option>
+                <option value="outros"> Outros </option>
+            </select> <br/> <br/>
+
             <input type="submit" value="Enviar">
         </form>
     </body>
 </html>
 
 <?PHP
-    } else {
-        echo "Você não tem permissão de administrador";
-    }
+    //} else {
+      //  echo "Você não tem permissão de administrador";
+   // }
 ?>
  
