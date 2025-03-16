@@ -1,7 +1,7 @@
 <?PHP 
     session_start();
     require("bd_config.php");
-    require('/css/paginaPrincipal.css');
+    require('./css/paginaPrincipal.css');
 
     $sql = "SELECT * FROM produtos ORDER BY RAND() LIMIT 8";
     $resultado = mysqli_query($con, $sql);

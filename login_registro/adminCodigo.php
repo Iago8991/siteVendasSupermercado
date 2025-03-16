@@ -13,10 +13,10 @@
     mysqli_stmt_store_result($stmt);
 
     if (mysqli_stmt_num_rows($stmt) === 1) {
-        mysqli_stmt_bind_result($stmt, $senha_hash);
+        mysqli_stmt_bind_result($stmt, $senhaHash);
         mysqli_stmt_fetch($stmt);
 
-        if(hash('SHA256', $senha) === $senha_hash){
+        if(hash('SHA256', $senha) === $senhaHash){
             $_SESSION['admin'] = 'logado'; 
             $_SESSION['login'] = 'logado';
             header ("location: ../paginaPrincipal.php");
