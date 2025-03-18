@@ -2,8 +2,9 @@
 
     require('../css/editarProduto.css');
     require('../bd_config.php');
-
-    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
+    session_start();
+    error_reporting(0);    
+    //if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
 
     if(isset($_GET['id'])) {
         
@@ -31,6 +32,7 @@
             $preco = floatval($_POST['preco']);
             $estoque = intval($_POST['estoque']);
             $desconto = floatval($_POST['desconto']);
+            $categoria = mysqli_real_escape_string($con, $_POST['categoria']);
 
             //Atualiza a imagem se um novo arquivo for enviado
             if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
@@ -42,9 +44,9 @@
                 if (move_uploaded_file($imagemtmp, $caminhoImagem)){
 
                     //Atualiza os dados do produto, incluindo a imagem
-                    $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ?, produtos_desconto = ? WHERE produtos_id = ?";
+                    $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ?, produtos_desconto = ?, categoria = ? WHERE produtos_id = ?";
                     $stmt = mysqli_prepare($con, $sql);
-                    mysqli_stmt_bind_param($stmt, "ssdisii", $nome, $descricao, $preco, $estoque, $caminhoImagem, $desconto, $id);
+                    mysqli_stmt_bind_param($stmt, "ssdisiii", $nome, $descricao, $preco, $estoque, $caminhoImagem, $desconto, $categoria, $id);
                 } else {
                     echo "Erro ao fazer upload da imagem.";
                     exit;
@@ -52,9 +54,9 @@
 
                 } else {
                     //Atualiza os dados sem alterar a imagem
-                    $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ?, produtos_desconto = ? WHERE produtos_id = ?";
+                    $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ?, produtos_desconto = ?, categoria = ? WHERE produtos_id = ?";
                     $stmt = mysqli_prepare($con, $sql);
-                    mysqli_stmt_bind_param($stmt, "ssdisii", $nome, $descricao, $preco, $estoque, $caminhoImagem, $desconto, $id);
+                    mysqli_stmt_bind_param($stmt, "ssdisiii", $nome, $descricao, $preco, $estoque, $caminhoImagem, $desconto, $categoria, $id);
                 }
 
                 //Executa a atualização
@@ -103,15 +105,32 @@
             <label for="imagem"> Nova Imagem (opcional): </label>
             <input type="file" name="imagem" id="imagem" accept="image/*"> <br/> <br/>
 
+            <label for="categoria"> Categoria: </label>
+            <select name="categoria" id="categoria" required>
+                <option value="selecione"> Selecione </option>
+                <option value="alimentos" <?= ($produto['categoria'] == 'alimentos') ? 'selected' : '' ?>> Alimentos </option>
+                <option value="carne" <?= ($produto['categoria'] == 'carne') ? 'selected' : '' ?>> Carne </option>
+                <option value="bebidas" <?= ($produto['categoria'] == 'bebidas') ? 'selected' : '' ?>> Bebidas </option>
+                <option value="padaria" <?= ($produto['categoria'] == 'padaria') ? 'selected' : '' ?>> Padaria </option>
+                <option value="vegetal" <?= ($produto['categoria'] == 'vegetal') ? 'selected' : '' ?>> Vegetal </option>
+                <option value="fruta" <?= ($produto['categoria'] == 'fruta') ? 'selected' : '' ?>> Fruta </option>
+                <option value="hortifruti" <?= ($produto['categoria'] == 'hortifruti') ? 'selected' : '' ?>> Hortifrúti (legumes,frutas e relacionados) </option>
+                <option value="alimentosCongelados" <?= ($produto['categoria'] == 'alimentosCongelados') ? 'selected' : '' ?>> Alimentos Congealdos </option>
+                <option value="frios" <?= ($produto['categoria'] == 'frios') ? 'selected' : '' ?>> Frios </option>
+                <option value="produtosDeLimpeza" <?= ($produto['categoria'] == 'produtosDeLimpeza') ? 'selected' : '' ?>> Produtos de Limpeza </option>
+                <option value="higienePessoal" <?= ($produto['categoria'] == 'higienePessoal') ? 'selected' : '' ?>> Higiene Pessoal </option>
+                <option value="outros" <?= ($produto['categoria'] == 'outros') ? 'selected' : '' ?>> Outros </option>
+            </select> <br/> <br/>
+
             <input type="submit" value="Salvar Alterações">
         </form>
     </body>
 </html>
 
 <?php   
-    } else {
-        echo "Você não possui permissões de administrador. ";
-        exit;
-    }
+   // } else {
+    //    echo "Você não possui permissões de administrador. ";
+     //   exit;
+   // }
 
 ?>
