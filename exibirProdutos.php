@@ -38,6 +38,41 @@
     // Consulta SQL para buscar os produtos 
     $sql = "SELECT * FROM produtos $whereClause ORDER BY produtos_nome";
     $resultado = mysqli_query($con, $sql);
-
 ?>
 
+<html> 
+    <head>
+        <meta charset="UTF-8">
+        <title> Exibir Produtos </title>    
+    </head>
+
+    <body>
+        <class="exibirProdutosContainer">
+            <h1> Produtos </h1>
+
+            <!-- Formulário de busca e filtro -->
+             <div class="filtroDePesquisa">
+                <form action="exibirProdutos.php" method="GET">
+                    <input type="text" name="busca" placeholder="Pesquisar por nome ou descrição" value=" <?= htmlspecialchars($busca) ?>">
+                    <select name="categoria">
+                        <option value="alimentos" <?= ($categoria == "alimentos") ? 'selected' : '' ?>> Alimentos </option>                
+                        <option value="carne" <?= ($categoria == "carne") ? 'selected' : '' ?>> Carne </option>
+                        <option value="bebidas" <?= ($categoria == "bebidas") ? 'selected' : '' ?>> Bebidas </option>
+                        <option value="padaria" <?= ($categoria == "padaria") ? 'selected' : '' ?>> Padaria </option>
+                        <option value="vegetal" <?= ($categoria == "vegetal") ? 'selected' : '' ?>> Vegetal </option>
+                        <option value="fruta" <?= ($categoria == "fruta") ? 'selected' : '' ?>> Fruta </option>
+                        <option value="hortifruti" <?= ($categoria == "hortifruti") ? 'selected' : '' ?>> Hortifrúti (Legumes, Frutas, Relacionados) </option>
+                        <option value="alimentosCongelados" <?= ($categoria == "alimentosCongelados") ? 'selected' : '' ?>> Alimentos Congelados </option>
+                        <option value="frios" <?= ($categoria == "frios") ? 'selected' : '' ?>> Frios </option>
+                        <option value="produtosDeLimpeza" <?= ($categoria == "produtosDeLimpeza") ? 'selected' : '' ?>> Produtos De Limpeza </option>
+                        <option value="higienePessoal" <?= ($categoria == "higienePessoal") ? 'selected' : '' ?>> Higiene Pessoal </option>
+                        <option value="outros" <?= ($categoria == "outros") ? 'selected' : '' ?>> Outros </option>
+                    </select>
+                    <button type="submut"> Filtrar </button>
+                </form>
+             </div>
+
+
+        </div>
+    </body>
+</html>
