@@ -1,7 +1,7 @@
 <?PHP
     session_start();
     require("bd_config.php");
-    //require('./css/.css');
+    require('./css/exibirProdutos.css');
 
     $busca = "";
     $categoria = "";
