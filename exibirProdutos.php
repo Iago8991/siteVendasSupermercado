@@ -1,7 +1,9 @@
 <?PHP
     session_start();
     require("bd_config.php");
-    require('./css/exibirProdutos.css');
+    //require('./css/exibirProdutos.css');
+    //include_once("./css/exibirProdutos.css");
+    //error_reporting(0);
 
     $busca = "";
     $categoria = "";
@@ -47,7 +49,7 @@
     </head>
 
     <body>
-        <class="exibirProdutosContainer">
+        <div class="exibirProdutosContainer">
             <h1> Produtos </h1>
 
             <!-- Formulário de busca e filtro -->
@@ -72,7 +74,22 @@
                 </form>
              </div>
 
+            <div class="produtosGrade">
+                <?php while ($produto = mysqli_fetch_assoc($resultado)) { ?>
+                    <div class="produtoItem">
+                        <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">    
+                        <h3> <?= htmlspecialchars($produto['produtos_nome']) ?> </h3>
+                        <p> <?= htmlspecialchars($produto['produtos_descricao']) ?> </p>
+                        <p class="price">R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?> </p>
+                        <?php if (isset($produto['produtos_desconto']) && $produto['produtos_desconto'] > 0) { ?>
+                            <p class="disconto">Desconto: <?= $produto['produtos_desconto'] ?>%</p>
+                        <?php } ?>
 
+                        <a href="carrinho.php?adicionar=<?= $produto['produtos_id'] ?>">Comprar</a>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
+        <?php mysqli_close($con); ?>
     </body>
 </html>
