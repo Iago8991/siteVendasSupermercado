@@ -1,6 +1,6 @@
-<?php
-    require('../css/login.css');
-?>
+<html>
+    <link rel="stylesheet" href="../css/login.css">
+</html>
 
 <div id="login">
     <?php
@@ -25,3 +25,4 @@
         <input type="submit" value="Enter">
     </form>
 </div>
+

@@ -1,10 +1,10 @@
-<?php 
+<html>
+    <link rel="stylesheet" href="../css/editarProduto.css">
+</html>
 
-    require('../css/editarProduto.css');
-    require('../bd_config.php');
-    session_start();
-    error_reporting(0);    
-    //if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
+<?php 
+    require('../bd_config.php'); 
+    if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
 
     if(isset($_GET['id'])) {
         
@@ -128,9 +128,8 @@
 </html>
 
 <?php   
-   // } else {
-    //    echo "Você não possui permissões de administrador. ";
-     //   exit;
-   // }
-
+    } else {
+        echo "Você não possui permissões de administrador. ";
+        exit;
+    }
 ?>

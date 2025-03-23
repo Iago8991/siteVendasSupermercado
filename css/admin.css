@@ -1,0 +1,10 @@
+.mensagem {
+    color:red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.mensagemSucesso {
+    color: green;
+}
+	

@@ -1,4 +1,4 @@
-<?PHP 
+<?php 
     require('../bd_config.php');
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,12 +30,12 @@
         header("Location: admin.php");
         exit;
     }
-    mysqli_stmt_close($stmt);
-} else {
-    $_SESSION['erro'] = "método de Login inválido.";
-    header("Location: admin.php");
-    exit;
-}
+        mysqli_stmt_close($stmt);
+    } else {
+        $_SESSION['erro'] = "método de Login inválido.";
+        header("Location: admin.php");
+        exit;
+    }
 
-mysqli_close(mysql: $con);
+    mysqli_close(mysql: $con);
 ?>

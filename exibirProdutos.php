@@ -1,8 +1,9 @@
-<?PHP
-    session_start();
+<html>
+    <link rel="stylesheet" href="/css/exibirProdutos.css">
+</html>
+
+<?php
     require("bd_config.php");
-    //require('./css/exibirProdutos.css');
-    //include_once("./css/exibirProdutos.css");
     //error_reporting(0);
 
     $busca = "";
