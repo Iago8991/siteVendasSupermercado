@@ -1,7 +1,9 @@
+<html>
+    <link rel="stylesheet" href="../css/inserirProdutos.css">
+</html>
+
 <?PHP 
-    session_start();
-    require('../css/inserirProdutos.css');
-    //if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
+    if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
 ?>
 <html> 
     <head> 
@@ -65,8 +67,8 @@
 </html>
 
 <?PHP
-    //} else {
-      //  echo "Você não tem permissão de administrador";
-   // }
+    } else {
+        echo "Você não tem permissão de administrador";
+    }
 ?>
  

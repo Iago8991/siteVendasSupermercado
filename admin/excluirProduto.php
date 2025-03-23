@@ -1,5 +1,8 @@
+<html>
+    <link rel="stylesheet" href="../css/excluirProduto.css">
+</html>
+
 <?PHP 
-    require('../css/excluirProduto.css');
     require('../bd_config.php');
 
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){

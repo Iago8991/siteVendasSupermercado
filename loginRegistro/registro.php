@@ -1,6 +1,6 @@
-<?php
-    require('../css/registro.css');
-?>
+<html>
+    <link rel="stylesheet" href="../css/registro.css">
+</html>
 
 <div id="registro">
     <?php

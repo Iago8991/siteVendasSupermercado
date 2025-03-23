@@ -1,9 +1,9 @@
-<a href="login_registro/login.php">Login</a>
+<a href="loginRegistro/login.php">Login</a>
 
 <br/>
 
-<a href="login_registro/registro.php">Registro</a>
+<a href="loginRegistro/registro.php">Registro</a>
 
 <br/>
 
-<a href="login_registro/admin.php">Admin</a>
+<a href="loginRegistro/admin.php">Admin</a>

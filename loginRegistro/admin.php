@@ -1,12 +1,15 @@
-<?PHP 
-    require('../css/admin.css');
-?>
-<html> 
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/admin.css">
+    </head>
     <body>
-        <?PHP 
-           if (isset($_SESSION['erro'])){
-            echo "<p style='color: red;'>" . $_SESSION['erro'] . "</p>";
-            unset($_SESSION['erro']);
+        <?php 
+            if(isset($_SESSION['erro'])) {
+                echo "<div class = 'mensagem'> {$_SESSION['erro']} </div>";
+                unset($_SESSION['erro']);
+            } elseif (isset($_SESSION['sucesso'])) {
+                echo "<div class = 'mensagemSucesso'> {$_SESSION['sucesso']} </div>";
+                unset($_SESSION['sucesso']);
             }
         ?>
         <form action="adminCodigo.php" method="POST">

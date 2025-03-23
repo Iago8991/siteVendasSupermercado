@@ -1,8 +1,5 @@
 <?PHP 
-    session_start();
     require("bd_config.php");
-    require('./css/paginaPrincipal.css');
-
     $sql = "SELECT * FROM produtos ORDER BY RAND() LIMIT 8";
     $resultado = mysqli_query($con, $sql);
 ?>
@@ -11,7 +8,7 @@
     <head>
         <meta charset="UTF-8"
         <title> Pagina principal </title>
-
+        <link rel="stylesheet" href="/css/paginaPrincipal.css">
     </head>
     <body>
         <h1> Bem-vindo à Loja </h1>        
@@ -24,17 +21,17 @@
                 <span> Carrinho </span>
             </div>
 
-            <div class="menu-item" onclick="location.href='produtos_completos.php';">
+            <div class="menu-item" onclick="location.href='exibirProdutos.php';">
                 <img src="icones/loja.png" alt="Loja" width="30">
                 <span> Loja </span>
             </div>
 
-            <div class="menu-item" onclick="location.href='pagina_principal.php';">
-                <img src="icones/pagina_principal.png" alt="pagina principal" width="30">
+            <div class="menu-item" onclick="location.href='paginaPrincipal.php';">
+                <img src="icones/paginaPrincipal.png" alt="pagina principal" width="30">
                 <span> Pagina Principal </span>
             </div>
 
-            <div class="menu-item" onclick="location.href='\admin\inserir_produtos.php';">
+            <div class="menu-item" onclick="location.href='inserirProdutos.php';">
                 <img src="icones/loja.png" alt="inserir produtos" width="30">
                 <span> Inserir Produtos </span>
             </div>
