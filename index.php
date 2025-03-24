@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <a href="loginRegistro/login.php">Login</a>
 
 <br/>

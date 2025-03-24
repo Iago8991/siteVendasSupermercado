@@ -1,8 +1,5 @@
-<html>
-    <link rel="stylesheet" href="../css/excluirProduto.css">
-</html>
-
 <?PHP 
+    session_start();
     require('../bd_config.php');
 
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
@@ -36,7 +33,7 @@
                 }
 
                 $_SESSION['sucesso'] = "Produto excluído com sucesso!";
-                header("Location: gerenciamento_produtos.php");
+                header("Location: gerenciamentoProdutos.php");
                 exit;
             } else {
                 echo "Erro ao excluir o produto: " . mysqli_error($con);

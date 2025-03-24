@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require ("../bd_config.php");
 
     // recebe variaveis do form na pagina registro.php
@@ -9,7 +10,7 @@
     //verifica se email já existe no banco de dados
     $verificarEmailsql = "select * from usuarios where user_email = ?";
     $consultaEmail = mysqli_prepare($con, $verificarEmailsql);
-    mysqli_stmt_bind_param($consultEemail, "s", $email);
+    mysqli_stmt_bind_param($consultaEmail, "s", $email);
     mysqli_stmt_execute($consultaEmail);
     $resultadoEmail = mysqli_stmt_get_result($consultaEmail);
 

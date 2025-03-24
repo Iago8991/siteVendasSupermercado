@@ -1,14 +1,18 @@
 <?PHP 
+    session_start();
+    if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
     require("bd_config.php");
     $sql = "SELECT * FROM produtos ORDER BY RAND() LIMIT 8";
     $resultado = mysqli_query($con, $sql);
+
+   
 ?>
 
 <html>
     <head>
+        <link rel="stylesheet" href="/css/paginaPrincipal.css">
         <meta charset="UTF-8"
         <title> Pagina principal </title>
-        <link rel="stylesheet" href="/css/paginaPrincipal.css">
     </head>
     <body>
         <h1> Bem-vindo à Loja </h1>        
@@ -70,3 +74,8 @@
     </body>
 </html>
 
+<?PHP
+    } else {
+        echo "Você não tem permissão de administrador";
+    }
+?>

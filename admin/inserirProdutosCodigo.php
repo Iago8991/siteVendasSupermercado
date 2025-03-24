@@ -1,4 +1,5 @@
 <?PHP
+    session_start();
     require('../bd_config.php');
     //error_reporting(0);
     

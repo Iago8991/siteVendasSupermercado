@@ -1,8 +1,5 @@
-<html>
-    <link rel="stylesheet" href="/css/exibirProdutos.css">
-</html>
-
 <?php
+    session_start();
     require("bd_config.php");
     //error_reporting(0);
 
@@ -45,8 +42,9 @@
 
 <html> 
     <head>
+        <link rel="stylesheet" href="/css/exibirProdutos.css">  
         <meta charset="UTF-8">
-        <title> Exibir Produtos </title>    
+        <title> Exibir Produtos </title>
     </head>
 
     <body>
