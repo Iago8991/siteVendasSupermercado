@@ -1,8 +1,5 @@
-<html>
-    <link rel="stylesheet" href="../css/gerenciamentoProdutos.css">
-</html>
-
 <?PHP 
+    session_start();
     require('../bd_config.php');
 
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
@@ -18,6 +15,7 @@
     
     <html>
         <head>
+            <link rel="stylesheet" href="../css/gerenciamentoProdutos.css">
             <title> Gerenciador de Produtos </title>
             <meta charset="UTF-8">
         </head>
@@ -37,7 +35,7 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody>
+                <body>
                     <?php while ($produto = mysqli_fetch_assoc($resultado)) { ?>
                         
                         <tr>
@@ -59,13 +57,13 @@
                                 <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="Imagem do produto" width="100">
                             </td>
                             <td> 
-                                <a href="editar_produto.php?id=<?= $produto['produtos_id'] ?>">Editar</a> <br/>
-                                <a href="excluir_produto.php?id=<?= $produto['produtos_id'] ?>" onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</a>
+                                <a href="editarProduto.php?id=<?= $produto['produtos_id'] ?>">Editar</a> <br/>
+                                <a href="excluirProduto.php?id=<?= $produto['produtos_id'] ?>" onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</a>
                             </td>
                         </tr>
                     
                     <?php } ?>
-                </tbody>
+                </body>
             </table>
         </body>
     </html>

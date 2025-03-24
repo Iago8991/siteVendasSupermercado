@@ -1,9 +1,7 @@
-<html>
-    <link rel="stylesheet" href="../css/editarProduto.css">
-</html>
-
-<?php 
-    require('../bd_config.php'); 
+<?php
+    session_start();
+    //require('../bd_config.php'); 
+    error_reporting(0);
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
 
     if(isset($_GET['id'])) {
@@ -75,6 +73,7 @@
 
 <html>
     <head>
+        <link rel="stylesheet" href="../css/editarProduto.css">
         <title>Editar Produtos</title>
         <meta charset="UTF-8">
     </head>
