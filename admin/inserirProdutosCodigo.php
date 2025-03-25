@@ -15,7 +15,7 @@
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
             $imagemtmp = $_FILES['imagem']['tmp_name'];
             $imagemNome = basename($_FILES['imagem']['name']);
-            $caminhoImagem = "../upload_produtos/" . $imagemNome; 
+            $caminhoImagem = "../uploadProdutos/" . $imagemNome; 
              //__DIR__ retorna o caminho absoluto do diretório onde o php está localizado.
 
             //Move a imagem para a pasta de uploads

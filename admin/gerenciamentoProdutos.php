@@ -50,11 +50,11 @@
                                         echo "Sem desconto";
                                     }
                                 ?>
-
+ 
                             </td>
                             <td> <?= $produto['produtos_estoque'] ?></td>
                             <td>
-                                <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="Imagem do produto" width="100">
+                                <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
                             </td>
                             <td> 
                                 <a href="editarProduto.php?id=<?= $produto['produtos_id'] ?>">Editar</a> <br/>
