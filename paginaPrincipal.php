@@ -21,22 +21,22 @@
 
         <div class="menu-lateral">
             <div class="menu-item" onlcick="location.href='carrinho.php';">
-                <img src="icones/carrinho.png" alt="Carrinho" width="30">
+                <img src="imagens/carrinho.jpg" alt="Carrinho" width="30">
                 <span> Carrinho </span>
             </div>
 
             <div class="menu-item" onclick="location.href='exibirProdutos.php';">
-                <img src="icones/loja.png" alt="Loja" width="30">
+                <img src="imagens/loja.webp" alt="Loja" width="30">
                 <span> Loja </span>
             </div>
 
             <div class="menu-item" onclick="location.href='paginaPrincipal.php';">
-                <img src="icones/paginaPrincipal.png" alt="pagina principal" width="30">
+                <img src="imagens/home.webp" alt="pagina principal" width="30">
                 <span> Pagina Principal </span>
             </div>
 
-            <div class="menu-item" onclick="location.href='inserirProdutos.php';">
-                <img src="icones/loja.png" alt="inserir produtos" width="30">
+            <div class="menu-item" onclick="location.href='/admin/inserirProdutos.php';"> <!-- Falta resolver -->
+                <img src="imagens/inserir.jpg" alt="inserir produtos" width="30">
                 <span> Inserir Produtos </span>
             </div>
 
@@ -48,8 +48,8 @@
             <div class="produtos">
                 <?php while ($produto = mysqli_fetch_array($resultado)) { ?>
                     <div class="produto">
-                        <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>"
                         <h2> <?= htmlspecialchars($produto['produtos_nome']) ?> </h2>
+                        <img src="upload_produtos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>" width="100px" height="100px">
                         <p> R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?> </p>
                         <?php 
                         

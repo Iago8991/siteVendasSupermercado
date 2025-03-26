@@ -76,7 +76,7 @@
             <div class="produtosGrade">
                 <?php while ($produto = mysqli_fetch_assoc($resultado)) { ?>
                     <div class="produtoItem">
-                        <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">    
+                        <img src="upload_produtos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>" width="100px" height="100px">
                         <h3> <?= htmlspecialchars($produto['produtos_nome']) ?> </h3>
                         <p> <?= htmlspecialchars($produto['produtos_descricao']) ?> </p>
                         <p class="price">R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?> </p>
@@ -92,3 +92,4 @@
         <?php mysqli_close($con); ?>
     </body>
 </html>
+
