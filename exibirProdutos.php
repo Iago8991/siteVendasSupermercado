@@ -52,7 +52,7 @@ if (!$resultado) {
 
 <html>
 <head>
-    <link rel="stylesheet" href="/css/exibirProdutos.css">
+    <link rel="stylesheet" href="css/exibirProdutos.css">
     <meta charset="UTF-8">
     <title>Exibir Produtos</title>
 
