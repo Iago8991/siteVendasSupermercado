@@ -44,7 +44,7 @@
             mysqli_stmt_bind_param($consulta, "sss", $nome, $email, $senhaHash);
 
             if(mysqli_stmt_execute($consulta)){
-                $_SESSION['sucesso'] = "Registro realizado com sucesso!!! ";
+                $_SESSION['sucesso'] = "Registro realizado com sucesso!!! \n faça <a href='login.php'>login</a> ";
                 header("location: login.php");
             } else {
                 $_SESSION['error'] = "ERRO ao registrar. Tente novamente.";
