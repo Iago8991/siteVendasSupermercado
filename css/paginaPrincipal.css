@@ -6,13 +6,13 @@
     height: 100vh;
     width: 50px; /* Largura mínima */
     background: #333;
-    overflow: hidden; /* Pode ser mantido, pois o menu expandido já definirá uma nova largura */
+    overflow: hidden;
     transition: width 0.3s;
     z-index: 1000;
 }
 
 .menu-lateral:hover {
-    width: 180px; /* Largura expandida suficiente para mostrar todo o texto */
+    width: 220px; /* Aumentado para acomodar o texto completo */
 }
 
 .menu-lateral .menu-item {
@@ -45,7 +45,7 @@
     transition: opacity 0.3s;
 }
 
-/* Quando o menu for expandido, exibe o texto */
+/* Exibe o texto quando o menu estiver expandido */
 .menu-lateral:hover .menu-item span {
     opacity: 1;
 }
