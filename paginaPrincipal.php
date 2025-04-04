@@ -16,39 +16,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
     <h1>Bem-vindo à Loja</h1>
 
     <!-- Menu lateral fixo -->
-    <div class="menu-lateral" id="menuLateral">
-        <div class="menu-items">
-            <a class="menu-item" onclick="location.href='paginaPrincipal.php';">
-                <img src="imagens/home.webp" alt="Página Principal">
-                <span>Página Principal</span>
-            </a>
-            <a class="menu-item" onclick="location.href='carrinho.php';">
-                <img src="imagens/carrinho.png" alt="Carrinho">
-                <span>Carrinho</span>
-            </a>
-            <a class="menu-item" onclick="location.href='exibirProdutos.php';">
-                <img src="imagens/loja.webp" alt="Loja">
-                <span>Loja</span>
-            </a>
-            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){ ?>
-                <a class="menu-item" onclick="location.href='admin/inserirProdutos.php';">
-                    <img src="imagens/inserir.jpg" alt="Inserir Produtos">
-                    <span>Inserir Produtos</span>
-                </a>
-                <a class="menu-item" onclick="location.href='admin/gerenciamentoProdutos.php';">
-                    <img src="imagens/gerenciarProdutos.png" alt="Gerenciamento Produtos">
-                    <span>Gerenciamento Produtos</span>
-                </a>
-            <?php } ?>
-        </div>
-        <div class="menu-footer">
-            <a class="menu-item" onclick="location.href='loginRegistro/logout.php';">
-                <img src="imagens/sair.png" alt="Sair">
-                <span>Sair</span>
-            </a>
-        </div>
-    </div>
 
+    <!-- Colocar aqui -->
     
     <!-- Conteúdo principal que será empurrado -->
     <div class="main-content" id="mainContent">
