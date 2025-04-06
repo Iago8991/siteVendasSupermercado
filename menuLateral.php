@@ -59,53 +59,54 @@
             <div class="menu-lateral" id="menuLateral">
                 <div class="menu-items">
                     <a class="menu-item" onclick="location.href='/projetoSupermercado/paginaPrincipal.php';">
-                        <img src="imagens/home.webp" alt="Página Principal">
+                        <img src="/projetoSupermercado/imagens/home.webp" alt="Página Principal">
                         <span>Página Principal</span>
                     </a>
                     <a class="menu-item" onclick="location.href='/projetoSupermercado/carrinho.php';">
-                        <img src="imagens/carrinho.png" alt="Carrinho">
+                        <img src="/projetoSupermercado/imagens/carrinho.png" alt="Carrinho">
                         <span>Carrinho</span>
                     </a>
                     <a class="menu-item" onclick="location.href='/projetoSupermercado/exibirProdutos.php';">
-                        <img src="imagens/loja.png" alt="Loja">
+                        <img src="/projetoSupermercado/imagens/loja.png" alt="Loja">
                         <span>Loja</span>
                     </a>
                     <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){ ?>
                         <a class="menu-item" onclick="location.href='/projetoSupermercado/admin/inserirProdutos.php';">
-                            <img src="imagens/inserirProdutos.png" alt="Inserir Produtos">
+                            <img src="/projetoSupermercado/imagens/inserirProdutos.png" alt="Inserir Produtos">
                             <span>Inserir Produtos</span>
                         </a>
                         <a class="menu-item" onclick="location.href='/projetoSupermercado/admin/gerenciamentoProdutos.php';">
-                            <img src="imagens/gerenciarProdutos.png" alt="Gerenciamento Produtos">
+                            <img src="/projetoSupermercado/imagens/gerenciarProdutos.png" alt="Gerenciamento Produtos">
                             <span>Gerenciamento Produtos</span>
                         </a>
                     <?php } ?>
                 </div>
                 <div class="menu-footer">
                     <a class="menu-item" onclick="location.href='/projetoSupermercado/loginRegistro/logout.php';">
-                        <img src="imagens/sair.png" alt="Sair">
+                        <img src="/projetoSupermercado/imagens/sair.png" alt="Sair">
                         <span>Sair</span>
                     </a>
                 </div>
             </div>
             
             <script>
-                // empurra o conteudo para o lado quand o menu lateral e expandido
-                const menu = document.getElementById('menuLateral');
-                const mainContent = document.getElementById('mainContent');
-
-                menu.addEventListener('mouseenter', () => {
-                    mainContent.style.marginLeft = '180px';
+                // Executa o Script após o carregamento da página
+                document.addEventListener('DOMContentLoaded', function() {
+                    // empurra o conteudo para o lado quand o menu lateral e expandido
+                    const menu = document.getElementById('menuLateral');
+                    const mainContent = document.getElementById('mainContent');
+                    
+                    if (menu && mainContent) {
+                        menu.addEventListener('mouseenter', () => {
+                            mainContent.style.marginLeft = '220px';
+                        });
+                        menu.addEventListener('mouseleave', () => {
+                            mainContent.style.marginLeft = '50px';
+                        });
+                    }
                 });
-                menu.addEventListener('mouseleave', () => {
-                    mainContent.style.marginLeft = '50px';
-                });
-
-                function adicionaraocarrinho(produtos_id) {
-                    alert("Produto " + produtos_id + " adicionado ao carrinho (exemplo)!");
-                }
             </script>
-            <?php            
+<?php            
         }
     }
 ?>

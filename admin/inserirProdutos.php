@@ -1,5 +1,6 @@
 <?PHP 
     session_start();
+    require('../menuLateral.php');
     if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
 ?>
 <html> 
@@ -10,7 +11,10 @@
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     </head>
     <body> 
-
+        <!-- Menu lateral fixo -->
+        <?php menuLateral::render(); ?>
+        <!-- Colocar aqui -->
+         
         <?php
             if (isset($_SESSION['erro'])){
                 echo "<p style='color: red;'>" . $_SESSION['erro'] . "</p>";
