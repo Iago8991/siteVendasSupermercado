@@ -1,6 +1,7 @@
 <?php 
 session_start();
 if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
+    require("menuLateral.php");
     require("bd_config.php");
     $sql = "SELECT * FROM produtos ORDER BY RAND() LIMIT 8";
     $resultado = mysqli_query($con, $sql);
@@ -16,7 +17,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
     <h1>Bem-vindo à Loja</h1>
 
     <!-- Menu lateral fixo -->
-
+    <?php menuLateral::render(); ?>
     <!-- Colocar aqui -->
     
     <!-- Conteúdo principal que será empurrado -->
@@ -39,7 +40,11 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
             <?php } ?>
         </div>
     </div>
-    
+    <script>
+        function adicionaraocarrinho(produtos_id) {
+                        alert("Produto " + produtos_id + " adicionado ao carrinho (exemplo)!");
+                    }
+    </script>
 </body>
 </html>
 <?php

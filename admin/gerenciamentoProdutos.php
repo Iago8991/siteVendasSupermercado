@@ -1,6 +1,7 @@
 <?PHP 
     session_start();
     require('../bd_config.php');
+    require('../menuLateral.php');
 
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
         
@@ -20,7 +21,10 @@
             <meta charset="UTF-8">
         </head>
         <body>
-
+            <!-- Menu lateral fixo -->
+            <?php menuLateral::render(); ?>
+            <!-- Colocar aqui -->
+             
             <h1>Lista de produtos</h1>
 
             <table border="1">
