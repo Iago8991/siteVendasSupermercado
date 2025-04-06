@@ -40,22 +40,6 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
         </div>
     </div>
     
-    <script>
-        // empurra o conteudo para o lado quand o menu lateral e expandido
-        const menu = document.getElementById('menuLateral');
-        const mainContent = document.getElementById('mainContent');
-
-        menu.addEventListener('mouseenter', () => {
-            mainContent.style.marginLeft = '180px';
-        });
-        menu.addEventListener('mouseleave', () => {
-            mainContent.style.marginLeft = '50px';
-        });
-
-        function adicionaraocarrinho(produtos_id) {
-            alert("Produto " + produtos_id + " adicionado ao carrinho (exemplo)!");
-        }
-    </script>
 </body>
 </html>
 <?php
