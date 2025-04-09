@@ -1,0 +1,140 @@
+/* ==========================
+   Ajustes de Layout Geral
+   ========================== */
+   body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+    background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+}
+
+/* Links fixos no rodapé */
+.linkAdmin, .linkContato {
+    position: fixed;
+    padding: 10px 15px;
+    color: #fff;
+    background: #333;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.linkAdmin {
+    bottom: 20px;
+    right: 20px; /* Fixa no canto inferior direito */
+}
+.linkContato {
+    bottom: 20px;
+    left: 20px; /* Fixa no canto inferior esquerdo */
+}
+.linkAdmin:hover, .linkContato:hover {
+    background: red;
+}
+
+/* ==========================
+   Sessão Login e Registro
+   ========================== */
+.containerEntrada {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 40px;
+}
+
+.caixaLogin, .caixaRegistro {
+    width: 250px;
+    height: 150px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s, transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.caixaLogin:hover, .caixaRegistro:hover {
+    background: red;
+    transform: scale(1.05);
+}
+.caixaLogin h2, .caixaRegistro h2 {
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+/* ==========================
+   Produtos em Desconto
+   ========================== */
+.tituloDescontos {
+    text-align: center;
+    margin-top: 50px;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.gradeDescontos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto 50px auto;
+    max-width: 1200px; /* Ajuste conforme desejado */
+}
+
+.produtoItem {
+    background: #fff;
+    width: 220px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+}
+
+.produtoImg {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.precoAntigo {
+    color: #888;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.precoDesconto {
+    color: #d00;
+    font-size: 1.1em;
+    margin: 5px 0 10px 0;
+}
+
+.quantidadeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btnQuantidade {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.quantidadeValor {
+    font-size: 1em;
+    min-width: 20px;
+    text-align: center;
+}
+
+.iconeCarrinho {
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+}

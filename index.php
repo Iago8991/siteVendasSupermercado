@@ -26,7 +26,6 @@
          <!-- termina aqui -->
 
          <!-- Div central -->
-
          <div class="containerEntrada">
             <div class="caixaLogin" onclick="location.href='loginRegistro/login.php'">
                 <h2>Login</h2>
@@ -46,9 +45,32 @@
          <div class="gradeDescontos">
             <?php while($produto = mysqli_fetch_assoc($resultado)) { ?>
                 <div class="produtoItem">
-                    <img src=""
+                    <img class="produtoImg" src="upload_produtos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                    <h3> <?= htmlspecialchars($produto['produtos_nome']) ?> </h3>
+                    <p class="precoAntigo"> 
+                        <del>
+                            R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?>
+                        </del>
+                    </p>
+                    <p class="precoDesconto">
+                        <strong>
+                            R$ <?php
+                                    // calcula preço com desconto
+                                    $precoComDesconto = $produto['produtos_preco'] * ((100 - $produto['produtos_desconto']) / 100);
+                                    echo number_format($precoComDesconto, 2, ',', '.');
+                                ?>
+                        </strong>
+                    </p>
+                    <div class="quantidadeContainer">
+                        <img src="imagens/minus.jpg" alt="Diminuir" class="btnQuantidade">
+                        <span class="quantidadeValor">1</span>
+                        <img src="imagens/plus.jpg" alt="Aumentar" class="btnQuantidade">
+                        <img src="imagens/carrinho.png" alt="Carrinho" class="iconeCarrinho" onclick="location.href='carrinho.php'"> 
+                    </div>
                 </div>
-            }
+            <?php } ?>
          </div>
+
+         <?php mysqli_close($con); ?>
     </body>
 </html>
