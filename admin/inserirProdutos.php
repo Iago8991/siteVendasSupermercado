@@ -49,18 +49,15 @@
             <label for="categoria"> Categoria: </label>
             <select name="categoria" id="categoria" required>
                 <option value="selecione"> Selecione </option>
-                <option value="alimentos"> Alimentos </option>
+                <option value="cestaBasica"> Cesta Básica </option>
                 <option value="carne"> Carne </option>
                 <option value="bebidas"> Bebidas </option>
                 <option value="padaria"> Padaria </option>
-                <option value="vegetal"> Vegetal </option>
-                <option value="fruta"> Fruta </option>
-                <option value="hortifruti"> Hortifrúti (legumes,frutas e relacionados) </option>
+                <option value="hortifruti"> Hortifrúti (legumes, frutas e verduras) </option>
                 <option value="alimentosCongelados"> Alimentos Congelados</option>
-                <option value="frios"> Frios </option>
                 <option value="produtosDeLimpeza"> Produtos de Limpeza </option>
                 <option value="higienePessoal"> Higiene Pessoal </option>
-                <option value="outros"> Outros </option>
+                <option value="outrosProdutos"> Outros Produtos </option>
             </select> <br/> <br/>
 
             <input type="submit" value="Enviar">

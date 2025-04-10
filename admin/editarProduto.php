@@ -36,8 +36,8 @@
             //Atualiza a imagem se um novo arquivo for enviado
             if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
                 $imagemtmp = $_FILES['imagem']['tmp_name'];
-                $imagemnome = basename($_FILES['imagem']['name']);
-                $caminhoImagem = "../uploadProdutos/" . $imagemNome;
+                $imagemNome = basename($_FILES['imagem']['name']);
+                $caminhoImagem = "/projetoSupermercado/uploadProdutos/" . $imagemNome;
                 
                 //Move a nova imagem para a pasta de uploads
                 if (move_uploaded_file($imagemtmp, $caminhoImagem)){

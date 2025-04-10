@@ -27,7 +27,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
             <?php while ($produto = mysqli_fetch_array($resultado)) { ?>
                 <div class="produto">
                     <h2><?= htmlspecialchars($produto['produtos_nome']) ?></h2>
-                    <img src="upload_produtos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                    <img src="/projetoSupermercado/uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
                     <p>R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></p>
                     <?php if (isset($produto['produtos_desconto']) && $produto['produtos_desconto'] > 0) { ?>
                         <p style="color: red;">Desconto: <?= $produto['produtos_desconto'] ?>%</p>

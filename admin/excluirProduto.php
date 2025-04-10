@@ -19,7 +19,7 @@
         $resultado = mysqli_stmt_get_result($stmt);
 
         if ($produto = mysqli_fetch_assoc($resultado)) {
-            $caminhoImagem = "../upload_produtos/" . $produto['produtos_imagem']; 
+            $caminhoImagem = "/projetoSupermercado/uploadProdutos/" . $produto['produtos_imagem']; 
 
             //Exclui o produto do banco de dados.
             $sql_delete = "DELETE FROM produtos WHERE produtos_id = ?";

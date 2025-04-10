@@ -1,73 +1,94 @@
-/* ==========================
-   Ajustes de Layout Geral
-   ========================== */
-   body {
+/* =========================
+   RESET / ESTILO BASE
+========================= */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+body {
     font-family: Arial, sans-serif;
     background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
-    background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+    background-size: cover;
 }
 
-/* Links fixos no rodapé */
-.linkAdmin, .linkContato {
-    position: fixed;
-    padding: 10px 15px;
-    color: #fff;
-    background: #333;
-    border-radius: 5px;
-    text-decoration: none;
+/* =========================
+   CONTAINER ARREDONDADO
+========================= */
+.container-arredondado {
+    background: url('../imagens/fundoMercado2.jpg') no-repeat center center;
+    background-size: cover;
+    width: 600px;
+    min-height: 600px;
+    margin: 50px auto;
+    border-radius: 40px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    /* Se a imagem não carregar, cor de fallback */
+    background-color: rgba(255,255,255,0.9);
 }
-.linkAdmin {
-    bottom: 20px;
-    right: 20px; /* Fixa no canto inferior direito */
-}
-.linkContato {
-    bottom: 20px;
-    left: 20px; /* Fixa no canto inferior esquerdo */
-}
-.linkAdmin:hover, .linkContato:hover {
-    background: red;
+.titulo-mercadinho {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-/* ==========================
-   Sessão Login e Registro
-   ========================== */
-.containerEntrada {
+/* =========================
+   LOGIN E REGISTRO
+========================= */
+.sessao-login-registro {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
     gap: 40px;
+    margin-bottom: 30px;
 }
-
-.caixaLogin, .caixaRegistro {
-    width: 250px;
-    height: 150px;
-    background: rgba(255,255,255,0.8);
+.box-login, .box-registro {
+    width: 120px;
+    height: 60px;
+    background: #fff;
+    border: 2px solid #ccc;
     border-radius: 10px;
     cursor: pointer;
-    text-align: center;
-    transition: background 0.3s, transform 0.3s;
+    transition: 0.3s;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    position: relative; /* Para tooltip */
 }
-.caixaLogin:hover, .caixaRegistro:hover {
+.box-login:hover, .box-registro:hover {
     background: red;
+    border-color: red;
+    color: #fff;
     transform: scale(1.05);
 }
-.caixaLogin h2, .caixaRegistro h2 {
-    margin: 0;
-    padding-bottom: 5px;
+/* Tooltip ao passar o mouse (mensagens no login e registro) */
+.hover-message {
+    display: none;
+    position: absolute;
+    bottom: -40px; /* Ajuste conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+.box-login:hover .hover-message, 
+.box-registro:hover .hover-message {
+    display: block;
 }
 
-/* ==========================
-   Produtos em Desconto
-   ========================== */
-.tituloDescontos {
-    text-align: center;
-    margin-top: 50px;
+/* =========================
+   TÍTULO "PRODUTOS EM DESTAQUE"
+========================= */
+.titulo-destaques {
+    font-size: 1.2em;
+    margin-bottom: 20px;
     color: #fff;
     background: rgba(0,0,0,0.5);
     display: inline-block;
@@ -75,66 +96,105 @@
     border-radius: 5px;
 }
 
+/* =========================
+   PRODUTOS EM DESTAQUE
+========================= */
 .gradeDescontos {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
     margin: 20px auto 50px auto;
-    max-width: 1200px; /* Ajuste conforme desejado */
+    max-width: 600px; /* 4 por linha se cada tiver ~150px, ajuste conforme deseja */
 }
-
 .produtoItem {
-    background: #fff;
-    width: 220px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: #ccc; /* Cinza suave */
+    width: 130px;
+    border: 1px solid #bbb;
+    border-radius: 10px;
     overflow: hidden;
     text-align: center;
     box-sizing: border-box;
     padding: 10px;
     position: relative;
+    transition: transform 0.3s, border-color 0.3s;
 }
-
+.produtoItem:hover {
+    transform: scale(1.05);
+    border-color: red;
+}
 .produtoImg {
     width: 100%;
-    height: 150px;
+    height: 90px;
     object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
-
 .precoAntigo {
     color: #888;
-    font-size: 0.9em;
+    font-size: 0.8em;
     margin: 5px 0;
 }
-
 .precoDesconto {
     color: #d00;
-    font-size: 1.1em;
-    margin: 5px 0 10px 0;
+    font-size: 0.9em;
+    margin-bottom: 10px;
 }
 
+/* Botões de quantidade e carrinho */
 .quantidadeContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
 }
-
 .btnQuantidade {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    padding: 3px;
+    transition: transform 0.3s;
     cursor: pointer;
+    background: #fff; /* se a imagem for com transparência */
 }
-
+.btnQuantidade:hover {
+    transform: scale(1.2);
+}
 .quantidadeValor {
-    font-size: 1em;
+    font-size: 2em;
     min-width: 20px;
     text-align: center;
 }
-
 .iconeCarrinho {
-    width: 25px;
-    height: auto;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
     cursor: pointer;
+}
+.iconeCarrinho:hover {
+    transform: scale(1.2);
+}
+
+/* =========================
+   RODAPÉ (não fixo)
+========================= */
+.rodape {
+    width: 100%;
+    background: #666;  /* Cinza mais escuro */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.rodape a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+.rodape a:hover {
+    background: red;
 }
