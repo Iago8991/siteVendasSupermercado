@@ -22,18 +22,18 @@
             $_SESSION['login'] = 'logado';
             header ("location: ../paginaPrincipal.php");
         } else {
-            $_SESSION['erro'] = 'Senha incorreta!';
+            $_SESSION['errorAdmin'] = 'Senha incorreta!';
             header("Location: admin.php");
             exit;
         }
     } else {
-        $_SESSION['erro'] = 'Administrador não encontrado!';
+        $_SESSION['errorAdmin'] = 'Administrador não encontrado!';
         header("Location: admin.php");
         exit;
     }
         mysqli_stmt_close($stmt);
     } else {
-        $_SESSION['erro'] = "método de Login inválido.";
+        $_SESSION['errorAdmin'] = "método de Login inválido.";
         header("Location: admin.php");
         exit;
     }

@@ -1,38 +1,35 @@
 <?php
-    session_start();
+session_start();
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - Mercadinho IRR</title>
     <link rel="stylesheet" href="../css/registro.css">
-</html>
-
-<div id="registro">
-    <?php
-        if(isset($_SESSION['error'])) {
-            echo "<div class = 'mensagem'> {$_SESSION['error']}</div>";
-            unset($_SESSION['error']);
-        } elseif (isset($_SESSION['sucesso'])) {
-            echo "<div class = 'mensagemSucesso'> {$_SESSION['sucesso']} </div>";
-            unset($_SESSION['sucesso']);
+</head>
+<body>
+    <div class="site-title">Mercadinho IRR</div>
+    <div class="container-central" id="container-central">
+        <?php
+        if(isset($_SESSION['errorRegistro'])) {
+            echo "<div class='mensagem'>" . $_SESSION['errorRegistro'] . "</div>";
+            unset($_SESSION['errorRegistro']);
+        } elseif(isset($_SESSION['sucessoRegistro'])) {
+            echo "<div class='mensagemSucesso'>" . $_SESSION['sucessoRegistro'] . "</div>";
+            unset($_SESSION['sucessoRegistro']);
         }
-            
-    ?>
-    <form action="registroCodigo.php" method="POST"> 
-
-        <center>
-            <label for="nome">NOME:</label>
-            <input type="text" min="0" max="200" name="nome" id="nome"> 
-        </center>
-        
-        <center>
+        ?>
+        <form action="registroCodigo.php" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" required>
             <label for="email">E-mail:</label>
-            <input type="text" min="0" max="200" name="email" id="email"> 
-        </center>
-
-        <center>
+            <input type="email" name="email" id="email" required>
             <label for="senha">Senha:</label>
-            <input type="text" min="0" max="200" name="senha" id="senha"> 
-        </center>
-        <input type="submit" value="Enter">
-    </form>
-</div>
+            <input type="password" name="senha" id="senha" required>
+            <input type="submit" value="Registrar">
+        </form>
+        <button class="btn-voltar" onclick="location.href='../index.php'">Voltar</button>
+    </div>
+</body>
+</html>

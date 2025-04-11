@@ -1,29 +1,30 @@
 <?php
-    session_start();
+session_start();
 ?>
-
-<html>
-    <head>
-        <link rel="stylesheet" href="../css/admin.css">
-    </head>
-    <body>
-        <?php 
-            if(isset($_SESSION['erro'])) {
-                echo "<div class = 'mensagem'> {$_SESSION['erro']} </div>";
-                unset($_SESSION['erro']);
-            } elseif (isset($_SESSION['sucesso'])) {
-                echo "<div class = 'mensagemSucesso'> {$_SESSION['sucesso']} </div>";
-                unset($_SESSION['sucesso']);
-            }
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Mercadinho IRR</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="site-title">Mercadinho IRR</div>
+    <div class="container-central" id="container-central">
+        <?php
+        if(isset($_SESSION['errorAdmin'])) {
+            echo "<div class='mensagem'>" . $_SESSION['errorAdmin'] . "</div>";
+            unset($_SESSION['errorAdmin']);
+        }
         ?>
         <form action="adminCodigo.php" method="POST">
-            <label for="email"> E-mail do administrador: </label>
+            <label for="email">E-mail do Administrador:</label>
             <input type="text" name="email" id="email" required>
-            <br/> <br/> 
-            <label for="senha"> Senha do administrador: </label>
-            <input type="text" name="senha" id="senha" required>
-            <br/> <br/> 
-            <input type="submit" value="Enviar">
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" required>
+            <input type="submit" value="Entrar">
         </form>
-    </body>
+        <button class="btn-voltar" onclick="location.href='../index.php'">Voltar</button>
+    </div>
+</body>
 </html>

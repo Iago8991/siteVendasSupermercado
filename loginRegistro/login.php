@@ -1,32 +1,34 @@
 <?php
-    session_start();
+session_start();
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Mercadinho IRR</title>
+    <link rel="stylesheet" href="/projetoSupermercado/css/login.css">
+</head>
+<body>
+    <!-- Título do site (fora do contêiner central) -->
+    <div class="site-title">Mercadinho IRR</div>
 
-<html>
-    <link rel="stylesheet" href="../css/login.css">
-</html>
-
-<div id="login">
-    <?php
-        if(isset($_SESSION['erro'])) {
-            echo "<div class = 'mensagem'> {$_SESSION['erro']} </div>";
-            unset($_SESSION['erro']);
-        } elseif (isset($_SESSION['sucesso'])) {
-            echo "<div class = 'mensagemSucesso'> {$_SESSION['sucesso']} </div>";
-            unset($_SESSION['sucesso']);
+    <!-- Contêiner central -->
+    <div class="container-central" id="container-central">
+        <?php
+        if(isset($_SESSION['errorLogin'])) {
+            echo "<div class='mensagem'>" . $_SESSION['errorLogin'] . "</div>";
+            unset($_SESSION['errorLogin']);
         }
-    ?>
-    <form action="loginCodigo.php" method="POST"> 
-        <center>
+        ?>
+        <form action="loginCodigo.php" method="POST">
             <label for="email">E-mail:</label>
-            <input type="text" min="0" max="200" name="email" id="email" required> 
-        </center> 
-
-        <center>
+            <input type="text" name="email" id="email" required>
             <label for="senha">Senha:</label>
-            <input type="text" min="0" max="200" name="senha" id="senha" required> 
-        </center>
-        <input type="submit" value="Enter">
-    </form>
-</div>
-
+            <input type="password" name="senha" id="senha" required>
+            <input type="submit" value="Entrar">
+        </form>
+        <!-- Botão de voltar -->
+        <button class="btn-voltar" onclick="location.href='../index.php'">Voltar</button>
+    </div>
+</body>
+</html>
