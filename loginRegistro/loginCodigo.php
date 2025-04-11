@@ -29,18 +29,18 @@
             $_SESSION['user_id'] = $usuario['user_id'];
             $_SESSION['user_nome'] = $usuario['user_nome'];
             $_SESSION['login'] = 'logado';
-            header ("location: ../paginaPrincipal.php");
+            header ("location: /projetoSupermercado/paginaPrincipal.php");
             exit;
         } else {
             //Senha incorreta
-            $_SESSION['erro'] = "Senha incorreta. Tente novamente.";
-            header("location: login.php");
+            $_SESSION['errorLogin'] = "Senha incorreta. Tente novamente.";
+            header("location: /projetoSupermercado/loginRegistro/login.php");
             exit;
         }
     } else {
         //Email não encontrado
-        $_SESSION['erro'] = "Email não encontrado. Registre-se primeiro. <br/> <a href ='registro.php'>Registre-se</a>";
-        header("location: login.php");
+        $_SESSION['errorLogin'] = "Email não encontrado. Registre-se primeiro. <br/> <a href ='registro.php'>Registre-se</a>";
+        header("location: /projetoSupermercado/loginRegistro/login.php");
         exit;
     }
 ?>

@@ -1,20 +1,101 @@
-
-#login{
-	background: gray;
-	border-radius: 10px;
-	width: 40%;
-	height: 100%;
-	margin: 0px auto;
-	padding: 5px;
+/* RESET / ESTILO BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* CONTAINER CENTRAL */
+.container-central {
+    width: 350px;  /* Ajuste a largura conforme necessidade */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px 20px 50px;  /* Espaço para o botão voltar */
+    margin: 100px auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    background: url('../imagens/fundoMercado2.jpg') no-repeat center center fixed;
+}
+
+/* Título do site (fora do contêiner central) */
+.site-title {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 40px;
+    color: #333;
+}
+
+/*  FORMULÁRIO */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+}
+
+form input[type="submit"] {
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background: red;
+    transform: scale(1.03);
+}
+
+/*  BOTÃO VOLTAR */
+.btn-voltar {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    padding: 5px 10px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-voltar:hover {
+    background: red;
+    transform: scale(1.05);
+}
+
+/* MENSAGENS */
 .mensagem {
-    color:red;
+    color: red;
     text-align: center;
     margin-bottom: 10px;
 }
 
 .mensagemSucesso {
     color: green;
+    text-align: center;
+    margin-bottom: 10px;
 }
-	

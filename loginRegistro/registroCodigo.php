@@ -23,11 +23,11 @@
 
     // Mensagens de erro
     if(mysqli_num_rows($resultadoEmail) > 0){
-        $_SESSION['error'] = "O E-mail já está registrado, faça <a href='login.php'>login</a> o utilizando ou tente outro.";
+        $_SESSION['errorRegistro'] = "O E-mail já está registrado, faça <a href='login.php'>login</a> o utilizando ou tente outro.";
         header("location: registro.php");
         exit; 
     } elseif (mysqli_num_rows($resultadoNome) > 0){
-        $_SESSION['error'] = "Nome de usuario já está em uso. Tente outro.";
+        $_SESSION['errorRegistro'] = "Nome de usuario já está em uso. Tente outro.";
         header("location: registro.php");
         exit;
     }   else {
@@ -44,10 +44,10 @@
             mysqli_stmt_bind_param($consulta, "sss", $nome, $email, $senhaHash);
 
             if(mysqli_stmt_execute($consulta)){
-                $_SESSION['sucesso'] = "Registro realizado com sucesso!!! \n faça <a href='login.php'>login</a> ";
+                $_SESSION['sucessoRegistro'] = "Registro realizado com sucesso!!! \n faça <a href='login.php'>login</a> ";
                 header("location: login.php");
             } else {
-                $_SESSION['error'] = "ERRO ao registrar. Tente novamente.";
+                $_SESSION['errorRegistro'] = "ERRO ao registrar. Tente novamente.";
                 header("location: registro.php");
             }
         }    
