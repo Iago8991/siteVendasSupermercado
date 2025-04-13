@@ -16,7 +16,7 @@
     
     <html>
         <head>
-            <link rel="stylesheet" href="../css/gerenciamentoProdutos.css">
+            <link rel="stylesheet" href="/projetoSupermercado/css/gerenciamentoProdutos.css">
             <title> Gerenciador de Produtos </title>
             <meta charset="UTF-8">
         </head>
@@ -24,51 +24,37 @@
             <!-- Menu lateral fixo -->
             <?php menuLateral::render(); ?>
             <!-- Colocar aqui -->
-             
-            <h1>Lista de produtos</h1>
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Preço</th>
-                        <th>Desconto</th>
-                        <th>Estoque</th>
-                        <th>Imagem</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <body>
+            <h1 class="tituloGerenciador"> Gerenciador de Produtos</h1>
+
+            <div class="containerGerenciador">
+                <div class="produtosContainer">
                     <?php while ($produto = mysqli_fetch_assoc($resultado)) { ?>
-                        
-                        <tr>
-                            <td> <?= htmlspecialchars($produto['produtos_nome']) ?></td>
-                            <td> <?= htmlspecialchars($produto['produtos_descricao']) ?></td>
-                            <td>R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></td>
-                            <td> 
-                                <?php
-                                    if (isset($produto['produtos_desconto']) && $produto['produtos_desconto'] > 0) {
-                                        echo '<span style="color: red;">' . $produto['produtos_desconto'] . '%</span>'; 
-                                    } else {
-                                        echo "Sem desconto";
-                                    }
-                                ?>
- 
-                            </td>
-                            <td> <?= $produto['produtos_estoque'] ?></td>
-                            <td>
-                                <img src="<?= htmlspecialchars($produto['produtos_imagem'])  ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>" width="100px" height="100px">
-                            </td>
-                            <td> 
-                                <a href="editarProduto.php?id=<?= $produto['produtos_id'] ?>">Editar</a> <br/>
-                                <a href="excluirProduto.php?id=<?= $produto['produtos_id'] ?>" onclick="return confirm('Tem certeza que deseja excluir este produto?')">Excluir</a>
-                            </td>
-                        </tr>
-                    
+                        <div clas="produtoCard">
+                            <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                            <div class="produtoInfo">
+                                <h3> <?= htmlspecialchars($produto['produtos_nome']) ?> </h3>
+                                <p> <?= htmlspecialchars($produto['produtos_descricao']) ?> </p>
+                                <p> Preço: R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?> </p>
+                                <p class="categoria"> Categoria: <?= htmlspecialchars($produto['categoria']) ?> </p>
+                                <p class="estoque"> Estoque: <?= htmlspecialchars($produto['produtos_estoque']) ?> </p>
+                                <?php if (isset($produto['produtos_desconto']) && $produto['produtos_desconto'] > 0) { ?>
+                                    <p style="color: red;"> Desconto: <?=$produto['produtos_desconto'] ?>%</p>
+                                <?php } ?>
+                            </div>
+                            <div class="acoesProduto">
+                                <a href="editarProduto.php?id=<?= $produto['produtos_id'] ?>"> Editar </a> <br/>
+                                <a href="excluirProduto.php?id=<?= $produto['produtos_id'] ?>" onclick="return confirm('Tem certeza que deseja excluir este produto?')"> Excluir </a> 
+                            </div>
+                        </div>
                     <?php } ?>
-                </body>
-            </table>
+                </div>
+            </div>
+
+            <!-- Rodapé -->
+            <div class="rodape">
+                <p>&copy; 2025 Mercadinho IRR. Todos os direitos reservados.</p>
+            </div>
         </body>
     </html>
     
