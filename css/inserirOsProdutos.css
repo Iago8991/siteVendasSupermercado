@@ -1,0 +1,101 @@
+/* RESET / ESTILO BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    /* Plano de fundo da página – usa a imagem de fundo do supermercado */
+    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* CONTEINER CENTRAL
+   (Formulário de Inserir Produtos) */
+.conteinerCentral {
+    width: 400px; /* ajuste conforme desejado */
+    margin: 80px auto;
+    padding: 30px 20px 60px; /* Espaço adicional para o botão voltar */
+    background: url('../imagens/fundoMercado2.jpg') no-repeat center center;
+    background-size: cover;
+    background-color: rgba(255,255,255,0.95); /* Fallback caso a imagem não carregue */
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+}
+
+/* Título da Página (fora do contêiner central) */
+.siteTitulo {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 40px;
+    color: #333;
+}
+
+/* FORMULÁRIO DE INSERIR PRODUTOS
+   (usa classe .formularioInserir) */
+.formularioInserir {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+    margin-top: 20px;
+}
+.formularioInserir label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.formularioInserir input[type="text"],
+.formularioInserir input[type="number"],
+.formularioInserir input[type="file"],
+.formularioInserir select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+}
+.formularioInserir input[type="submit"] {
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.formularioInserir input[type="submit"]:hover {
+    background: red;
+    transform: scale(1.03);
+}
+
+/* BOTÃO VOLTAR */
+.btnVoltar {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 8px 12px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.btnVoltar:hover {
+    background: red;
+    transform: scale(1.05);
+}
+
+/* MENSAGENS (ERRO / SUCESSO) */
+.mensagem {
+    color: blue;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.mensagemSucesso {
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+}

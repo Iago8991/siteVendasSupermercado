@@ -80,12 +80,6 @@ body {
     color: #555;
 }
 
-.produtoInfo .estoque {
-    font-size: 0.9em;
-    color: #555;
-    margin-top: 5px;
-}
-
 /* BOTÕES DE AÇÕES (EDITAR / EXCLUIR) */
 .acoesProduto {
     display: flex;
@@ -126,4 +120,10 @@ body {
     color: #fff;
     font-size: 0.9em;
     margin-top: 20px;
+}
+
+.produto-info .estoque {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
 }
