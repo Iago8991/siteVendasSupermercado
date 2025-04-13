@@ -1,73 +1,77 @@
-<?PHP 
-    session_start();
+<?php 
+session_start();
+if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
     require('../menuLateral.php');
-    if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
 ?>
-<html> 
-    <head> 
-        <link rel="stylesheet" href="../css/inserirProdutos.css">
-        <title> Inserir Produtos</title>
-        <meta sharte = "UTF-8">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Inserir Produtos</title>
+        <link rel="stylesheet" href="/projetoSupermercado/css/inserirOsProdutos.css">
     </head>
-    <body> 
-        <!-- Menu lateral fixo -->
+    <body>
+        
         <?php menuLateral::render(); ?>
-        <!-- Colocar aqui -->
-         
-        <?php
-            if (isset($_SESSION['erro'])){
-                echo "<p style='color: red;'>" . $_SESSION['erro'] . "</p>";
-                unset($_SESSION['erro']);
-            }
 
-            if (isset($_SESSION['sucesso'])){
-                echo "<p style='color: green;'>" . $_SESSION['sucesso'] . "</p>";
-                unset($_SESSION['sucesso']);
-            }
-        ?>
-        <form action="inserirProdutosCodigo.php" method="POST" enctype="multipart/form-data">
+        <!-- Título do site, fora do contêiner central -->
+        <div class="siteTitulo">Mercadinho IRR</div>
 
-            <label for="nome"> Nome: </label>
-            <input type="text" name="nome" id="nome" required> <br/> <br/>
+        <!-- Conteiner central para o formulário -->
+        <div class="conteinerCentral" id="mainContent">
+            <?php
+                if (isset($_SESSION['erro'])){
+                    echo "<div class='mensagem'>" . $_SESSION['erro'] . "</div>";
+                    unset($_SESSION['erro']);
+                }
+                if (isset($_SESSION['sucesso'])){
+                    echo "<div class='mensagemSucesso'>" . $_SESSION['sucesso'] . "</div>";
+                    unset($_SESSION['sucesso']);
+                }
+            ?>
 
-            <label for="descricao"> Descrição: </label>
-            <input type="text" max="1250" name="descricao" id="descricao" required>
+            <form class="formularioInserir" action="inserirProdutosCodigo.php" method="POST" enctype="multipart/form-data">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" required>
 
-            <label for="preco"> Preço: </label>
-            <input type="number" name="preco" id="preco" step="0.01" required> <br/> <br/>
-            
-            <label for="desconto">Desconto(%): </label>
-            <input type="number" name="desconto" id="desconto" step="0.01" value="0" required> <br/> <br/>
+                <label for="descricao">Descrição:</label>
+                <input type="text" name="descricao" id="descricao" maxlength="1250" required>
 
-            <label for="image"> Imagem: </label>
-            <input type="file" name="imagem" id="imagem" accept="image/*" required> <br/> <br/>
+                <label for="preco">Preço:</label>
+                <input type="number" name="preco" id="preco" step="0.01" required>
 
-            <label for="estoque"> Estoque: </label>
-            <input type="number" name="estoque" id="estoque" required> <br/> <br/>
-            
-            <label for="categoria"> Categoria: </label>
-            <select name="categoria" id="categoria" required>
-                <option value="selecione"> Selecione </option>
-                <option value="cestaBasica"> Cesta Básica </option>
-                <option value="carne"> Carne </option>
-                <option value="bebidas"> Bebidas </option>
-                <option value="padaria"> Padaria </option>
-                <option value="hortifruti"> Hortifrúti (legumes, frutas e verduras) </option>
-                <option value="alimentosCongelados"> Alimentos Congelados</option>
-                <option value="produtosDeLimpeza"> Produtos de Limpeza </option>
-                <option value="higienePessoal"> Higiene Pessoal </option>
-                <option value="outrosProdutos"> Outros Produtos </option>
-            </select> <br/> <br/>
+                <label for="desconto">Desconto (%):</label>
+                <input type="number" name="desconto" id="desconto" step="0.01" value="0" required>
 
-            <input type="submit" value="Enviar">
-        </form>
+                <label for="imagem">Imagem:</label>
+                <input type="file" name="imagem" id="imagem" accept="image/*" required>
+
+                <label for="estoque">Estoque:</label>
+                <input type="number" name="estoque" id="estoque" required>
+
+                <label for="categoria">Categoria:</label>
+                <select name="categoria" id="categoria" required>
+                    <option value="selecione">Selecione</option>
+                    <option value="cestaBasica">Cesta Básica</option>
+                    <option value="carne">Carne</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="padaria">Padaria</option>
+                    <option value="hortifruti">Hortifrúti (legumes, frutas e verduras)</option>
+                    <option value="alimentosCongelados">Alimentos Congelados</option>
+                    <option value="produtosDeLimpeza">Produtos de Limpeza</option>
+                    <option value="higienePessoal">Higiene Pessoal</option>
+                    <option value="outrosProdutos">Outros Produtos</option>
+                </select>
+
+                <input type="submit" value="Enviar">
+            </form>
+            <!-- Botão de voltar -->
+            <button class="btnVoltar" onclick="location.href='/projetoSupermercado/paginaPrincipal.php'">Voltar</button>
+        </div>
     </body>
 </html>
-
-<?PHP
-    } else {
-        echo "Você não tem permissão de administrador";
-    }
+<?php
+} else {
+    echo "Você não tem permissão de administrador";
+}
 ?>
- 

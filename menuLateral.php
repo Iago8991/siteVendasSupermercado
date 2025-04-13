@@ -23,7 +23,7 @@
                     justify-content: space-between;
                 }
                 .menu-lateral:hover {
-                    width: 220px; /* Largura expandida */
+                    width: 235px; /* Largura expandida */
                 }
                 .menu-lateral .menu-item {
                     display: flex;
