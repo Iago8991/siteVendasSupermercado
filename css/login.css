@@ -21,7 +21,7 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     position: relative;
     text-align: center;
-    background: url('../imagens/fundoMercado2.jpg') no-repeat center center fixed;
+    background-color: white;
 }
 
 /* Título do site (fora do contêiner central) */

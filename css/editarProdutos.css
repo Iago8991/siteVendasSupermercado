@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f4f8;
+    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+    margin: 0;
+    padding: 0;
+}
+
+#containerCentral {
+    margin-left: 250px; 
+    padding: 40px;
+    background-color: #fff;
+    max-width: 800px;
+    margin-top: 60px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    color: #444;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+.imagemAtualContainer {
+    text-align: center;  
+    margin: 20px 0;      
+}
+
+.imagemAtual {
+    max-width: 150px;
+    border-radius: 8px;
+    margin: 10px auto;   
+    border: 1px solid #ccc;
+    display: block;      
+}
+
+
+.botaoSalvar {
+    margin-top: 25px;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botaoSalvar:hover {
+    background-color: #218838;
+}

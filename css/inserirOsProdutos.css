@@ -6,20 +6,17 @@
 }
 body {
     font-family: Arial, sans-serif;
-    /* Plano de fundo da página – usa a imagem de fundo do supermercado */
     background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* CONTEINER CENTRAL
-   (Formulário de Inserir Produtos) */
+/* CONTEINER CENTRAL */
 .conteinerCentral {
-    width: 400px; /* ajuste conforme desejado */
+    width: 400px; 
     margin: 80px auto;
-    padding: 30px 20px 60px; /* Espaço adicional para o botão voltar */
-    background: url('../imagens/fundoMercado2.jpg') no-repeat center center;
+    padding: 30px 20px 60px; 
     background-size: cover;
-    background-color: rgba(255,255,255,0.95); /* Fallback caso a imagem não carregue */
+    background-color: rgba(255,255,255,0.95) fallback; 
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
     position: relative;
@@ -34,8 +31,7 @@ body {
     color: #333;
 }
 
-/* FORMULÁRIO DE INSERIR PRODUTOS
-   (usa classe .formularioInserir) */
+/* FORMULÁRIO DE INSERIR PRODUTOS */
 .formularioInserir {
     display: flex;
     flex-direction: column;
