@@ -10,8 +10,7 @@ body {
     background-size: cover;
 }
 
-/* TÍTULO - GERENCIADOR DE PRODUTOS
-   (fora do contêiner central, centralizado) */
+/* TÍTULO - GERENCIADOR DE PRODUTOS */
 .tituloGerenciador {
     text-align: center;
     font-size: 2em;
@@ -19,14 +18,11 @@ body {
     margin: 20px 0;
 }
 
-/* CONTAINER CENTRAL PARA PRODUTOS
-   - Plano de fundo: fundoMercado2.jpg
-   - Fundo cinza suave caso a imagem não carregue */
+/* CONTAINER CENTRAL PARA PRODUTOS */
 .containerGerenciador {
     width: 80%;
     max-width: 1200px;
-    margin: 20px auto 50px auto; /* Espaço para o rodapé; ajuste conforme necessário */
-    background: url('../imagens/fundoMercado2.jpg') no-repeat center center;
+    margin: 20px auto 50px auto;
     background-size: cover;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 30px;
@@ -34,8 +30,7 @@ body {
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
-/* GRADE DE PRODUTOS
-   - Card para cada produto, com todas as informações, inclusive categoria */
+/* GRADE DE PRODUTOS */
 .produtosContainer {
     display: flex;
     flex-wrap: wrap;
@@ -43,7 +38,7 @@ body {
     justify-content: center;
 }
 .produtoCard {
-    background: #f1f1f1; /* Fundo cinza suave */
+    background: #f1f1f1; 
     border: 1px solid #ccc;
     border-radius: 15px;
     padding: 15px;
@@ -110,11 +105,10 @@ body {
     .produtoCard { width: 90%; }
 }
 
-/* RODAPÉ (não fixo - fica abaixo do contêiner)
-   - Plano de fundo cinza, um pouco mais suave que o anterior */
+/* RODAPÉ (não fixo - fica abaixo do contêiner) */
 .rodape {
     width: 100%;
-    background: #777; /* Cinza moderado */
+    background: #777; 
     padding: 10px 20px;
     text-align: center;
     color: #fff;

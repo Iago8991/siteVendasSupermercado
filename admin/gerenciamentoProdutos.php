@@ -44,7 +44,7 @@
                                     <?php } ?>
                                 </div>
                                 <div class="acoesProduto">
-                                    <a href="editarProduto.php?id=<?= $produto['produtos_id'] ?>"> Editar </a> <br/>
+                                    <a href="editarProdutos.php?id=<?= $produto['produtos_id'] ?>"> Editar </a> <br/>
                                     <a href="excluirProduto.php?id=<?= $produto['produtos_id'] ?>" onclick="return confirm('Tem certeza que deseja excluir este produto?')"> Excluir </a> 
                                 </div>
                             </div>
