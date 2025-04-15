@@ -8,7 +8,7 @@
         $resultadoEmDestaque = mysqli_query($con, $sqlEmDestaque);
         //procura os produtos sem desconto
         $sqlProdutos = "SELECT * FROM produtos WHERE produtos_desconto = 0 ORDER BY RAND() LIMIT 8";
-        $resultado = mysqli_query($con, $sqlProdutos);
+        $resultadoProdutos = mysqli_query($con, $sqlProdutos);
 
 ?>
     <html>
@@ -62,7 +62,7 @@
                                 <img class="produtoImagem" src="/projetoSupermercado/uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
                                 <p class="produtoPreco"> R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?> </p>
                                 <div class="produtoInfoExtra">
-                                    <p> <?= htmlspecialchars($produto['produtos_descicao']) ?> </p>
+                                    <p> <?= htmlspecialchars($produto['produtos_descricao']) ?> </p>
                                     <button onclick="adicionarAoCarrinho(<?= $produto['produtos_id'] ?>)"> Comprar </button>
                                 </div>
                             </div>
@@ -82,20 +82,21 @@
                     }
                 // Script para o slider de produtos
                 document.addEventListener('DOMContentLoaded', function() {
-                    const setaAnterior = document.querySelector('.setaAnterior');
-                    const setaProxima = document.querySelector('.setaProxima');
-                    const sliderProdutos = document.querySelector('.sliderProdutos');
+                    // Seleciona todos os sliders da Página
+                    const navegacoes = document.querySelectorAll('.navegacaoSlider');
+                    navegacoes.forEach((navegacao, index) => {
+                        const setaAnterior = navegacao.querySelector('.setaAnterior');
+                        const setaProxima = navegacao.querySelector('.setaProxima');
+                        const slider = navegacao.previousElementSibling;
 
-                    if (setaAnterior && setaProxima && sliderProdutos) {
-                        setaAnterior.addEventListener('click', function() {
-                            sliderProdutos.scrollBy({ left: -300, behavior: 'smooth' });
+                        setaAnterior.addEventListener('click', function () {
+                            slider.scrollBy({ left: -200, behavior: 'smooth' });
                         });
-                        setaProxima.addEventListener('click', function() {
-                            sliderProdutos.scrollBy({ left: 200, behavior: 'smooth' });
+                        setaProxima.addEventListener('click', function () {
+                            slider.scrollBy({ left: 200, behavior: 'smooth' });
                         });
-                    }
-                });
-                
+                    });
+                });  
             </script>
         </body>
     </html>
