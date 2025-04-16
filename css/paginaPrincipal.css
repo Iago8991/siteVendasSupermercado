@@ -18,15 +18,15 @@ body {
     margin-top: 20px;
 }
 
-/* CONTAINER CENTRAL PARA CONTEÚDO */
-.containerCentral {
-    margin-left: 50px; 
-    transition: margin-left 0.3s;
+/* SEÇÕES: "Em Destaque" e "Produtos" */
+.secaoEmDestaque, .secaoProdutos {
+    margin: 20px 50px;
     padding: 20px;
     background-color: white;
+    border-radius: 10px;
 }
 
-/* SEÇÕES: "Em Destaque" e "Produtos" */
+/* TÍTULO DAS SEÇÕES */
 .tituloSecao {
     text-align: center;
     font-size: 1.8em;
@@ -36,10 +36,11 @@ body {
 
 /* SLIDER DE PRODUTOS */
 .sliderProdutos {
-    position: relative; /* Adicione isso */
+    position: relative;
     overflow: hidden;
     white-space: nowrap;
     padding: 10px 0;
+    background-color: white;
 }
 .produtoCard {
     display: inline-block;
@@ -69,10 +70,8 @@ body {
 }
 .produtoPreco {
     text-align: center;
-    font-size: 1em;
-    color: #333;
-    margin-bottom: 5px;
-}
+}    
+
 .produtoDesconto {
     text-align: center;
     font-size: 0.9em;
