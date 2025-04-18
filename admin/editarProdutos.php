@@ -48,20 +48,24 @@
                         mysqli_stmt_bind_param($stmt, "ssdisiii", $nome, $descricao, $preco, $estoque, $caminhoImagem, $desconto, $categoria, $id);
                     } else {
                         echo "Erro ao fazer upload da imagem.";
+                        header("location: /projetoSupermercado/admin/gerenciamentoProdutos.php");
                         exit;
                     }
-
+                    header("location: /projetoSupermercado/admin/gerenciamentoProdutos.php");
+                    exit;
                     } else {
                         //Atualiza os dados sem alterar a imagem
                         $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ?, produtos_desconto = ?, categoria = ? WHERE produtos_id = ?";
                         $stmt = mysqli_prepare($con, $sql);
                         mysqli_stmt_bind_param($stmt, "ssdisiii", $nome, $descricao, $preco, $estoque, $caminhoImagem, $desconto, $categoria, $id);
+                        header("location: /projetoSupermercado/admin/gerenciamentoProdutos.php");
+                        exit;
                     }
 
                     //Executa a atualização
                     if (mysqli_stmt_execute($stmt)) {
                         $_SESSION['sucesso'] = "Produto atualizado com sucesso.";
-                        header("location: gerenciamentoProdutos.php");
+                        header("location: /projetoSupermercado/admin/gerenciamentoProdutos.php");
                         exit;
                     } else {
                         echo "Erro ao atualiar o produto: " . mysqli_error($con);

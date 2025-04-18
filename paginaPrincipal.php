@@ -80,18 +80,24 @@
                 // Script para o slider de produtos
                 document.addEventListener('DOMContentLoaded', function() {
                     // Seleciona todos os sliders da Página
-                    const navegacoes = document.querySelectorAll('.navegacaoSlider');
-                    navegacoes.forEach((navegacao, index) => {
+                    document.querySelectorAll('.sliderProdutos').forEach(slider => {
+                        const navegacao = slider.nextElementSibling;
                         const setaAnterior = navegacao.querySelector('.setaAnterior');
                         const setaProxima = navegacao.querySelector('.setaProxima');
-                        const slider = navegacao.previousElementSibling;
 
-                        setaAnterior.addEventListener('click', function () {
-                            slider.scrollBy({ left: -200, behavior: 'smooth' });
-                        });
-                        setaProxima.addEventListener('click', function () {
-                            slider.scrollBy({ left: 200, behavior: 'smooth' });
-                        });
+                        if (slider.scrollWidth > slider.clientWidth) {
+                            slider.classList.add('scrollable');
+                            navegacao.classList.add('scrollable');
+                        }
+
+                        if (slider.classList.contains('scrollable')) {
+                            setaAnterior.addEventListener('click', () => {
+                                slider.scrollBy({ left: -200, behavior: 'smooth' });
+                            });
+                            setaProxima.addEventListener('click', () => {
+                                slider.ScrollBy({ left: 200, behavior: 'smooth' });
+                            });
+                        }
                     });
                 });  
             </script>
