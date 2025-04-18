@@ -98,7 +98,36 @@ body {
     display: block;
 }
 
-/* NAVEGAÇÃO DO SLIDER (setas de avançar e voltar) */
+/* Fade nas laterais: só em sliders com overflow */
+.sliderProdutos.scrollable::before,
+.sliderProdutos.scrollable::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 2;
+}
+.sliderProdutos.scrollable::before {
+    left: 0;
+    background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+}
+.sliderProdutos.scrollable::after {
+    right: 0;
+    background: linear-gradient(to left, #fff, rgba(255,255,255,0));
+}
+
+/* Setas: só em sliders scrollable */
+.navegacaoSlider.scrollable .setaAnterior,
+.navegacaoSlider.scrollable .setaProxima {
+    opacity: 0;  /* inicialmente ocultas */
+}
+.sliderProdutos.scrollable:hover + .navegacaoSlider.scrollable .setaAnterior,
+.sliderProdutos.scrollable:hover + .navegacaoSlider.scrollable .setaProxima {
+    opacity: 1;  /* aparecem ao hover */
+}
+
+/* Mantém o estilo e posicionamento das setas */
 .navegacaoSlider {
     position: absolute;
     top: 50%;
@@ -116,40 +145,5 @@ body {
     border-radius: 50%;
     cursor: pointer;
     pointer-events: auto;
-    opacity: 0;  
     transition: opacity 0.3s;
-}
-.sliderProdutos:hover .setaAnterior,
-.sliderProdutos:hover .setaProxima {
-    opacity: 1;
-}
-
-/* EFEITO DE FADE NAS LATERAIS DO SLIDER */
-.sliderProdutos::before,
-.sliderProdutos::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50px;
-    height: 100%;
-    z-index: 2;
-}
-.sliderProdutos::before {
-    left: 0;
-    background: linear-gradient(to right, #fff, rgba(255,255,255,0));
-}
-.sliderProdutos::after {
-    right: 0;
-    background: linear-gradient(to left, #fff, rgba(255,255,255,0));
-}
-
-/* RESPONSIVIDADE: 4 itens por linha, se ultrapassar, passa para outra linha */
-@media (max-width: 1200px) {
-    .produtoCard { width: 230px; }
-}
-@media (max-width: 900px) {
-    .produtoCard { width: 200px; }
-}
-@media (max-width: 600px) {
-    .produtoCard { width: 180px; }
 }
