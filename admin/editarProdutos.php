@@ -26,51 +26,65 @@
 
             //Formulário enviado
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $nome = mysqli_real_escape_string($con, $_POST['nome']);
+                // recebe e escapa os campos de texto
+                $nome      = mysqli_real_escape_string($con, $_POST['nome']);
                 $descricao = mysqli_real_escape_string($con, $_POST['descricao']);
-                $preco = floatval($_POST['preco']);
-                $estoque = intval($_POST['estoque']);
-                $desconto = floatval($_POST['desconto']);
+                $preco     = floatval($_POST['preco']);
+                $estoque   = intval($_POST['estoque']);
+                $desconto  = floatval($_POST['desconto']);
                 $categoria = mysqli_real_escape_string($con, $_POST['categoria']);
 
-                //Atualiza a imagem se um novo arquivo for enviado
-                if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
-                    $imagemtmp = $_FILES['imagem']['tmp_name'];
-                    $imagemNome = basename($_FILES['imagem']['name']);
-                    $caminhoImagem = "/projetoSupermercado/uploadProdutos/" . $imagemNome;
-                    
-                    //Move a nova imagem para a pasta de uploads
-                    if (move_uploaded_file($imagemtmp, $caminhoImagem)){
+                // 1) pega sempre o caminho antigo
+                $caminhoImagem = $_POST['imagemAntiga'];
 
-                        //Atualiza os dados do produto, incluindo a imagem
-                        $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ?, produtos_desconto = ?, categoria = ? WHERE produtos_id = ?";
-                        $stmt = mysqli_prepare($con, $sql);
-                        mysqli_stmt_bind_param($stmt, "ssdisiii", $nome, $descricao, $preco, $estoque, $caminhoImagem, $desconto, $categoria, $id);
+                // 2) se veio arquivo novo, sobe e redefine $caminhoImagem
+                if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+                    $tmp  = $_FILES['imagem']['tmp_name'];
+                    $nomeImg = basename($_FILES['imagem']['name']);
+                    $novoCaminho = __DIR__ . '/../uploadProdutos/' . $nomeImg;
+                    if (move_uploaded_file($tmp, $novoCaminho)) {
+                        // grava caminho relativo que você salva no banco
+                        $caminhoImagem = '../uploadProdutos/' . $nomeImg;
                     } else {
-                        echo "Erro ao fazer upload da imagem.";
-                        header("location: /projetoSupermercado/admin/gerenciamentoProdutos.php");
+                        $_SESSION['erro'] = 'Falha no upload da imagem.';
+                        header('Location: editarProdutos.php?id='.$id);
                         exit;
                     }
-                    header("location: /projetoSupermercado/admin/gerenciamentoProdutos.php");
+                }
+
+                // 3) monta um único UPDATE usando sempre $caminhoImagem
+                $sql = "UPDATE produtos
+                        SET produtos_nome      = ?,
+                            produtos_descricao = ?,
+                            produtos_preco     = ?,
+                            produtos_estoque   = ?,
+                            produtos_imagem    = ?,
+                            produtos_desconto  = ?,
+                            categoria          = ?
+                        WHERE produtos_id      = ?";
+                $stmt = mysqli_prepare($con, $sql);
+                mysqli_stmt_bind_param(
+                    $stmt,
+                    "ssdisisi",  // note o tipo: s,s,d,i,s,i,s,i
+                    $nome,
+                    $descricao,
+                    $preco,
+                    $estoque,
+                    $caminhoImagem,
+                    $desconto,
+                    $categoria,
+                    $id
+                );
+
+                if (mysqli_stmt_execute($stmt)) {
+                    $_SESSION['sucesso'] = 'Produto atualizado com sucesso.';
+                    header('Location: gerenciamentoProdutos.php');
                     exit;
-                    } else {
-                        //Atualiza os dados sem alterar a imagem
-                        $sql = "UPDATE produtos SET produtos_nome = ?, produtos_descricao = ?, produtos_preco = ?, produtos_estoque = ?, produtos_imagem = ?, produtos_desconto = ?, categoria = ? WHERE produtos_id = ?";
-                        $stmt = mysqli_prepare($con, $sql);
-                        mysqli_stmt_bind_param($stmt, "ssdisiii", $nome, $descricao, $preco, $estoque, $caminhoImagem, $desconto, $categoria, $id);
-                        header("location: /projetoSupermercado/admin/gerenciamentoProdutos.php");
-                        exit;
-                    }
+                } else {
+                    echo "Erro ao atualizar: " . mysqli_error($con);
+                    exit;
+                }
 
-                    //Executa a atualização
-                    if (mysqli_stmt_execute($stmt)) {
-                        $_SESSION['sucesso'] = "Produto atualizado com sucesso.";
-                        header("location: /projetoSupermercado/admin/gerenciamentoProdutos.php");
-                        exit;
-                    } else {
-                        echo "Erro ao atualiar o produto: " . mysqli_error($con);
-                        exit;
-                    }
             }
         }
         mysqli_close($con);
@@ -89,7 +103,10 @@
                 <div id="containerCentral" id="mainContent">
                     <h1>Editar Produto</h1>
 
-                    <form action="editarProduto.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
+                    <form action="editarProdutos.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
+
+                        <!-- mantendo o caminho da imagem antiga -->
+                        <input type="hidden" name="imagemAntiga" value="<?= htmlspecialchars($produto['produtos_imagem']) ?> ">
 
                         <label for="nome">Nome:</label>
                         <input type="text" name="nome" id="nome" value="<?= htmlspecialchars($produto['produtos_nome']) ?>" required>
