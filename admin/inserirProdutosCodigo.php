@@ -11,19 +11,34 @@
         $estoque= intval($_POST["estoque"]);
         $desconto= floatval($_POST["desconto"]);
         $categoria = mysqli_real_escape_string($con, $_POST['categoria']);
+        
         //Processa o Upload da imagem
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
             $imagemtmp = $_FILES['imagem']['tmp_name'];
             $imagemNome = basename($_FILES['imagem']['name']);
-            $caminhoImagem = "/projetoSupermercado/uploadProdutos/" . $imagemNome; 
+            $caminhoImagem = "../uploadProdutos/" . $imagemNome; 
 
             //Move a imagem para a pasta de uploads
             if(move_uploaded_file($imagemtmp, $caminhoImagem)){
                 //Insere os dados no banco
-                $sql = "INSERT INTO produtos (produtos_nome, produtos_descricao, produtos_preco, produtos_imagem, produtos_estoque, produtos_desconto, categoria)
+                $sql = "INSERT INTO produtos (
+                    produtos_nome,
+                    produtos_descricao,
+                    produtos_preco, 
+                    produtos_imagem, 
+                    produtos_estoque, 
+                    produtos_desconto, 
+                    categoria)
                 VALUES (?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_prepare($con, $sql);
-                mysqli_stmt_bind_param($stmt, "ssdsiis", $nome, $descricao, $preco, $caminhoImagem, $estoque, $desconto, $categoria);
+                mysqli_stmt_bind_param($stmt, "ssdsiis",
+                                                                    $nome, 
+                                                                   $descricao, 
+                                                                          $preco, 
+                                                                          $caminhoImagem, 
+                                                                          $estoque, 
+                                                                          $desconto, 
+                                                                          $categoria);
                 
                 if (mysqli_stmt_execute($stmt)){
                     $_SESSION['sucesso'] = 'Produto Inserido com sucesso!.';
