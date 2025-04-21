@@ -28,6 +28,9 @@ if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
                     echo "<div class='mensagemSucesso'>" . $_SESSION['sucesso'] . "</div>";
                     unset($_SESSION['sucesso']);
                 }
+
+                // Mantem o valor anterior do categoria
+                $categoriaSelecionada = $_POST['categoria'] ?? '';
             ?>
 
             <form class="formularioInserir" action="inserirProdutosCodigo.php" method="POST" enctype="multipart/form-data">
@@ -51,16 +54,16 @@ if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
 
                 <label for="categoria">Categoria:</label>
                 <select name="categoria" id="categoria" required>
-                    <option value="selecione">Selecione</option>
-                    <option value="cestaBasica">Cesta Básica</option>
-                    <option value="carne">Carne</option>
-                    <option value="bebidas">Bebidas</option>
-                    <option value="padaria">Padaria</option>
-                    <option value="hortifruti">Hortifrúti (legumes, frutas e verduras)</option>
-                    <option value="alimentosCongelados">Alimentos Congelados</option>
-                    <option value="produtosDeLimpeza">Produtos de Limpeza</option>
-                    <option value="higienePessoal">Higiene Pessoal</option>
-                    <option value="outrosProdutos">Outros Produtos</option>
+                    <option value="." <?= $categoriaSelecionada == 'selecione' ? 'selected' : '' ?>> Selecione </option>
+                    <option value="." <?= $categoriaSelecionada == 'cestaBasica' ? 'selected' : '' ?>> Cesta Básica </option>
+                    <option value="." <?= $categoriaSelecionada == 'carne' ? 'selected' : '' ?>> Carne </option>
+                    <option value="." <?= $categoriaSelecionada == 'bebidas' ? 'selected' : '' ?>> Bebidas </option>
+                    <option value="." <?= $categoriaSelecionada == 'padaria' ? 'selected' : '' ?>> padaria </option>
+                    <option value="." <?= $categoriaSelecionada == 'hortifruti' ? 'selected' : '' ?>> Hortifrúti (legumes, frutas e verduras) </option>
+                    <option value="." <?= $categoriaSelecionada == 'alimentosCongelados' ? 'selected' : '' ?>> Alimentos Congelados </option>
+                    <option value="." <?= $categoriaSelecionada == 'produtosDeLimpeza' ? 'selected' : '' ?>> Produtos de Limpeza </option>
+                    <option value="." <?= $categoriaSelecionada == 'higienePessoal' ? 'selected' : '' ?>> Higiene Pessoal </option>
+                    <option value="." <?= $categoriaSelecionada == 'outrosProdutos' ? 'selected' : '' ?>> Outros Produtos </option>
                 </select>
 
                 <input type="submit" value="Enviar">
