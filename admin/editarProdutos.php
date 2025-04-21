@@ -136,7 +136,7 @@
                             <option value="selecione" <?= ($produto['categoria'] === 'selecione') ? 'selected' : '' ?>>Selecione</option>
                             <option value="cestaBasica" <?= ($produto['categoria'] === 'cestaBasica') ? 'selected' : '' ?>>Cesta Básica</option>
                             <option value="carne" <?= ($produto['categoria'] === 'carne') ? 'selected' : '' ?>>Carne</option>
-                            <option value="bebida" <?= ($produto['categoria'] === 'bebida') ? 'selected' : '' ?>>Bebida</option>
+                            <option value="bebidas" <?= ($produto['categoria'] === 'bebidas') ? 'selected' : '' ?>>Bebidas</option>
                             <option value="padaria" <?= ($produto['categoria'] === 'padaria') ? 'selected' : '' ?>>Padaria</option>
                             <option value="hortifruti" <?= ($produto['categoria'] === 'hortifruti') ? 'selected' : '' ?>>Hortifrúti</option>
                             <option value="alimentosCongelados" <?= ($produto['categoria'] === 'alimentosCongelados') ? 'selected' : '' ?>>Alimentos Congelados</option>

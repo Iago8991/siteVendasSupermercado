@@ -54,16 +54,16 @@ if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
 
                 <label for="categoria">Categoria:</label>
                 <select name="categoria" id="categoria" required>
-                    <option value="." <?= $categoriaSelecionada == 'selecione' ? 'selected' : '' ?>> Selecione </option>
-                    <option value="." <?= $categoriaSelecionada == 'cestaBasica' ? 'selected' : '' ?>> Cesta Básica </option>
-                    <option value="." <?= $categoriaSelecionada == 'carne' ? 'selected' : '' ?>> Carne </option>
-                    <option value="." <?= $categoriaSelecionada == 'bebidas' ? 'selected' : '' ?>> Bebidas </option>
-                    <option value="." <?= $categoriaSelecionada == 'padaria' ? 'selected' : '' ?>> padaria </option>
-                    <option value="." <?= $categoriaSelecionada == 'hortifruti' ? 'selected' : '' ?>> Hortifrúti (legumes, frutas e verduras) </option>
-                    <option value="." <?= $categoriaSelecionada == 'alimentosCongelados' ? 'selected' : '' ?>> Alimentos Congelados </option>
-                    <option value="." <?= $categoriaSelecionada == 'produtosDeLimpeza' ? 'selected' : '' ?>> Produtos de Limpeza </option>
-                    <option value="." <?= $categoriaSelecionada == 'higienePessoal' ? 'selected' : '' ?>> Higiene Pessoal </option>
-                    <option value="." <?= $categoriaSelecionada == 'outrosProdutos' ? 'selected' : '' ?>> Outros Produtos </option>
+                    <option value="selecione" <?= $categoriaSelecionada === 'selecione' ? 'selected' : '' ?>>Selecione</option>
+                    <option value="cestaBasica" <?= $categoriaSelecionada === 'cestaBasica' ? 'selected' : '' ?>>Cesta Básica</option>
+                    <option value="carne" <?= $categoriaSelecionada === 'carne' ? 'selected' : '' ?>>Carne</option>
+                    <option value="bebidas" <?= $categoriaSelecionada === 'bebidas' ? 'selected' : '' ?>>Bebidas</option>
+                    <option value="padaria" <?= $categoriaSelecionada === 'padaria' ? 'selected' : '' ?>>Padaria</option>
+                    <option value="hortifruti" <?= $categoriaSelecionada === 'hortifruti' ? 'selected' : '' ?>>Hortifrúti (legumes, frutas e verduras)</option>
+                    <option value="alimentosCongelados" <?= $categoriaSelecionada === 'alimentosCongelados' ? 'selected' : '' ?>>Alimentos Congelados</option>
+                    <option value="produtosDeLimpeza" <?= $categoriaSelecionada === 'produtosDeLimpeza' ? 'selected' : '' ?>>Produtos de Limpeza</option>
+                    <option value="higienePessoal" <?= $categoriaSelecionada === 'higienePessoal' ? 'selected' : '' ?>>Higiene Pessoal</option>
+                    <option value="outrosProdutos" <?= $categoriaSelecionada === 'outrosProdutos' ? 'selected' : '' ?>>Outros Produtos</option>
                 </select>
 
                 <input type="submit" value="Enviar">

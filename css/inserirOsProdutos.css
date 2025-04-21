@@ -12,6 +12,7 @@ body {
 
 /* CONTEINER CENTRAL */
 .conteinerCentral {
+    /*  Tentar:  display: flex; */
     width: 400px; 
     margin: 80px auto;
     padding: 30px 20px 60px; 
