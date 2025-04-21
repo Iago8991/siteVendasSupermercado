@@ -133,16 +133,16 @@
 
                         <label for="categoria">Categoria:</label>
                         <select name="categoria" id="categoria" required>
-                            <option value="selecione" <?= ($produto['categoria'] == 'selecione') ? 'selected' : '' ?>>Selecione</option>
-                            <option value="cestaBasica" <?= ($produto['categoria'] == 'cestaBasica') ? 'selected' : '' ?>>Cesta Básica</option>
-                            <option value="carne" <?= ($produto['categoria'] == 'carne') ? 'selected' : '' ?>>Carne</option>
-                            <option value="bebida" <?= ($produto['categoria'] == 'bebida') ? 'selected' : '' ?>>Bebida</option>
-                            <option value="padaria" <?= ($produto['categoria'] == 'padaria') ? 'selected' : '' ?>>Padaria</option>
-                            <option value="hortifruti" <?= ($produto['categoria'] == 'hortifruti') ? 'selected' : '' ?>>Hortifruti</option>
-                            <option value="alimentosCongelados" <?= ($produto['categoria'] == 'alimentosCongelados') ? 'selected' : '' ?>>Alimentos Congelados</option>
-                            <option value="produtosDeLimpeza" <?= ($produto['categoria'] == 'produtosDeLimpeza') ? 'selected' : '' ?>>Produtos de Limpeza</option>
-                            <option value="higienePessoal" <?= ($produto['categoria'] == 'higienePessoal') ? 'selected' : '' ?>>Higiene Pessoal</option>
-                            <option value="outros" <?= ($produto['categoria'] == 'outros') ? 'selected' : '' ?>>Outros</option>
+                            <option value="selecione" <?= ($produto['categoria'] === 'selecione') ? 'selected' : '' ?>>Selecione</option>
+                            <option value="cestaBasica" <?= ($produto['categoria'] === 'cestaBasica') ? 'selected' : '' ?>>Cesta Básica</option>
+                            <option value="carne" <?= ($produto['categoria'] === 'carne') ? 'selected' : '' ?>>Carne</option>
+                            <option value="bebida" <?= ($produto['categoria'] === 'bebida') ? 'selected' : '' ?>>Bebida</option>
+                            <option value="padaria" <?= ($produto['categoria'] === 'padaria') ? 'selected' : '' ?>>Padaria</option>
+                            <option value="hortifruti" <?= ($produto['categoria'] === 'hortifruti') ? 'selected' : '' ?>>Hortifrúti</option>
+                            <option value="alimentosCongelados" <?= ($produto['categoria'] === 'alimentosCongelados') ? 'selected' : '' ?>>Alimentos Congelados</option>
+                            <option value="produtosDeLimpeza" <?= ($produto['categoria'] === 'produtosDeLimpeza') ? 'selected' : '' ?>>Produtos de Limpeza</option>
+                            <option value="higienePessoal" <?= ($produto['categoria'] === 'higienePessoal') ? 'selected' : '' ?>>Higiene Pessoal</option>
+                            <option value="outros" <?= ($produto['categoria'] === 'outros') ? 'selected' : '' ?>>Outros</option>
                         </select>
 
                         <input type="submit" value="Salvar Alterações" class="botaoSalvar">
