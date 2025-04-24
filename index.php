@@ -34,6 +34,9 @@ if (!$resultado) {
                 <!-- Mensagem que aparece ao passar o mouse -->
                 <div class="hover-message">Crie uma nova conta</div>
             </div>
+            <div class="teste"> Email e senha para teste do sistema: 
+                <p> Email:</p>
+            </div>
         </div>
 
         <h2 class="titulo-destaques">PRODUTOS EM DESTAQUE</h2>

@@ -171,19 +171,17 @@ h1 {
                     <div class="search-input">
                         <select name="categoria" id="categoria">
                             <option value="">Todas as Categorias</option>
-                            <option value="alimentos" <?= ($categoria == "alimentos") ? 'selected' : '' ?>>Alimentos</option>
+                            <option value="cestaBasica" <?= ($categoria == "cestaBasica") ? 'selected' : '' ?>>Cesta Basica</option>
                             <option value="carne" <?= ($categoria == "carne") ? 'selected' : '' ?>>Carne</option>
                             <option value="bebidas" <?= ($categoria == "bebidas") ? 'selected' : '' ?>>Bebidas</option>
                             <option value="padaria" <?= ($categoria == "padaria") ? 'selected' : '' ?>>Padaria</option>
-                            <option value="vegetal" <?= ($categoria == "vegetal") ? 'selected' : '' ?>>Vegetal</option>
-                            <option value="fruta" <?= ($categoria == "fruta") ? 'selected' : '' ?>>Fruta</option>
                             <option value="hortifruti" <?= ($categoria == "hortifruti") ? 'selected' : '' ?>>Hortifrúti (Legumes, Frutas, Relacionados)</option>
                             <option value="alimentosCongelados" <?= ($categoria == "alimentosCongelados") ? 'selected' : '' ?>>Alimentos Congelados</option>
-                            <option value="frios" <?= ($categoria == "frios") ? 'selected' : '' ?>>Frios</option>
                             <option value="produtosDeLimpeza" <?= ($categoria == "produtosDeLimpeza") ? 'selected' : '' ?>>Produtos De Limpeza</option>
                             <option value="higienePessoal" <?= ($categoria == "higienePessoal") ? 'selected' : '' ?>>Higiene Pessoal</option>
-                            <option value="outros" <?= ($categoria == "outros") ? 'selected' : '' ?>>Outros</option>
+                            <option value="outrosProdutos" <?= ($categoria == "outrosProdutos") ? 'selected' : '' ?>>Outros</option>
                         </select>
+
                         <span class="clear-cat" onclick="clearCategory()">&#10006;</span>
                         <span class="search-icon">&#128269;</span>
                     </div>
