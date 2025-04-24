@@ -9,6 +9,7 @@
 
 <?php
     } else {
-        echo "Você não tem permissão de administrador";
+        echo "Realize login para acessar a página!";
+        echo "<button class='btn-voltar' onclick=\"location.href='index.php'\">Voltar</button>";
     }
 ?>
