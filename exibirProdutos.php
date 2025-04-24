@@ -1,54 +1,55 @@
 <?php
-session_start();
-require("bd_config.php");
-require("menuLateral.php");
-//error_reporting(0);
+    session_start();
+    if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
+    require("bd_config.php");
+    require("menuLateral.php");
+    //error_reporting(0);
 
-$busca = "";
-$categoria = "";
-$whereClause = "";
-$conditions = [];
-
-// Se houver um termo de busca, utiliza para filtrar produtos
-if (isset($_GET['busca']) && !empty(trim($_GET['busca']))) {
-    // Remove espaços no início e no fim
-    $busca = trim(mysqli_real_escape_string($con, $_GET['busca']));
-    
-    // Divide a pesquisa em palavras individuais e remove palavras vazias
-    $palavras = array_filter(explode(" ", $busca), function($p) {
-        return trim($p) !== "";
-    });
-    
-    $searchConditions = [];
-    foreach ($palavras as $palavra) {
-        $palavra = trim($palavra);
-        $searchConditions[] = "(produtos_nome LIKE '%$palavra%' OR produtos_descricao LIKE '%$palavra%')";
-    }
-    if (count($searchConditions) > 0) {
-        // Junta as condições de busca com OR
-        $conditions[] = "(" . implode(" OR ", $searchConditions) . ")";
-    }
-}
-
-// Se houver filtro por categoria, adiciona essa condição
-if (isset($_GET['categoria']) && !empty(trim($_GET['categoria']))) {
-    $categoria = trim(mysqli_real_escape_string($con, $_GET['categoria']));
-    $conditions[] = "categoria = '$categoria'";
-}
-
-// Se houver alguma condição, junta-as com AND; caso contrário, retorna todos os produtos
-if (count($conditions) > 0) {
-    $whereClause = " WHERE " . implode(" AND ", $conditions);
-} else {
+    $busca = "";
+    $categoria = "";
     $whereClause = "";
-}
+    $conditions = [];
 
-$sql = "SELECT * FROM produtos $whereClause ORDER BY produtos_nome";
-$resultado = mysqli_query($con, $sql);
+    // Se houver um termo de busca, utiliza para filtrar produtos
+    if (isset($_GET['busca']) && !empty(trim($_GET['busca']))) {
+        // Remove espaços no início e no fim
+        $busca = trim(mysqli_real_escape_string($con, $_GET['busca']));
+        
+        // Divide a pesquisa em palavras individuais e remove palavras vazias
+        $palavras = array_filter(explode(" ", $busca), function($p) {
+            return trim($p) !== "";
+        });
+        
+        $searchConditions = [];
+        foreach ($palavras as $palavra) {
+            $palavra = trim($palavra);
+            $searchConditions[] = "(produtos_nome LIKE '%$palavra%' OR produtos_descricao LIKE '%$palavra%')";
+        }
+        if (count($searchConditions) > 0) {
+            // Junta as condições de busca com OR
+            $conditions[] = "(" . implode(" OR ", $searchConditions) . ")";
+        }
+    }
 
-if (!$resultado) {
-    die("Erro na consulta: " . mysqli_error($con));
-}
+    // Se houver filtro por categoria, adiciona essa condição
+    if (isset($_GET['categoria']) && !empty(trim($_GET['categoria']))) {
+        $categoria = trim(mysqli_real_escape_string($con, $_GET['categoria']));
+        $conditions[] = "categoria = '$categoria'";
+    }
+
+    // Se houver alguma condição, junta-as com AND; caso contrário, retorna todos os produtos
+    if (count($conditions) > 0) {
+        $whereClause = " WHERE " . implode(" AND ", $conditions);
+    } else {
+        $whereClause = "";
+    }
+
+    $sql = "SELECT * FROM produtos $whereClause ORDER BY produtos_nome";
+    $resultado = mysqli_query($con, $sql);
+
+    if (!$resultado) {
+        die("Erro na consulta: " . mysqli_error($con));
+    }
 ?>
 
 <html>
@@ -222,3 +223,10 @@ h1 {
         </script>
     </body>
 </html>
+
+<?php
+    } else {
+        echo "Realize login para acessar a página!";
+        echo "<button class='btn-voltar' onclick=\"location.href='index.php'\">Voltar</button>";
+    }
+?>
