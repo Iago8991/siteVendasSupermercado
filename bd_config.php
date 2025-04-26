@@ -1,21 +1,18 @@
-<?php
-    $host = "localhost";
-    $user = "root";
-    $password = "";
-    $dbname = "bd_supermercado";
+<?php 
+  require __DIR__ . '/vendor/autoload.php';
+  use Dotenv\Dotenv;
 
-    // conexão no site online
-    if(isset($_SERVER['HTTP_HOST']) &&
-      ($_SERVER['HTTP_HOST'] === 'iagoRighetti.infinityfreeapp.com' ||
-      $_SERVER['HTTP_HOST'] === 'www.iagoRighetti.infinityfreeapp.com')
-      ){
-        $host = '';
-        $user = '';
-        $password = '';
-        $dbname = '';
-      }
+  $dotenv = Dotenv::createImmutable(__DIR__);
+  $dotenv->load();
 
-    $con = new mysqli($host, $user, $password, $dbname);
+  $isProd = ($_SERVER['HTTP_HOST'] ?? '') === 'iagoRighetti.infinityfreeapp.com';
+
+  $host = $isProd ? $_ENV['DB_HOST_PROD'] : $_ENV['DB_HOST'];
+  $dbname = $isProd ? $_ENV['DB_DATABASE_PROD'] : $_ENV['DB_DATABASE'];
+  $user = $isProd ? $_ENV['DB_USERNAME_PROD'] : $_ENV['DB_USERNAME'];
+  $password = $isProd ? $_ENV['DB_PASSWORD_PROD'] : $_ENV['DB_PASSWORD'];
+
+  $con = new mysqli($host, $user, $password, $dbname);
     if ($con->connect_error) {
         die("Conexão falhou: " . $con->connect_error);
     }
