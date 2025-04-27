@@ -1,4 +1,11 @@
 <?php
+
+    // tentando descobrir qual o erro
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    // final
+
 session_start();
 require("bd_config.php");
 
