@@ -1,59 +1,48 @@
-show databases;
-
-create database bd_supermercado;
-
-use bd_supermercado;
-
-create table usuarios(
-	user_id int auto_increment primary key,
-    user_nome varchar(150) not null,
-    user_email varchar(200) not null unique,
-    user_senha varchar(255) not null
+CREATE TABLE usuarios (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_nome VARCHAR(150) NOT NULL,
+    user_email VARCHAR(200) NOT NULL UNIQUE,
+    user_senha VARCHAR(255) NOT NULL
 );
 
-create table produtos(
-	produtos_id int auto_increment primary key , 
-    produtos_nome varchar(150) not null, 
-    produtos_descricao text not null, 
-    produtos_preco decimal(10, 2), 
-    produtos_imagem varchar(255), 
-    produtos_estoque int not null default 0
+CREATE TABLE produtos (
+    produtos_id INT AUTO_INCREMENT PRIMARY KEY,
+    produtos_nome VARCHAR(150) NOT NULL,
+    produtos_descricao TEXT NOT NULL,
+    produtos_preco DECIMAL(10,2),
+    produtos_imagem VARCHAR(255),
+    produtos_estoque INT NOT NULL DEFAULT 0,
+    produtos_desconto DECIMAL(5,2) NOT NULL DEFAULT 0
 );
 
-create table categorias( 
-categorias_id int auto_increment primary key, 
-categorias_nome varchar(150) not null
+CREATE TABLE categorias (
+    categorias_id INT AUTO_INCREMENT PRIMARY KEY,
+    categorias_nome VARCHAR(150) NOT NULL
 );
 
-create table pedidos( 
-pedidos_id int auto_increment primary key, 
-pedidos_usuario_id int not null, 
-pedidos_datas datetime default current_timestamp, 
-pedidos_total decimal(10, 2) not null,
-foreign key (pedidos_usuario_id) references usuarios(user_id)
+CREATE TABLE pedidos (
+    pedidos_id INT AUTO_INCREMENT PRIMARY KEY,
+    pedidos_usuario_id INT NOT NULL,
+    pedidos_datas DATETIME DEFAULT CURRENT_TIMESTAMP,
+    pedidos_total DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (pedidos_usuario_id) REFERENCES usuarios(user_id)
 );
 
-create table itens_pedido( 
-ip_id int auto_increment primary key, 
-ip_pedido_id int not null, 
-ip_produto_id int not null,
-ip_quantidade int not null, 
-ip_preco decimal(10, 2) not null,
-foreign key (ip_pedido_id) references pedidos(pedidos_id),
-foreign key (ip_produto_id) references produtos(produdos_id)
+CREATE TABLE itens_pedido (
+    ip_id INT AUTO_INCREMENT PRIMARY KEY,
+    ip_pedido_id INT NOT NULL,
+    ip_produto_id INT NOT NULL,
+    ip_quantidade INT NOT NULL,
+    ip_preco DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (ip_pedido_id) REFERENCES pedidos(pedidos_id),
+    FOREIGN KEY (ip_produto_id) REFERENCES produtos(produtos_id)
 );
 
-create table administrador(
-	adminis_id int auto_increment primary key,
-    adminis_email varchar(200) not null unique,
-    adminis_senha varchar(255) not null
+CREATE TABLE administrador (
+    adminis_id INT AUTO_INCREMENT PRIMARY KEY,
+    adminis_email VARCHAR(200) NOT NULL UNIQUE,
+    adminis_senha VARCHAR(255) NOT NULL
 );
 
-insert into administrador (adminis_email, adminis_senha)
-values ('administrador1@gmail.com', SHA2('admin2530', 256));
-
-select * from usuarios  ;
-
-delete from usuarios where 23564326;
-
-ALTER TABLE produtos ADD produtos_desconto DECIMAL(5,2) NOT NULL DEFAULT 0;
+INSERT INTO administrador (adminis_email, adminis_senha)
+VALUES ('administrador1@gmail.com', SHA2('admin2530', 256));
