@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Login - Mercadinho IRR</title>
-    <link rel="stylesheet" href="/projetoSupermercado/css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <!-- Título do site (fora do contêiner central) -->
