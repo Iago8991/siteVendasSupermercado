@@ -1,4 +1,3 @@
-/* RESET / ESTILO BASE */
 * {
     margin: 0;
     padding: 0;
@@ -11,12 +10,11 @@ body {
     background-size: cover;
 }
 
-/* CONTAINER CENTRAL */
-.container-central {
-    width: 350px;  /* Ajuste a largura conforme necessidade */
+.containerCentral {
+    width: 350px;  
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
-    padding: 30px 20px 50px;  /* Espaço para o botão voltar */
+    padding: 30px 20px 50px;  
     margin: 100px auto;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     position: relative;
@@ -24,7 +22,6 @@ body {
     background-color: white;
 }
 
-/* Título do site (fora do contêiner central) */
 .site-title {
     text-align: center;
     font-size: 2em;
@@ -32,7 +29,6 @@ body {
     color: #333;
 }
 
-/*  FORMULÁRIO */
 form {
     display: flex;
     flex-direction: column;
@@ -68,7 +64,6 @@ form input[type="submit"]:hover {
     transform: scale(1.03);
 }
 
-/*  BOTÃO VOLTAR */
 .btn-voltar {
     position: absolute;
     left: 10px;
@@ -87,7 +82,6 @@ form input[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* MENSAGENS */
 .mensagem {
     color: blue;;
     text-align: center;

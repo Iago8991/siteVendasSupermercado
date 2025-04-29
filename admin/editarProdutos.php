@@ -16,7 +16,7 @@
             $resultado= mysqli_stmt_get_result($stmt);
 
             if ($produto = mysqli_fetch_assoc($resultado)) {
-                //Produto encontrado
+   
             } else {
                 echo "Produto não encontrado.";
                 exit;
@@ -24,9 +24,7 @@
             
             mysqli_stmt_close($stmt);
 
-            //Formulário enviado
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // recebe e escapa os campos de texto
                 $nome      = mysqli_real_escape_string($con, $_POST['nome']);
                 $descricao = mysqli_real_escape_string($con, $_POST['descricao']);
                 $preco     = floatval($_POST['preco']);
@@ -34,16 +32,13 @@
                 $desconto  = floatval($_POST['desconto']);
                 $categoria = mysqli_real_escape_string($con, $_POST['categoria']);
 
-                // 1) pega sempre o caminho antigo
                 $caminhoImagem = $_POST['imagemAntiga'];
 
-                // 2) se veio arquivo novo, sobe e redefine $caminhoImagem
                 if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
                     $tmp  = $_FILES['imagem']['tmp_name'];
                     $nomeImg = basename($_FILES['imagem']['name']);
-                    $novoCaminho = __DIR__ . '/../uploadProdutos/' . $nomeImg;
+                    $novoCaminho = __DIR__ . '../uploadProdutos/' . $nomeImg;
                     if (move_uploaded_file($tmp, $novoCaminho)) {
-                        // grava caminho relativo que você salva no banco
                         $caminhoImagem = '../uploadProdutos/' . $nomeImg;
                     } else {
                         $_SESSION['erro'] = 'Falha no upload da imagem.';
@@ -52,7 +47,6 @@
                     }
                 }
 
-                // 3) monta um único UPDATE usando sempre $caminhoImagem
                 $sql = "UPDATE produtos
                         SET produtos_nome      = ?,
                             produtos_descricao = ?,
@@ -65,7 +59,7 @@
                 $stmt = mysqli_prepare($con, $sql);
                 mysqli_stmt_bind_param(
                     $stmt,
-                    "ssdisisi",  // note o tipo: s,s,d,i,s,i,s,i
+                    "ssdisisi",
                     $nome,
                     $descricao,
                     $preco,
@@ -90,10 +84,9 @@
         mysqli_close($con);
         ?>
 
-    <!-- substitua o conteúdo HTML e form por este -->
         <html>
             <head>
-                <link rel="stylesheet" href="/projetoSupermercado/css/editarProdutos.css">
+                <link rel="stylesheet" href="../css/editarProdutos.css">
                 <title>Editar Produto</title>
                 <meta charset="UTF-8">
             </head>
@@ -105,7 +98,6 @@
 
                     <form action="editarProdutos.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
 
-                        <!-- mantendo o caminho da imagem antiga -->
                         <input type="hidden" name="imagemAntiga" value="<?= htmlspecialchars($produto['produtos_imagem']) ?> ">
 
                         <label for="nome">Nome:</label>

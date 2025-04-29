@@ -1,16 +1,15 @@
-/* RESET / ESTILO BASE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* CONTAINER ARREDONDADO */
 .container-arredondado {
     background-color: white;
     background-size: cover;
@@ -24,6 +23,7 @@ body {
     fallback: unset; 
     background-color: rgba(255,255,255,0.9);
 }
+
 .titulo-mercadinho {
     font-size: 2em;
     margin-bottom: 20px;
@@ -41,8 +41,6 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 }
 
-
-/* LOGIN E REGISTRO */
 .sessao-login-registro {
     display: flex;
     justify-content: center;
@@ -50,6 +48,7 @@ body {
     gap: 40px;
     margin-bottom: 30px;
 }
+
 .box-login, .box-registro {
     width: 120px;
     height: 60px;
@@ -64,13 +63,14 @@ body {
     align-items: center;
     position: relative; 
 }
+
 .box-login:hover, .box-registro:hover {
     background: red;
     border-color: red;
     color: #fff;
     transform: scale(1.05);
 }
-/* Tooltip ao passar o mouse (mensagens no login e registro) */
+
 .hover-message {
     display: none;
     position: absolute;
@@ -84,12 +84,12 @@ body {
     font-size: 0.85em;
     white-space: nowrap;
 }
+
 .box-login:hover .hover-message, 
 .box-registro:hover .hover-message {
     display: block;
 }
 
-/* TÍTULO "PRODUTOS EM DESTAQUE" */
 .titulo-destaques {
     font-size: 1.2em;
     margin-bottom: 20px;
@@ -100,7 +100,6 @@ body {
     border-radius: 5px;
 }
 
-/* PRODUTOS EM DESTAQUE */
 .gradeDescontos {
     display: flex;
     flex-wrap: wrap;
@@ -109,6 +108,7 @@ body {
     margin: 20px auto 50px auto;
     max-width: 600px; 
 }
+
 .produtoItem {
     background: #ccc; 
     width: 130px;
@@ -121,10 +121,12 @@ body {
     position: relative;
     transition: transform 0.3s, border-color 0.3s;
 }
+
 .produtoItem:hover {
     transform: scale(1.05);
     border-color: red;
 }
+
 .produtoImg {
     width: 100%;
     height: 90px;
@@ -132,24 +134,26 @@ body {
     border-radius: 5px;
     margin-bottom: 5px;
 }
+
 .precoAntigo {
     color: #888;
     font-size: 0.8em;
     margin: 5px 0;
 }
+
 .precoDesconto {
     color: #d00;
     font-size: 0.9em;
     margin-bottom: 10px;
 }
 
-/* Botões de quantidade e carrinho */
 .quantidadeContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
 }
+
 .btnQuantidade {
     width: 30px;
     height: 30px;
@@ -160,25 +164,28 @@ body {
     cursor: pointer;
     background: #fff; 
 }
+
 .btnQuantidade:hover {
     transform: scale(1.2);
 }
+
 .quantidadeValor {
     font-size: 2em;
     min-width: 20px;
     text-align: center;
 }
+
 .iconeCarrinho {
     width: 30px;
     height: 30px;
     transition: transform 0.3s;
     cursor: pointer;
 }
+
 .iconeCarrinho:hover {
     transform: scale(1.2);
 }
 
-/* RODAPÉ (não fixo) */
 .rodape {
     width: 100%;
     background: #666;  
@@ -188,6 +195,7 @@ body {
     align-items: center;
     margin-top: 20px;
 }
+
 .rodape a {
     color: #fff;
     text-decoration: none;
@@ -195,6 +203,7 @@ body {
     border-radius: 5px;
     transition: background 0.3s;
 }
+
 .rodape a:hover {
     background: red;
 }

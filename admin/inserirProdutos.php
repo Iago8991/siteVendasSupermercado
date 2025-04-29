@@ -8,16 +8,14 @@ if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
     <head>
         <meta charset="UTF-8">
         <title>Inserir Produtos</title>
-        <link rel="stylesheet" href="/projetoSupermercado/css/inserirOsProdutos.css">
+        <link rel="stylesheet" href="../css/inserirProdutos.css">
     </head>
     <body>
         
         <?php menuLateral::render(); ?>
 
-        <!-- Título do site, fora do contêiner central -->
         <div class="siteTitulo">Mercadinho IRR</div>
 
-        <!-- Conteiner central para o formulário -->
         <div class="conteinerCentral" id="mainContent">
             <?php
                 if (isset($_SESSION['erro'])){
@@ -29,7 +27,6 @@ if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
                     unset($_SESSION['sucesso']);
                 }
 
-                // Mantem o valor anterior do categoria
                 $categoriaSelecionada = $_POST['categoria'] ?? '';
             ?>
 
@@ -68,8 +65,7 @@ if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
 
                 <input type="submit" value="Enviar">
             </form>
-            <!-- Botão de voltar -->
-            <button class="btnVoltar" onclick="location.href='/projetoSupermercado/paginaPrincipal.php'">Voltar</button>
+            <button class="btnVoltar" onclick="location.href='../paginaPrincipal.php'">Voltar</button>
         </div>
     </body>
 </html>

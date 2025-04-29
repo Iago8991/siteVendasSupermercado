@@ -5,8 +5,7 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = mysqli_real_escape_string($con, $_POST['email']);
         $senha = $_POST['senha'];
-    
-    // consulta administrador existe
+
     $sql = "SELECT adminis_senha FROM administrador WHERE adminis_email = ?";
     $stmt = mysqli_prepare($con, $sql);
     mysqli_stmt_bind_param($stmt, "s", $email);

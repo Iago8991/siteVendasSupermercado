@@ -3,14 +3,12 @@
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
     require("bd_config.php");
     require("menuLateral.php");
-    //error_reporting(0);
 
     $busca = "";
     $categoria = "";
     $whereClause = "";
     $conditions = [];
 
-    // Se houver um termo de busca, utiliza para filtrar produtos
     if (isset($_GET['busca']) && !empty(trim($_GET['busca']))) {
         // Remove espaços no início e no fim
         $busca = trim(mysqli_real_escape_string($con, $_GET['busca']));

@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Admin - Mercadinho IRR</title>
-        <link rel="stylesheet" href="/projetoSupermercado/css/admin.css">
+        <link rel="stylesheet" href="../css/admin.css">
     </head>
     <body>
         <div class="tituloSite">Mercadinho IRR</div>

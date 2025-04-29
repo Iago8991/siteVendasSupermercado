@@ -1,18 +1,16 @@
-/* RESET / ESTILO BASE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* CONTEINER CENTRAL */
 .conteinerCentral {
-    /*  Tentar:  display: flex; */
     width: 400px; 
     margin: 80px auto;
     padding: 30px 20px 60px; 
@@ -24,7 +22,6 @@ body {
     text-align: center;
 }
 
-/* Título da Página (fora do contêiner central) */
 .siteTitulo {
     text-align: center;
     font-size: 2em;
@@ -32,7 +29,6 @@ body {
     color: #333;
 }
 
-/* FORMULÁRIO DE INSERIR PRODUTOS */
 .formularioInserir {
     display: flex;
     flex-direction: column;
@@ -40,10 +36,12 @@ body {
     text-align: left;
     margin-top: 20px;
 }
+
 .formularioInserir label {
     font-weight: bold;
     margin-bottom: 5px;
 }
+
 .formularioInserir input[type="text"],
 .formularioInserir input[type="number"],
 .formularioInserir input[type="file"],
@@ -53,6 +51,7 @@ body {
     border-radius: 10px;
     width: 100%;
 }
+
 .formularioInserir input[type="submit"] {
     padding: 10px;
     background: #333;
@@ -62,12 +61,12 @@ body {
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
+
 .formularioInserir input[type="submit"]:hover {
     background: red;
     transform: scale(1.03);
 }
 
-/* BOTÃO VOLTAR */
 .btnVoltar {
     position: absolute;
     bottom: 10px;
@@ -80,17 +79,18 @@ body {
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
+
 .btnVoltar:hover {
     background: red;
     transform: scale(1.05);
 }
 
-/* MENSAGENS (ERRO / SUCESSO) */
 .mensagem {
     color: blue;
     text-align: center;
     margin-bottom: 10px;
 }
+
 .mensagemSucesso {
     color: green;
     text-align: center;

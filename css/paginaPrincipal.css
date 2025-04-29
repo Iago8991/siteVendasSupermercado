@@ -1,16 +1,15 @@
-/* RESET / ESTILO BASE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* TÍTULO DO SITE */
 .tituloSite {
     text-align: center;
     font-size: 2.5em;
@@ -18,7 +17,6 @@ body {
     margin-top: 20px;
 }
 
-/* SEÇÕES: "Em Destaque" e "Produtos" */
 .secaoEmDestaque, .secaoProdutos {
     margin: 20px 50px;
     padding: 20px;
@@ -26,7 +24,6 @@ body {
     border-radius: 10px;
 }
 
-/* TÍTULO DAS SEÇÕES */
 .tituloSecao {
     text-align: center;
     font-size: 1.8em;
@@ -34,7 +31,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* SLIDER DE PRODUTOS */
 .sliderProdutos {
     position: relative;
     overflow: hidden;
@@ -42,6 +38,7 @@ body {
     padding: 10px 0;
     background-color: white;
 }
+
 .produtoCard {
     display: inline-block;
     background: #fff;
@@ -53,21 +50,25 @@ body {
     position: relative;
     transition: transform 0.3s;
 }
+
 .produtoCard:hover {
     transform: scale(1.05);
 }
+
 .produtoImagem {
     width: 100%;
     height: 150px;
     object-fit: cover;
     border-radius: 5px;
 }
+
 .produtoNome {
     text-align: center;
     margin: 10px 0;
     font-size: 1.2em;
     color: #333;
 }
+
 .produtoPreco {
     text-align: center;
 }    
@@ -78,7 +79,6 @@ body {
     color: red;
 }
 
-/* EFEITO DE HOVER NO PRODUTO */
 .infoExtra {
     opacity: 0;
     visibility: hidden;
@@ -92,13 +92,13 @@ body {
     padding: 10px;
     text-align: center;
 }
+
 .produtoCard:hover .infoExtra {
     opacity: 1;
     visibility: visible;
     display: block;
 }
 
-/* Fade nas laterais: só em sliders com overflow */
 .sliderProdutos.scrollable::before,
 .sliderProdutos.scrollable::after {
     content: "";
@@ -108,26 +108,27 @@ body {
     height: 100%;
     z-index: 2;
 }
+
 .sliderProdutos.scrollable::before {
     left: 0;
     background: linear-gradient(to right, #fff, rgba(255,255,255,0));
 }
+
 .sliderProdutos.scrollable::after {
     right: 0;
     background: linear-gradient(to left, #fff, rgba(255,255,255,0));
 }
 
-/* Setas: só em sliders scrollable */
 .navegacaoSlider.scrollable .setaAnterior,
 .navegacaoSlider.scrollable .setaProxima {
-    opacity: 0;  /* inicialmente ocultas */
-}
-.sliderProdutos.scrollable:hover + .navegacaoSlider.scrollable .setaAnterior,
-.sliderProdutos.scrollable:hover + .navegacaoSlider.scrollable .setaProxima {
-    opacity: 1;  /* aparecem ao hover */
+    opacity: 0;  
 }
 
-/* Mantém o estilo e posicionamento das setas */
+.sliderProdutos.scrollable:hover + .navegacaoSlider.scrollable .setaAnterior,
+.sliderProdutos.scrollable:hover + .navegacaoSlider.scrollable .setaProxima {
+    opacity: 1;  
+}
+
 .navegacaoSlider {
     position: absolute;
     top: 50%;
@@ -137,6 +138,7 @@ body {
     justify-content: space-between;
     pointer-events: none;
 }
+
 .setaAnterior, .setaProxima {
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
