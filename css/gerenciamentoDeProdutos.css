@@ -1,16 +1,15 @@
-/* RESET / ESTILO BASE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* TÍTULO - GERENCIADOR DE PRODUTOS */
 .tituloGerenciador {
     text-align: center;
     font-size: 2em;
@@ -18,7 +17,6 @@ body {
     margin: 20px 0;
 }
 
-/* CONTAINER CENTRAL PARA PRODUTOS */
 .containerGerenciador {
     width: 80%;
     max-width: 1200px;
@@ -30,13 +28,13 @@ body {
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
-/* GRADE DE PRODUTOS */
 .produtosContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
 }
+
 .produtoCard {
     background: #f1f1f1; 
     border: 1px solid #ccc;
@@ -45,10 +43,12 @@ body {
     width: 280px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .produtoCard:hover {
     transform: scale(1.03);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+
 .produtoCard img {
     width: 100%;
     height: 180px;
@@ -56,26 +56,29 @@ body {
     border-radius: 10px;
     margin-bottom: 10px;
 }
+
 .produtoInfo {
     text-align: left;
     margin-bottom: 10px;
 }
+
 .produtoInfo h3 {
     font-size: 1.3em;
     margin-bottom: 5px;
     color: #333;
 }
+
 .produtoInfo p {
     font-size: 0.9em;
     margin-bottom: 5px;
     color: #333;
 }
+
 .produtoInfo .categoria {
     font-style: italic;
     color: #555;
 }
 
-/* BOTÕES DE AÇÕES (EDITAR / EXCLUIR) */
 .acoesProduto {
     display: flex;
     gap: 10px;
@@ -92,20 +95,20 @@ body {
     border-radius: 10px;
     transition: background 0.3s, transform 0.3s;
 }
+
 .acoesProduto a:hover {
     background: red;
     transform: scale(1.05);
 }
 
-/* RESPONSIVIDADE */
 @media (max-width: 900px) {
     .produtoCard { width: 45%; }
 }
+
 @media (max-width: 600px) {
     .produtoCard { width: 90%; }
 }
 
-/* RODAPÉ (não fixo - fica abaixo do contêiner) */
 .rodape {
     width: 100%;
     background: #777; 

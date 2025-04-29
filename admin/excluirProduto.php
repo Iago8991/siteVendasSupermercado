@@ -11,7 +11,6 @@
 
         $id = intval($_GET['id']);
 
-        // Recupera o caminho da imagem do produto.
         $sql = "SELECT produtos_imagem FROM produtos WHERE produtos_id = ?";
         $stmt = mysqli_prepare($con, $sql);
         mysqli_stmt_bind_param($stmt, "i", $id);
@@ -21,13 +20,11 @@
         if ($produto = mysqli_fetch_assoc($resultado)) {
             $caminhoImagem = "../uploadProdutos/" . $produto['produtos_imagem']; 
 
-            //Exclui o produto do banco de dados.
             $sql_delete = "DELETE FROM produtos WHERE produtos_id = ?";
             $stmt_delete = mysqli_prepare($con, $sql_delete);
             mysqli_stmt_bind_param($stmt_delete, "i", $id);
 
             if (mysqli_stmt_execute($stmt_delete)) {
-                // Remove a imagem associada ao produto
                 if (file_exists(filename: $caminhoImagem)) {
                     unlink($caminhoImagem);
                 }

@@ -4,8 +4,7 @@
     require('../menuLateral.php');
 
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
-        
-        // Consulta os produtos do banco de dados
+
         $sql = "SELECT * FROM produtos";
         $resultado = mysqli_query($con, $sql);
         
@@ -16,15 +15,12 @@
     
     <html>
         <head>
-            <link rel="stylesheet" href="/projetoSupermercado/css/gerenciamentoDeProdutos.css">
+            <link rel="stylesheet" href="../css/gerenciamentoDeProdutos.css">
             <title> Gerenciador de Produtos </title>
             <meta charset="UTF-8">
         </head>
         <body>
-            
-                <!-- Menu lateral fixo -->
                 <?php menuLateral::render(); ?>
-                <!-- Colocar aqui -->
                  
                 <h1 class="tituloGerenciador"> Gerenciador de Produtos</h1>
 
@@ -52,7 +48,6 @@
                     </div>
                 </div>
 
-                <!-- Rodapé -->
                 <div class="rodape">
                     <p>&copy; 2025 Mercadinho IRR. Todos os direitos reservados.</p>
                 </div>

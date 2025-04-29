@@ -1,26 +1,21 @@
 <?PHP
     session_start();
     require('../bd_config.php');
-    //error_reporting(0);
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        //Recebe os dados do formulário 
         $nome = mysqli_real_escape_string($con, $_POST['nome']);
         $descricao = mysqli_real_escape_string($con,$_POST["descricao"]);
         $preco= floatval($_POST["preco"]);
         $estoque= intval($_POST["estoque"]);
         $desconto= floatval($_POST["desconto"]);
         $categoria = mysqli_real_escape_string($con, $_POST['categoria']);
-        
-        //Processa o Upload da imagem
+
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
             $imagemtmp = $_FILES['imagem']['tmp_name'];
             $imagemNome = basename($_FILES['imagem']['name']);
             $caminhoImagem = "../uploadProdutos/" . $imagemNome; 
 
-            //Move a imagem para a pasta de uploads
             if(move_uploaded_file($imagemtmp, $caminhoImagem)){
-                //Insere os dados no banco
                 $sql = "INSERT INTO produtos (
                     produtos_nome,
                     produtos_descricao,
@@ -65,7 +60,5 @@
             header("Location: inserirProdutos.php");
         exit;
     }
-
-    //Fecha  a conexão com o banco
     mysqli_close($con);
 ?>
