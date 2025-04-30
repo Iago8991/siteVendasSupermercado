@@ -10,10 +10,8 @@
     $conditions = [];
 
     if (isset($_GET['busca']) && !empty(trim($_GET['busca']))) {
-        // Remove espaços no início e no fim
         $busca = trim(mysqli_real_escape_string($con, $_GET['busca']));
-        
-        // Divide a pesquisa em palavras individuais e remove palavras vazias
+
         $palavras = array_filter(explode(" ", $busca), function($p) {
             return trim($p) !== "";
         });
@@ -24,18 +22,15 @@
             $searchConditions[] = "(produtos_nome LIKE '%$palavra%' OR produtos_descricao LIKE '%$palavra%')";
         }
         if (count($searchConditions) > 0) {
-            // Junta as condições de busca com OR
             $conditions[] = "(" . implode(" OR ", $searchConditions) . ")";
         }
     }
 
-    // Se houver filtro por categoria, adiciona essa condição
     if (isset($_GET['categoria']) && !empty(trim($_GET['categoria']))) {
         $categoria = trim(mysqli_real_escape_string($con, $_GET['categoria']));
         $conditions[] = "categoria = '$categoria'";
     }
 
-    // Se houver alguma condição, junta-as com AND; caso contrário, retorna todos os produtos
     if (count($conditions) > 0) {
         $whereClause = " WHERE " . implode(" AND ", $conditions);
     } else {
@@ -52,114 +47,16 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="/projetoSupermercado/css/exibirProdutos.css">
+        <link rel="stylesheet" href="./css/exibirProdutos.css">
         <meta charset="UTF-8">
         <title>Exibir Produtos</title>
-        <style>
-            body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-.exibirProdutosContainer {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-}
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.filtroDePesquisa {
-    background: #fff;
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    text-align: center;
-}
-.filtroDePesquisa .search-input {
-    position: relative;
-    display: inline-block;
-    margin-right: 10px;
-}
-.filtroDePesquisa input[type="text"],
-.filtroDePesquisa select {
-    padding: 8px 30px 8px 30px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-.filtroDePesquisa .search-icon {
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #aaa;
-    pointer-events: none;
-}
-.filtroDePesquisa .clear-btn, .filtroDePesquisa .clear-cat {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #aaa;
-    cursor: pointer;
-}
-.produtosGrade {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-.produtoItem {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    width: 23%;
-    box-sizing: border-box;
-    text-align: center;
-}
-.produtoItem img {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-.produtoItem h3 {
-    font-size: 1.1em;
-    margin: 10px 0;
-}
-.produtoItem p {
-    font-size: 0.95em;
-    margin: 5px 0;
-}
-.produtoItem .price {
-    font-weight: bold;
-    margin-top: 10px;
-}
-.produtoItem .disconto {
-    color: red;
-}
-.no-results {
-    text-align: center;
-    color: red;
-    margin-top: 20px;
-}
-        </style>
     </head>
     <body>
-        <!-- menu lateral fixo -->
         <?php menuLateral::render(); ?>
 
         <div class="exibirProdutosContainer">
             <h1>Produtos</h1>
 
-            <!-- Formulário de busca e filtro -->
             <div class="filtroDePesquisa">
                 <form action="exibirProdutos.php" method="GET" id="searchForm">
                     <div class="search-input">
@@ -194,7 +91,7 @@ h1 {
                 if ($numRows > 0){
                     while ($produto = mysqli_fetch_assoc($resultado)) { ?>
                         <div class="produtoItem">
-                            <img src="upload_produtos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>" width="100px" height="100px">
+                            <img src="uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>" width="100px" height="100px">
                             <h3><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
                             <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
                             <p class="price">R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></p>
