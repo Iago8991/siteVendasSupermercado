@@ -12,7 +12,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Página Principal</title>
-        <link rel="stylesheet" href="css/paginaPrincipal.css">
+        <link rel="stylesheet" href="./css/paginaPrincipal.css">
     </head>
     <body>
         <h1 class="tituloSite">Bem-vindo à Loja</h1>
