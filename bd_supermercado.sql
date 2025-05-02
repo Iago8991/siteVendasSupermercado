@@ -12,12 +12,8 @@ CREATE TABLE produtos (
     produtos_preco DECIMAL(10,2),
     produtos_imagem VARCHAR(255),
     produtos_estoque INT NOT NULL DEFAULT 0,
-    produtos_desconto DECIMAL(5,2) NOT NULL DEFAULT 0
-);
-
-CREATE TABLE categorias (
-    categorias_id INT AUTO_INCREMENT PRIMARY KEY,
-    categorias_nome VARCHAR(150) NOT NULL
+    produtos_desconto DECIMAL(5,2) NOT NULL DEFAULT 0,
+    categoria VARCHAR(100) NOT NULL DEFAULT 'OUTROS'
 );
 
 CREATE TABLE pedidos (
