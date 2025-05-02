@@ -55,32 +55,32 @@
             
             <div class="menuLateral" id="menuLateral">
                 <div class="menuItems">
-                    <a class="menuItem" onclick="location.href='/paginaPrincipal.php';">
-                        <img src="/imagens/home.webp" alt="Página Principal">
+                    <a class="menuItem" onclick="location.href='./paginaPrincipal.php';">
+                        <img src="./imagens/home.webp" alt="Página Principal">
                         <span>Página Principal</span>
                     </a>
-                    <a class="menuItem" onclick="location.href='/carrinho.php';">
-                        <img src="/imagens/carrinho.png" alt="Carrinho">
+                    <a class="menuItem" onclick="location.href='./carrinho.php';">
+                        <img src="./imagens/carrinho.png" alt="Carrinho">
                         <span>Carrinho</span>
                     </a>
-                    <a class="menuItem" onclick="location.href='/exibirProdutos.php';">
-                        <img src="/imagens/loja.png" alt="Loja">
+                    <a class="menuItem" onclick="location.href='./exibirProdutos.php';">
+                        <img src="./imagens/loja.png" alt="Loja">
                         <span>Loja</span>
                     </a>
                     <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){ ?>
-                        <a class="menuItem" onclick="location.href='/admin/inserirProdutos.php';">
-                            <img src="/imagens/inserirProdutos.png" alt="Inserir Produtos">
+                        <a class="menuItem" onclick="location.href='./admin/inserirProdutos.php';">
+                            <img src="./imagens/inserirProdutos.png" alt="Inserir Produtos">
                             <span>Inserir Produtos</span>
                         </a>
-                        <a class="menuItem" onclick="location.href='/admin/gerenciamentoProdutos.php';">
-                            <img src="/imagens/gerenciarProdutos.png" alt="Gerenciamento Produtos">
+                        <a class="menuItem" onclick="location.href='./admin/gerenciamentoProdutos.php';">
+                            <img src="./imagens/gerenciarProdutos.png" alt="Gerenciamento Produtos">
                             <span>Gerenciamento Produtos</span>
                         </a>
                     <?php } ?>
                 </div>
                 <div class="menuFooter">
-                    <a class="menuItem" onclick="location.href='/loginRegistro/logout.php';">
-                        <img src="/imagens/sair.png" alt="Sair">
+                    <a class="menuItem" onclick="location.href='./loginRegistro/logout.php';">
+                        <img src="./imagens/sair.png" alt="Sair">
                         <span>Sair</span>
                     </a>
                 </div>
