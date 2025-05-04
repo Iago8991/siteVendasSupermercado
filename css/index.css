@@ -13,7 +13,7 @@ body {
 .containerArredondado {
     background-color: white;
     background-size: cover;
-    width: 600px;
+    width: 800px;
     min-height: 600px;
     margin: 50px auto;
     border-radius: 40px;
@@ -101,17 +101,16 @@ body {
 }
 
 .gradeDescontos {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    justify-content: center;
-    margin: 20px auto 50px auto;
+    margin: 20px auto 50px;
     max-width: 600px; 
 }
 
 .produtoItem {
     background: #ccc; 
-    width: 130px;
+    width: 100%;
     border: 1px solid #bbb;
     border-radius: 10px;
     overflow: hidden;
