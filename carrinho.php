@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: text/html; charset=utf-8');
     session_start();
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado') {
         require("menuLateral.php");
