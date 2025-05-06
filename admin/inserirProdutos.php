@@ -1,6 +1,7 @@
-<?php 
-session_start();
-if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
+<?php
+    header('Content-Type: text/html; charset=utf-8');
+    session_start();
+    if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
     require('../menuLateral.php');
 ?>
 <html>

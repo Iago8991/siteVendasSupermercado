@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: text/html; charset=utf-8');
     session_start();
     require('../bd_config.php');
     require('../menuLateral.php'); 

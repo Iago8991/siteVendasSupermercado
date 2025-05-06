@@ -1,58 +1,62 @@
 <?php
+    header('Content-Type: text/html; charset=utf-8');
     session_start(); 
 
     class MenuLateral {
         public static function render() {
 ?>
-
-            <style>
-                .menuLateral {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    height: 100vh;
-                    width: 50px; 
-                    background: #333;
-                    overflow: hidden;
-                    transition: width 0.3s;
-                    z-index: 1000;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                }
-                .menuLateral:hover {
-                    width: 235px; 
-                }
-                .menuLateral .menuItem {
-                    display: flex;
-                    align-items: center;
-                    padding: 10px;
-                    color: #fff;
-                    text-decoration: none;
-                    border-bottom: 1px solid #444;
-                    transition: background 0.3s;
-                }
-                .menuLateral .menuItem:last-child {
-                    border-bottom: none;
-                }
-                .menuLateral .menuItem:hover {
-                    background: #555;
-                }
-                .menuLateral .menuItem img {
-                    width: 30px;
-                    height: auto;
-                    margin-right: 10px;
-                }
-                .menuLateral .menuItem span {
-                    white-space: nowrap;
-                    opacity: 0;
-                    transition: opacity 0.3s;
-                }
-                .menuLateral:hover .menuItem span {
-                    opacity: 1;
-                }
-            </style>
-            
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .menuLateral {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 50px; 
+                background: #333;
+                overflow: hidden;
+                transition: width 0.3s;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .menuLateral:hover {
+                width: 235px; 
+            }
+            .menuLateral .menuItem {
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                color: #fff;
+                text-decoration: none;
+                border-bottom: 1px solid #444;
+                transition: background 0.3s;
+            }
+            .menuLateral .menuItem:last-child {
+                border-bottom: none;
+            }
+            .menuLateral .menuItem:hover {
+                background: #555;
+            }
+            .menuLateral .menuItem img {
+                width: 30px;
+                height: auto;
+                margin-right: 10px;
+            }
+            .menuLateral .menuItem span {
+                white-space: nowrap;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+            .menuLateral:hover .menuItem span {
+                opacity: 1;
+            }
+        </style>
+    </head>
+</html>
             <div class="menuLateral" id="menuLateral">
                 <div class="menuItems">
                     <a class="menuItem" onclick="location.href='./paginaPrincipal.php';">
