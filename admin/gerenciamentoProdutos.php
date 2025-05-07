@@ -13,8 +13,8 @@
             echo "Falha ao buscar produtos: " . mysqli_error($con);
         }
     ?>
-    
-    <html>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
         <head>
             <link rel="stylesheet" href="../css/gerenciamentoDeProdutos.css">
             <title> Gerenciador de Produtos </title>

@@ -6,7 +6,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == "logado") {
     require("bd_config.php");
     
 ?>
-    <html>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
         <head>
             <link rel="stylesheet" href="./css/contato.css">
             <meta charset="UTF-8">

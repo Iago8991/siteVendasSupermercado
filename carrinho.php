@@ -14,3 +14,7 @@
         echo "<button class='btn-voltar' onclick=\"location.href='index.php'\">Voltar</button>";
     }
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+</html>

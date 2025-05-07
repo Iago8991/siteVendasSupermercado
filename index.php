@@ -9,8 +9,8 @@
         die("Erro ao buscar produtos com desconto: " . mysqli_error($con));
     }
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <title>Mercadinho IRR</title>
