@@ -2,7 +2,8 @@
     header('Content-Type: text/html; charset=utf-8');
     session_start();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <title>Admin - Mercadinho IRR</title>

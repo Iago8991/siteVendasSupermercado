@@ -45,8 +45,8 @@
         die("Erro na consulta: " . mysqli_error($con));
     }
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
     <head>
         <link rel="stylesheet" href="./css/exibirProdutos.css">
         <meta charset="UTF-8">

@@ -4,8 +4,8 @@
     if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
     require('../menuLateral.php');
 ?>
-<html>
-
+<!DOCTYPE html>
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <title>Inserir Produtos</title>

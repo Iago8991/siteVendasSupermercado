@@ -9,7 +9,8 @@
         $sqlProdutos = "SELECT * FROM produtos WHERE produtos_desconto = 0 ORDER BY RAND() LIMIT 8";
         $resultadoProdutos = mysqli_query($con, $sqlProdutos);
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <title>Página Principal</title>
