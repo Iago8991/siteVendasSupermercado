@@ -1,9 +1,4 @@
 <?php
-
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
-
   require __DIR__ . '/vendor/autoload.php';
   use Dotenv\Dotenv;
 
@@ -18,5 +13,9 @@
   $con = new mysqli($host, $user, $password, $dbname);
   if ($con->connect_error) {
       die("Conexão falhou: " . $con->connect_error);
+  }
+
+  if (! $con->set_charset('utf8mb4')) {
+      die("Erro ao definir o charset: " . $con->error);
   }
 ?>
