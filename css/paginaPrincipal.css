@@ -1,151 +1,164 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
-    background-size: cover;
+  font-family: Arial, sans-serif;
+  background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .tituloSite {
-    text-align: center;
-    font-size: 2.5em;
-    color: black;
-    margin-top: 20px;
+  text-align: center;
+  font-size: 2.5em;
+  color: black;
+  margin-top: 20px;
 }
 
-.secaoEmDestaque, .secaoProdutos {
-    margin: 20px 50px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
+.secaoEmDestaque,
+.secaoProdutos {
+  margin: 20px 50px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .tituloSecao {
-    text-align: center;
-    font-size: 1.8em;
-    color: #333;
-    margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.sliderContainer {
+  position: relative;
+  overflow: hidden; 
+  margin: 0 auto;
 }
 
 .sliderProdutos {
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 10px 0;
-    background-color: white;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.sliderProdutos::before,
+.sliderProdutos::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sliderProdutos::before {
+  left: 0;
+  background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+}
+
+.sliderProdutos::after {
+  right: 0;
+  background: linear-gradient(to left, #fff, rgba(255,255,255,0));
 }
 
 .produtoCard {
-    display: inline-block;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-right: 10px;
-    width: 250px;
-    vertical-align: top;
-    position: relative;
-    transition: transform 0.3s;
+  flex: 0 0 250px; 
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: transform 0.3s;
 }
 
 .produtoCard:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .produtoImagem {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .produtoNome {
-    text-align: center;
-    margin: 10px 0;
-    font-size: 1.2em;
-    color: #333;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #333;
 }
 
-.produtoPreco {
-    text-align: center;
-}    
+.produtoPreco,
+.produtoDesconto {
+  text-align: center;
+  margin-bottom: 5px;
+}
 
 .produtoDesconto {
-    text-align: center;
-    font-size: 0.9em;
-    color: red;
+  font-size: 0.9em;
+  color: red;
 }
 
-.infoExtra {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.7);
-    color: #fff;
-    padding: 10px;
-    text-align: center;
+.produtoInfoExtra {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
 }
 
-.produtoCard:hover .infoExtra {
-    opacity: 1;
-    visibility: visible;
-    display: block;
-}
-
-.sliderProdutos.scrollable::before,
-.sliderProdutos.scrollable::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50px;
-    height: 100%;
-    z-index: 2;
-}
-
-.sliderProdutos.scrollable::before {
-    left: 0;
-    background: linear-gradient(to right, #fff, rgba(255,255,255,0));
-}
-
-.sliderProdutos.scrollable::after {
-    right: 0;
-    background: linear-gradient(to left, #fff, rgba(255,255,255,0));
-}
-
-.navegacaoSlider.scrollable .setaAnterior,
-.navegacaoSlider.scrollable .setaProxima {
-    opacity: 0;  
-}
-
-.sliderProdutos.scrollable:hover + .navegacaoSlider.scrollable .setaAnterior,
-.sliderProdutos.scrollable:hover + .navegacaoSlider.scrollable .setaProxima {
-    opacity: 1;  
+.produtoCard:hover .produtoInfoExtra {
+  opacity: 1;
+  visibility: visible;
 }
 
 .navegacaoSlider {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
 }
 
-.setaAnterior, .setaProxima {
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    font-size: 3em;
-    padding: 5px 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    pointer-events: auto;
-    transition: opacity 0.3s;
+.navegacaoSlider .setaAnterior,
+.navegacaoSlider .setaProxima {
+  pointer-events: auto;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 2em;
+  padding: 5px 10px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sliderContainer:hover .navegacaoSlider .setaAnterior,
+.sliderContainer:hover .navegacaoSlider .setaProxima {
+  opacity: 1;
+}
+
+.navegacaoSlider button {
+  background: #28a745;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
 }
