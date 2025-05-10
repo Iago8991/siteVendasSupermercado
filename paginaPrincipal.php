@@ -4,9 +4,9 @@
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
         require("menuLateral.php");
         require("bd_config.php");
-        $sqlEmDestaque = "SELECT * FROM produtos WHERE produtos_desconto > 0 ORDER BY RAND() LIMIT 8";
+        $sqlEmDestaque = "SELECT * FROM produtos WHERE produtos_desconto > 0 ORDER BY RAND()";
         $resultadoEmDestaque = mysqli_query($con, $sqlEmDestaque);
-        $sqlProdutos = "SELECT * FROM produtos WHERE produtos_desconto = 0 ORDER BY RAND() LIMIT 8";
+        $sqlProdutos = "SELECT * FROM produtos WHERE produtos_desconto = 0 ORDER BY RAND()";
         $resultadoProdutos = mysqli_query($con, $sqlProdutos);
 ?>
 <!DOCTYPE html>
