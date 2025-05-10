@@ -13,7 +13,7 @@ body {
 .tituloSite {
   text-align: center;
   font-size: 2.5em;
-  color: black;
+  color: #000;
   margin-top: 20px;
 }
 
@@ -21,7 +21,7 @@ body {
 .secaoProdutos {
   margin: 20px 50px;
   padding: 20px;
-  background-color: white;
+  background-color: #fff;
   border-radius: 10px;
 }
 
@@ -34,7 +34,7 @@ body {
 
 .sliderContainer {
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
   margin: 0 auto;
 }
 
@@ -56,25 +56,23 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-
 .sliderProdutos::before {
   left: 0;
   background: linear-gradient(to right, #fff, rgba(255,255,255,0));
 }
-
 .sliderProdutos::after {
   right: 0;
   background: linear-gradient(to left, #fff, rgba(255,255,255,0));
 }
 
 .produtoCard {
-  flex: 0 0 250px; 
+  flex: 0 0 250px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
+  position: relative;
   transition: transform 0.3s;
 }
-
 .produtoCard:hover {
   transform: scale(1.05);
 }
@@ -93,13 +91,11 @@ body {
   font-size: 1.2em;
   color: #333;
 }
-
 .produtoPreco,
 .produtoDesconto {
   text-align: center;
   margin-bottom: 5px;
 }
-
 .produtoDesconto {
   font-size: 0.9em;
   color: red;
@@ -120,7 +116,6 @@ body {
   border-bottom-right-radius: 10px;
   text-align: center;
 }
-
 .produtoCard:hover .produtoInfoExtra {
   opacity: 1;
   visibility: visible;
@@ -135,6 +130,7 @@ body {
   display: flex;
   justify-content: space-between;
   pointer-events: none;
+  z-index: 2;
 }
 
 .navegacaoSlider .setaAnterior,
@@ -142,23 +138,29 @@ body {
   pointer-events: auto;
   background: rgba(0,0,0,0.5);
   color: #fff;
-  font-size: 2em;
-  padding: 5px 10px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 1.5em;
   border-radius: 50%;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.navegacaoSlider .setaAnterior {
+  left: 5%;
+}
+.navegacaoSlider .setaProxima {
+  right: 5%;
 }
 
 .sliderContainer:hover .navegacaoSlider .setaAnterior,
 .sliderContainer:hover .navegacaoSlider .setaProxima {
   opacity: 1;
 }
-
-.navegacaoSlider button {
-  background: #28a745;
-  border: none;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
+.sliderContainer:hover .navegacaoSlider .setaAnterior:hover,
+.sliderContainer:hover .navegacaoSlider .setaProxima:hover {
+  transform: translateY(0%) scale(1.2);
 }
