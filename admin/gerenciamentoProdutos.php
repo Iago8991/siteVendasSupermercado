@@ -16,7 +16,7 @@
     <!DOCTYPE html>
     <html lang="pt-BR">
         <head>
-            <link rel="stylesheet" href="../css/gerenciamentoDeProdutos.css">
+            <link rel="stylesheet" href="../css/gerenciamentoProdutos.css">
             <title> Gerenciador de Produtos </title>
             <meta charset="UTF-8">
         </head>
