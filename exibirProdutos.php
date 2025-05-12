@@ -92,14 +92,20 @@
                 if ($numRows > 0){
                     while ($produto = mysqli_fetch_assoc($resultado)) { ?>
                         <div class="produtoItem">
-                            <img src="uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>" width="100px" height="100px">
+                            <img src="uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
                             <h3><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
                             <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
                             <p class="price">R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></p>
                             <?php if (isset($produto['produtos_desconto']) && $produto['produtos_desconto'] > 0) { ?>
                                 <p class="disconto">Desconto: <?= $produto['produtos_desconto'] ?>%</p>
                             <?php } ?>
-                            <a href="carrinho.php?adicionar=<?= $produto['produtos_id'] ?>">Comprar</a>
+                            
+                            <div class="quantidadeContaier" data-stock="<?= intval($produto['produtos_estoque']) ?>">
+                                <img src="imagens/minus.png" alt="Diminuir" class="btnQuantidade" onclick="alterarQuantidade(this, -1)">
+                                <span class="quantidadeValor">1</span>
+                                <img src="imagens/plus.png" alt="Aumentar" class="btnQuantidade" onclick="alterarQuantidade(this, 1)">
+                                <img src="imagens/carrinho.png" alt="Carrinho" class="iconeCarrinho" onclick="location.href='carrinho.php?adicionar=<?= $produto['produtos_id'] ?>&qtd='+this.previousElementSimbling.textContent">
+                            </div>
                         </div>
                     <?php } 
                     } else {
