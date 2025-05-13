@@ -122,6 +122,16 @@
             function clearCategory(){
                 document.getElementById('categoria').selectedIndex = 0;
             }
+
+            function alterarQuantidade(btn, delta) {
+                const container = btn.parentElement;
+                const valorEl = container.querySelector('.quantidadeValor');
+                let qtd = parseInt(valorEl.textContent, 10);
+                const estoque = parseInt(container.dataset.stock, 10);
+
+                qtd = Math.max(1, Math.min(estoque, qtd + delta));
+                valorEl.textContent = qtd;
+            }
         </script>
     </body>
 </html>
