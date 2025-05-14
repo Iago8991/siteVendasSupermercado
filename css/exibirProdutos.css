@@ -185,3 +185,39 @@ body {
   min-width: 20px;
   text-align: center;
 }
+
+/* CONTROLE DE QUANTIDADE E CARRINHO (exibirProdutos) */
+.quantidadeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.produtoItem:hover .quantidadeContainer {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btnQuantidade,
+.iconeCarrinho {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btnQuantidade:hover,
+.iconeCarrinho:hover {
+  transform: scale(1.2);
+}
+
+.quantidadeValor {
+  font-size: 1.2em;
+  min-width: 20px;
+  text-align: center;
+}
