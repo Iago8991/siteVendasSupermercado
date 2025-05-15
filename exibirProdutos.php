@@ -92,19 +92,39 @@
                 if ($numRows > 0){
                     while ($produto = mysqli_fetch_assoc($resultado)) { ?>
                         <div class="produtoItem">
-                            <img src="uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                            <img src="uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>"
+                                alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
                             <h3><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
-                            <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
-                            <p class="price">R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></p>
-                            <?php if (isset($produto['produtos_desconto']) && $produto['produtos_desconto'] > 0) { ?>
-                                <p class="disconto">Desconto: <?= $produto['produtos_desconto'] ?>%</p>
-                            <?php } ?>
-                            
-                            <div class="quantidadeContaier" data-stock="<?= intval($produto['produtos_estoque']) ?>">
-                                <img src="imagens/minus.png" alt="Diminuir" class="btnQuantidade" onclick="alterarQuantidade(this, -1)">
+
+                            <div class="detalhesHover">
+                                <p class="descricao"><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
+
+                                <div class="precos">
+                                <span class="precoAntigo">
+                                    <?php if ($produto['produtos_desconto']>0): ?>
+                                    <del>R$ <?= number_format($produto['produtos_preco'],2,',','.') ?></del>
+                                    <?php endif; ?>
+                                </span>
+                                <span class="precoAtual">
+                                    R$ <?= number_format(
+                                        $produto['produtos_preco'] * (1 - $produto['produtos_desconto']/100),
+                                        2,',','.'
+                                        ) ?>
+                                </span>
+                                <?php if ($produto['produtos_desconto']>0): ?>
+                                    <span class="labelDesconto"><?= $produto['produtos_desconto'] ?> %</span>
+                                <?php endif; ?>
+                                </div>
+
+                                <div class="quantidadeContainer" data-stock="<?= intval($produto['produtos_estoque']) ?>">
+                                <img src="imagens/minus.png" alt="–" class="btnQuantidade"
+                                    onclick="alterarQuantidade(this,-1)">
                                 <span class="quantidadeValor">1</span>
-                                <img src="imagens/plus.png" alt="Aumentar" class="btnQuantidade" onclick="alterarQuantidade(this, 1)">
-                                <img src="imagens/carrinho.png" alt="Carrinho" class="iconeCarrinho" onclick="location.href='carrinho.php?adicionar=<?= $produto['produtos_id'] ?>&qtd='+this.previousElementSimbling.textContent">
+                                <img src="imagens/plus.png" alt="+" class="btnQuantidade"
+                                    onclick="alterarQuantidade(this,1)">
+                                <img src="imagens/carrinho.png" alt="Carrinho" class="iconeCarrinho"
+                                    onclick="location.href='carrinho.php?adicionar=<?= $produto['produtos_id'] ?>&qtd='+this.previousElementSibling.textContent">
+                                </div>
                             </div>
                         </div>
                     <?php } 
