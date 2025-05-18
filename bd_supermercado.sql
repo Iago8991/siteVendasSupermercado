@@ -1,3 +1,6 @@
+create database bd_supermercado; 
+use bd_supermercado;
+
 CREATE TABLE usuarios (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user_nome VARCHAR(150) NOT NULL,
@@ -42,3 +45,5 @@ CREATE TABLE administrador (
 
 INSERT INTO administrador (adminis_email, adminis_senha)
 VALUES ('administrador1@gmail.com', SHA2('admin2530', 256));
+
+Select * from produtos;
