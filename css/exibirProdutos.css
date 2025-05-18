@@ -1,11 +1,9 @@
-/* Reset e estilo base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Fundo da página */
 body {
   font-family: Arial, sans-serif;
   background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
@@ -13,7 +11,6 @@ body {
   color: #333;
 }
 
-/* Container centralizado */
 .exibirProdutosContainer {
   width: 90%;
   max-width: 1200px;
@@ -24,7 +21,6 @@ body {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-/* Título */
 .exibirProdutosContainer > h1 {
   text-align: center;
   font-size: 2em;
@@ -32,7 +28,6 @@ body {
   color: #222;
 }
 
-/* Filtro de pesquisa */
 .filtroDePesquisa {
   display: flex;
   flex-wrap: wrap;
@@ -40,9 +35,11 @@ body {
   gap: 15px;
   margin-bottom: 30px;
 }
+
 .filtroDePesquisa .search-input {
   position: relative;
 }
+
 .filtroDePesquisa input[type="text"],
 .filtroDePesquisa select {
   padding: 8px 35px 8px 35px;
@@ -50,6 +47,7 @@ body {
   border-radius: 5px;
   font-size: 0.95em;
 }
+
 .filtroDePesquisa .search-icon {
   position: absolute;
   left: 10px;
@@ -58,6 +56,7 @@ body {
   font-size: 1.1em;
   color: #888;
 }
+
 .filtroDePesquisa .clear-btn,
 .filtroDePesquisa .clear-cat {
   position: absolute;
@@ -68,6 +67,7 @@ body {
   color: #888;
   cursor: pointer;
 }
+
 .filtroDePesquisa button[type="submit"] {
   padding: 8px 20px;
   background: #28a745;
@@ -78,11 +78,11 @@ body {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .filtroDePesquisa button[type="submit"]:hover {
   background: #218838;
 }
 
-/* Grade de produtos */
 .produtosGrade {
   display: flex;
   flex-wrap: wrap;
@@ -90,7 +90,6 @@ body {
   justify-content: center;
 }
 
-/* Card de cada produto */
 .produtoItem {
   background: #fff;
   border: 1px solid #ddd;
@@ -101,59 +100,57 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
-.produtoItem:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
 
-/* Imagem e nome sempre visíveis */
 .produtoItem img {
   width: 100%;
   height: 150px;
   object-fit: cover;
+  border-bottom: 1px solid #eee;
 }
+
 .produtoItem h3 {
   font-size: 1.1em;
   text-align: center;
   padding: 10px 5px;
   color: #333;
+  background: #fafafa;
 }
 
-/* Detalhes extras escondidos por padrão */
+.produtoItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
 .produtoItem p,
 .produtoItem .price,
 .produtoItem .disconto,
-.produtoItem .actions {
+.produtoItem .quantidadeContainer {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Ao passar o mouse, mostra descrição e botões */
 .produtoItem:hover p,
 .produtoItem:hover .price,
 .produtoItem:hover .disconto,
-.produtoItem:hover .actions {
+.produtoItem:hover .quantidadeContainer {
   opacity: 1;
   visibility: visible;
 }
 
-/* Descrição */
 .produtoItem p {
   font-size: 0.95em;
   padding: 0 10px;
-  margin-bottom: 8px;
+  margin: 8px 0;
   color: #555;
 }
 
-/* Preço */
 .produtoItem .price {
   font-weight: bold;
   padding: 0 10px;
   margin-bottom: 8px;
 }
 
-/* Desconto */
 .produtoItem .disconto {
   color: red;
   font-size: 0.9em;
@@ -161,46 +158,12 @@ body {
   margin-bottom: 10px;
 }
 
-/* Controles de quantidade e carrinho */
-.produtoItem .actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding-bottom: 15px;
-}
-.produtoItem .actions img,
-.produtoItem .actions .btnQuantidade {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-.produtoItem .actions img:hover,
-.produtoItem .actions .btnQuantidade:hover {
-  transform: scale(1.2);
-}
-.produtoItem .actions .quantidadeValor {
-  font-size: 1.2em;
-  min-width: 20px;
-  text-align: center;
-}
-
-/* CONTROLE DE QUANTIDADE E CARRINHO (exibirProdutos) */
 .quantidadeContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 10px 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.produtoItem:hover .quantidadeContainer {
-  opacity: 1;
-  visibility: visible;
+  padding-bottom: 15px;
 }
 
 .btnQuantidade,
