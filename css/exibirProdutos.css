@@ -121,6 +121,7 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* detalhes só no hover */
 .produtoItem p,
 .produtoItem .price,
 .produtoItem .disconto,
@@ -129,7 +130,6 @@ body {
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
 .produtoItem:hover p,
 .produtoItem:hover .price,
 .produtoItem:hover .disconto,
@@ -166,16 +166,22 @@ body {
   padding-bottom: 15px;
 }
 
-.btnQuantidade,
-.iconeCarrinho {
-  width: 30px;
-  height: 30px;
+.btnQuantidade {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background: #fff url('../imagens/plus.png') center center no-repeat;
+  background-size: 12px 12px;
   cursor: pointer;
   transition: transform 0.2s;
 }
 
-.btnQuantidade:hover,
-.iconeCarrinho:hover {
+.btnQuantidade.minus {
+  background-image: url('../imagens/minus.png');
+}
+
+.btnQuantidade:hover {
   transform: scale(1.2);
 }
 
@@ -183,4 +189,17 @@ body {
   font-size: 1.2em;
   min-width: 20px;
   text-align: center;
+}
+
+.iconeCarrinho {
+  width: 28px;
+  height: 28px;
+  background: url('../imagens/carrinho.png') center center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.iconeCarrinho:hover {
+  transform: scale(1.2);
 }
