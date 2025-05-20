@@ -15,7 +15,7 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 40px auto;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255,255,255,0.95);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -36,10 +36,7 @@ body {
   margin-bottom: 30px;
 }
 
-.filtroDePesquisa .search-input {
-  position: relative;
-}
-
+.filtroDePesquisa .search-input { position: relative; }
 .filtroDePesquisa input[type="text"],
 .filtroDePesquisa select {
   padding: 8px 35px 8px 35px;
@@ -47,38 +44,33 @@ body {
   border-radius: 5px;
   font-size: 0.95em;
 }
-
 .filtroDePesquisa .search-icon {
   position: absolute;
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.1em;
   color: #888;
+  font-size: 1.1em;
 }
-
 .filtroDePesquisa .clear-btn,
 .filtroDePesquisa .clear-cat {
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.1em;
   color: #888;
+  font-size: 1.1em;
   cursor: pointer;
 }
-
 .filtroDePesquisa button[type="submit"] {
   padding: 8px 20px;
   background: #28a745;
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 0.95em;
   cursor: pointer;
   transition: background 0.3s;
 }
-
 .filtroDePesquisa button[type="submit"]:hover {
   background: #218838;
 }
@@ -100,6 +92,10 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
+.produtoItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
 
 .produtoItem img {
   width: 100%;
@@ -107,21 +103,14 @@ body {
   object-fit: cover;
   border-bottom: 1px solid #eee;
 }
-
 .produtoItem h3 {
-  font-size: 1.1em;
+  background: #fafafa;
   text-align: center;
   padding: 10px 5px;
   color: #333;
-  background: #fafafa;
+  font-size: 1.1em;
 }
 
-.produtoItem:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* detalhes só no hover */
 .produtoItem p,
 .produtoItem .price,
 .produtoItem .disconto,
@@ -144,13 +133,11 @@ body {
   margin: 8px 0;
   color: #555;
 }
-
 .produtoItem .price {
   font-weight: bold;
   padding: 0 10px;
   margin-bottom: 8px;
 }
-
 .produtoItem .disconto {
   color: red;
   font-size: 0.9em;
@@ -167,20 +154,21 @@ body {
 }
 
 .btnQuantidade {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border: 2px solid #333;
   border-radius: 50%;
-  background: #fff url('../imagens/plus.png') center center no-repeat;
+  background: #fff center center no-repeat;
   background-size: 12px 12px;
   cursor: pointer;
   transition: transform 0.2s;
 }
-
+.btnQuantidade.plus {
+  background-image: url('../imagens/plus.png');
+}
 .btnQuantidade.minus {
   background-image: url('../imagens/minus.png');
 }
-
 .btnQuantidade:hover {
   transform: scale(1.2);
 }
@@ -199,7 +187,6 @@ body {
   cursor: pointer;
   transition: transform 0.2s;
 }
-
 .iconeCarrinho:hover {
   transform: scale(1.2);
 }
