@@ -15,10 +15,10 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 40px auto;
-  background-color: rgba(255,255,255,0.95);
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .exibirProdutosContainer > h1 {
@@ -36,7 +36,10 @@ body {
   margin-bottom: 30px;
 }
 
-.filtroDePesquisa .search-input { position: relative; }
+.filtroDePesquisa .search-input {
+  position: relative;
+}
+
 .filtroDePesquisa input[type="text"],
 .filtroDePesquisa select {
   padding: 8px 35px 8px 35px;
@@ -44,6 +47,7 @@ body {
   border-radius: 5px;
   font-size: 0.95em;
 }
+
 .filtroDePesquisa .search-icon {
   position: absolute;
   left: 10px;
@@ -52,6 +56,7 @@ body {
   color: #888;
   font-size: 1.1em;
 }
+
 .filtroDePesquisa .clear-btn,
 .filtroDePesquisa .clear-cat {
   position: absolute;
@@ -62,6 +67,7 @@ body {
   font-size: 1.1em;
   cursor: pointer;
 }
+
 .filtroDePesquisa button[type="submit"] {
   padding: 8px 20px;
   background: #28a745;
@@ -71,30 +77,33 @@ body {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .filtroDePesquisa button[type="submit"]:hover {
   background: #218838;
 }
 
 .produtosGrade {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
-  justify-content: center;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .produtoItem {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  width: calc(25% - 20px);
-  position: relative;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  text-align: center;
 }
+
 .produtoItem:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .produtoItem img {
@@ -103,46 +112,47 @@ body {
   object-fit: cover;
   border-bottom: 1px solid #eee;
 }
+
 .produtoItem h3 {
   background: #fafafa;
-  text-align: center;
   padding: 10px 5px;
-  color: #333;
   font-size: 1.1em;
+  color: #333;
 }
 
-.produtoItem p,
-.produtoItem .price,
-.produtoItem .disconto,
-.produtoItem .quantidadeContainer {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-.produtoItem:hover p,
-.produtoItem:hover .price,
-.produtoItem:hover .disconto,
-.produtoItem:hover .quantidadeContainer {
-  opacity: 1;
-  visibility: visible;
+.detalhesHover {
+  padding: 10px;
 }
 
-.produtoItem p {
+.descricao {
   font-size: 0.95em;
-  padding: 0 10px;
-  margin: 8px 0;
   color: #555;
+  margin: 10px 0;
 }
-.produtoItem .price {
+
+.precos {
+  margin: 8px 0;
+}
+
+.precoAntigo {
+  font-size: 0.85em;
+  color: #888;
+  text-decoration: line-through;
+  display: block;
+}
+
+.precoAtual {
+  font-size: 1em;
   font-weight: bold;
-  padding: 0 10px;
-  margin-bottom: 8px;
+  color: #d00;
+  display: block;
 }
-.produtoItem .disconto {
-  color: red;
+
+.labelDesconto {
   font-size: 0.9em;
-  padding: 0 10px;
-  margin-bottom: 10px;
+  color: red;
+  display: block;
+  margin-top: 4px;
 }
 
 .quantidadeContainer {
@@ -150,26 +160,37 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding-bottom: 15px;
+  margin-top: 10px;
 }
 
-.btnQuantidade {
-  width: 28px;
-  height: 28px;
-  border: 2px solid #333;
-  border-radius: 50%;
-  background: #fff center center no-repeat;
-  background-size: 12px 12px;
+.btnQuantidade,
+.iconeCarrinho {
+  width: 26px;
+  height: 26px;
   cursor: pointer;
   transition: transform 0.2s;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: #fff center center no-repeat;
+  background-size: 14px 14px;
+  padding: 3px;
 }
+
 .btnQuantidade.plus {
   background-image: url('../imagens/plus.png');
 }
+
 .btnQuantidade.minus {
   background-image: url('../imagens/minus.png');
 }
-.btnQuantidade:hover {
+
+.iconeCarrinho {
+  background-image: url('../imagens/carrinho.png');
+  background-size: contain;
+}
+
+.btnQuantidade:hover,
+.iconeCarrinho:hover {
   transform: scale(1.2);
 }
 
@@ -179,16 +200,9 @@ body {
   text-align: center;
 }
 
-.iconeCarrinho {
-  width: 28px;
-  height: 28px;
-  background: url('../imagens/carrinho.png') center center no-repeat;
-  background-size: contain;
-  cursor: pointer;
-  transition: transform 0.2s;
+.no-results {
+  text-align: center;
+  color: #666;
+  font-size: 1.1em;
+  padding: 20px;
 }
-.iconeCarrinho:hover {
-  transform: scale(1.2);
-}
-
-
