@@ -1,10 +1,60 @@
+/* Reset e estilo base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Barra de pesquisa fixa */
+.search-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.search-box {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.search-box input[type="text"] {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: transparent;
+}
+.search-box button {
+  padding: 0 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-box button:hover {
+  background-color: #e0e0e0;
+}
+.search-box button i {
+  font-size: 18px;
+  color: #606060;
+}
+
+/* Espaço inferior para não sobrepor o conteúdo */
 body {
+  padding-top: 70px;
   font-family: Arial, sans-serif;
   background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
   background-size: cover;
@@ -15,10 +65,10 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 40px auto;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255,255,255,0.95);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .exibirProdutosContainer > h1 {
@@ -34,12 +84,12 @@ body {
   justify-content: center;
   gap: 15px;
   margin-bottom: 30px;
+  margin-top: 20px; /* afasta do topo fixo */
 }
 
 .filtroDePesquisa .search-input {
   position: relative;
 }
-
 .filtroDePesquisa input[type="text"],
 .filtroDePesquisa select {
   padding: 8px 35px 8px 35px;
@@ -47,7 +97,6 @@ body {
   border-radius: 5px;
   font-size: 0.95em;
 }
-
 .filtroDePesquisa .search-icon {
   position: absolute;
   left: 10px;
@@ -56,7 +105,6 @@ body {
   color: #888;
   font-size: 1.1em;
 }
-
 .filtroDePesquisa .clear-btn,
 .filtroDePesquisa .clear-cat {
   position: absolute;
@@ -67,7 +115,6 @@ body {
   font-size: 1.1em;
   cursor: pointer;
 }
-
 .filtroDePesquisa button[type="submit"] {
   padding: 8px 20px;
   background: #28a745;
@@ -77,7 +124,6 @@ body {
   cursor: pointer;
   transition: background 0.3s;
 }
-
 .filtroDePesquisa button[type="submit"]:hover {
   background: #218838;
 }
@@ -100,10 +146,9 @@ body {
   cursor: pointer;
   text-align: center;
 }
-
 .produtoItem:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .produtoItem img {
@@ -112,7 +157,6 @@ body {
   object-fit: cover;
   border-bottom: 1px solid #eee;
 }
-
 .produtoItem h3 {
   background: #fafafa;
   padding: 10px 5px;
@@ -123,38 +167,32 @@ body {
 .detalhesHover {
   padding: 10px;
 }
-
 .descricao {
   font-size: 0.95em;
   color: #555;
   margin: 10px 0;
 }
-
 .precos {
   margin: 8px 0;
 }
-
 .precoAntigo {
   font-size: 0.85em;
   color: #888;
   text-decoration: line-through;
   display: block;
 }
-
 .precoAtual {
   font-size: 1em;
   font-weight: bold;
   color: #d00;
   display: block;
 }
-
 .labelDesconto {
   font-size: 0.9em;
   color: red;
   display: block;
   margin-top: 4px;
 }
-
 .quantidadeContainer {
   display: flex;
   align-items: center;
@@ -162,7 +200,6 @@ body {
   gap: 8px;
   margin-top: 10px;
 }
-
 .btnQuantidade,
 .iconeCarrinho {
   width: 26px;
@@ -175,31 +212,25 @@ body {
   background-size: 14px 14px;
   padding: 3px;
 }
-
 .btnQuantidade.plus {
   background-image: url('../imagens/plus.png');
 }
-
 .btnQuantidade.minus {
   background-image: url('../imagens/minus.png');
 }
-
 .iconeCarrinho {
   background-image: url('../imagens/carrinho.png');
   background-size: contain;
 }
-
 .btnQuantidade:hover,
 .iconeCarrinho:hover {
   transform: scale(1.2);
 }
-
 .quantidadeValor {
   font-size: 1.2em;
   min-width: 20px;
   text-align: center;
 }
-
 .no-results {
   text-align: center;
   color: #666;
