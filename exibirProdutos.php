@@ -51,9 +51,24 @@
         <link rel="stylesheet" href="./css/exibirProdutos.css">
         <meta charset="UTF-8">
         <title>Exibir Produtos</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <?php menuLateral::render(); ?>
+
+        <div class="containerPesquisa">
+            <form action="exibirProdutos.php" method="GET" id="formPesquisa" class="caixaPesquisa">
+                <input 
+                    type="text"
+                    id="busca"
+                    name="busca"
+                    placeholder="Pesquisar por nome ou descrição"
+                    value="<?=htmlspecialchars($busca) ?>"
+                >
+                <button
+            </form>
+        </div>
+
 
         <div class="exibirProdutosContainer">
             <h1>Produtos</h1>
