@@ -124,3 +124,110 @@ body {
     color: #555;
     margin-top: 5px;
 }
+
+/* Reset base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1) BARRA SUPERIOR */
+.barraSuperior {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  padding: 8px 16px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+.caixaBusca {
+  display: flex;
+  width: 100%; max-width: 640px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.caixaBusca input {
+  flex: 1;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  outline: none;
+}
+.caixaBusca button {
+  background: none;
+  border: none;
+  padding: 0 16px;
+  cursor: pointer;
+}
+.caixaBusca .material-icons {
+  font-size: 24px;
+  color: #606060;
+}
+.caixaBusca button:hover .material-icons {
+  color: #000;
+}
+
+/* 2) BARRA LATERAL DE CATEGORIAS */
+.barraLateral {
+  position: fixed;
+  top: 56px;    /* altura da .barraSuperior */
+  left: 0;
+  width: 200px;
+  bottom: 0;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  padding: 16px;
+  overflow-y: auto;
+}
+.barraLateral h2 {
+  margin-bottom: 12px;
+  font-size: 1.2em;
+}
+.barraLateral a {
+  display: block;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: #333;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+.barraLateral a.selecionada,
+.barraLateral a:hover {
+  background: #eee;
+}
+
+/* 3) CONTEÚDO PRINCIPAL (ao lado da lateral) */
+body {
+  padding-top: 56px;   /* espaço para a barraSuperior */
+  font-family: Arial, sans-serif;
+  background: url('../imagens/fundoMercado.png') center/cover fixed;
+  color: #333;
+}
+.containerProdutos {
+  margin: 24px;
+  margin-left: 224px;  /* desloca para caber a barraLateral */
+}
+.containerProdutos > h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+/* grade de produtos */
+.produtosGrade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  gap: 20px;
+}
+
+/* estilo dos cards segue igual ao seu CSS anterior */
+.produtoItem { /* ... */ }
+.produtoItem img { /* ... */ }
+.produtoItem h3 { /* ... */ }
+/* e assim por diante, mantendo todo o seu restante de estilos */
