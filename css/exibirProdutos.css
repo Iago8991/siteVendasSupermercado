@@ -1,58 +1,11 @@
-/* Reset e estilo base */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Barra de pesquisa fixa */
-.search-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
-  z-index: 1000;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.search-box {
-  display: flex;
-  width: 100%;
-  max-width: 600px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
-.search-box input[type="text"] {
-  flex: 1;
-  padding: 10px 16px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  background-color: transparent;
-}
-.search-box button {
-  padding: 0 16px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.search-box button:hover {
-  background-color: #e0e0e0;
-}
-.search-box button i {
-  font-size: 18px;
-  color: #606060;
-}
-
-/* Espaço inferior para não sobrepor o conteúdo */
+/* Base body */
 body {
   padding-top: 70px;
   font-family: Arial, sans-serif;
@@ -61,6 +14,98 @@ body {
   color: #333;
 }
 
+/* DivSuperior fixa */
+.DivSuperior {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: gray;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+/* Container interno centralizado */
+.DivSuperior .filtroDePesquisa {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Form em linha */
+.DivSuperior .filtroDePesquisa form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Bloco de busca */
+.DivSuperior .filtroDePesquisa form .categoria:first-of-type {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+
+/* Input de texto */
+.DivSuperior .filtroDePesquisa form #busca {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+/* Ícones de busca/limpar */
+.DivSuperior .filtroDePesquisa form .search-icon,
+.DivSuperior .filtroDePesquisa form .clear-btn {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Bloco de categoria no canto direito */
+.DivSuperior .filtroDePesquisa form .categoria:last-of-type {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+
+/* Select de categorias */
+.DivSuperior .filtroDePesquisa form #categoria {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Botão de filtrar */
+.DivSuperior .filtroDePesquisa form button[type="submit"] {
+  padding: 6px 14px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.DivSuperior .filtroDePesquisa form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Container de produtos */
 .exibirProdutosContainer {
   width: 90%;
   max-width: 1200px;
@@ -78,56 +123,7 @@ body {
   color: #222;
 }
 
-.filtroDePesquisa {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
-  margin-top: 20px; /* afasta do topo fixo */
-}
-
-.filtroDePesquisa .search-input {
-  position: relative;
-}
-.filtroDePesquisa input[type="text"],
-.filtroDePesquisa select {
-  padding: 8px 35px 8px 35px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 0.95em;
-}
-.filtroDePesquisa .search-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #888;
-  font-size: 1.1em;
-}
-.filtroDePesquisa .clear-btn,
-.filtroDePesquisa .clear-cat {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #888;
-  font-size: 1.1em;
-  cursor: pointer;
-}
-.filtroDePesquisa button[type="submit"] {
-  padding: 8px 20px;
-  background: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.filtroDePesquisa button[type="submit"]:hover {
-  background: #218838;
-}
-
+/* Grade de produtos */
 .produtosGrade {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -137,6 +133,7 @@ body {
   margin: auto;
 }
 
+/* Item de produto */
 .produtoItem {
   background: #fff;
   border: 1px solid #ddd;
@@ -193,6 +190,7 @@ body {
   display: block;
   margin-top: 4px;
 }
+
 .quantidadeContainer {
   display: flex;
   align-items: center;
@@ -226,11 +224,13 @@ body {
 .iconeCarrinho:hover {
   transform: scale(1.2);
 }
+
 .quantidadeValor {
   font-size: 1.2em;
   min-width: 20px;
   text-align: center;
 }
+
 .no-results {
   text-align: center;
   color: #666;
