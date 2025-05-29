@@ -55,24 +55,7 @@
     </head>
     <body>
         <?php menuLateral::render(); ?>
-
-        <div class="containerPesquisa">
-            <form action="exibirProdutos.php" method="GET" id="formPesquisa" class="caixaPesquisa">
-                <input 
-                    type="text"
-                    id="busca"
-                    name="busca"
-                    placeholder="Pesquisar por nome ou descrição"
-                    value="<?=htmlspecialchars($busca) ?>"
-                >
-                <button
-            </form>
-        </div>
-
-
-        <div class="exibirProdutosContainer">
-            <h1>Produtos</h1>
-
+        <div class="DivSuperior">
             <div class="filtroDePesquisa">
                 <form action="exibirProdutos.php" method="GET" id="searchForm">
                     <div class="search-input">
@@ -100,6 +83,9 @@
                     <button type="submit">Filtrar</button>
                 </form>
             </div>
+        </div>
+        <div class="exibirProdutosContainer">
+            <h1>Produtos</h1>
 
             <div class="produtosGrade">
                 <?php 
