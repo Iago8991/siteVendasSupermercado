@@ -58,12 +58,12 @@
         <div class="DivSuperior">
             <div class="filtroDePesquisa">
                 <form action="exibirProdutos.php" method="GET" id="searchForm">
-                    <div class="search-input">
+                    <div class="categoria">
                         <input type="text" id="busca" name="busca" placeholder="Pesquisar por nome ou descrição" value="<?=htmlspecialchars($busca)?>">
                         <span class="search-icon">&#128269;</span>
                         <span class="clear-btn" onclick="clearSearch()">&#10006;</span>
                     </div>
-                    <div class="search-input">
+                    <div class="categoria">
                         <select name="categoria" id="categoria">
                             <option value="">Todas as Categorias</option>
                             <option value="cestaBasica" <?= ($categoria == "cestaBasica") ? 'selected' : '' ?>>Cesta Basica</option>
