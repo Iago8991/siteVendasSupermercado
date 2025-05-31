@@ -1,43 +1,44 @@
-/* Reset */
+/* ================== Reset básico ================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Base body */
+/* ================== Estilo geral do body ================== */
 body {
-  padding-top: 70px;
+  padding-top: 70px; /* Espaço para a DivSuperior fixa */
   font-family: Arial, sans-serif;
   background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
   background-size: cover;
   color: #333;
 }
 
-/* DivSuperior fixa */
+/* ================== DIV SUPERIOR FIXA ================== */
 .DivSuperior {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: gray;
+  background-color: #f9f9f9;  /* tom claro para destacar */
   padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   z-index: 1000;
 }
 
-/* Container interno centralizado */
+/* Container interno na DivSuperior */
 .DivSuperior .filtroDePesquisa {
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* centraliza o formulário inteiro */
   align-items: center;
   gap: 10px;
 }
 
-/* Form em linha */
+/* ================== FORMULÁRIO ================== */
 .DivSuperior .filtroDePesquisa form {
   display: flex;
   align-items: center;
@@ -46,35 +47,40 @@ body {
   width: 100%;
 }
 
-/* Bloco de busca */
-.DivSuperior .filtroDePesquisa form .categoria:first-of-type {
-  display: flex;
-  align-items: center;
+/* ================== CAMPO DE BUSCA ================== */
+.DivSuperior .filtroDePesquisa form .busca-bloco {
+  position: relative;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
   padding: 5px 8px;
+  flex: 1;           /* para o campo de busca crescer conforme disponível */
+  max-width: 400px;  /* limite máximo de largura, para não extrapolar */
 }
 
-/* Input de texto */
 .DivSuperior .filtroDePesquisa form #busca {
   border: none;
   outline: none;
   font-size: 1rem;
+  flex: 1;
 }
 
-/* Ícones de busca/limpar */
-.DivSuperior .filtroDePesquisa form .search-icon,
+/* Ícone “×” para limpar busca */
 .DivSuperior .filtroDePesquisa form .clear-btn {
   cursor: pointer;
-  margin-left: 5px;
+  margin-left: 6px;
+  font-size: 1.1rem;
+  color: #888;
 }
 
-/* Bloco de categoria no canto direito */
-.DivSuperior .filtroDePesquisa form .categoria:last-of-type {
+/* ================== SELECT DE CATEGORIA ================== */
+/* Coloca o select no canto esquerdo absoluto dentro da DivSuperior */
+.DivSuperior .filtroDePesquisa form .select-bloco {
   position: absolute;
   top: 50%;
-  right: 20px;
+  left: 20px;               /* distância do canto esquerdo */
   transform: translateY(-50%);
   background: #fff;
   border: 1px solid #ccc;
@@ -82,16 +88,26 @@ body {
   padding: 5px 8px;
 }
 
-/* Select de categorias */
+/* Faz com que o <select> “encaixe” no tamanho do texto */
 .DivSuperior .filtroDePesquisa form #categoria {
   border: none;
   background: transparent;
   font-size: 1rem;
   outline: none;
+  width: auto;         /* largura mínima para caber o texto */
+  min-width: 100px;    /* define um mínimo razoável */
 }
 
-/* Botão de filtrar */
-.DivSuperior .filtroDePesquisa form button[type="submit"] {
+/* Ícone “×” para limpar categoria (fica ao lado do select) */
+.DivSuperior .filtroDePesquisa form .clear-cat {
+  cursor: pointer;
+  margin-left: 6px;
+  font-size: 1.1rem;
+  color: #888;
+}
+
+/* ================== BOTÃO DE FILTRAR ================== */
+.DivSuperior .filtroDePesquisa form .btn-filter {
   padding: 6px 14px;
   font-size: 1rem;
   border: none;
@@ -100,12 +116,13 @@ body {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
+  margin-left: auto; /* empurra o botão para a direita relativa ao bloco de busca */
 }
-.DivSuperior .filtroDePesquisa form button[type="submit"]:hover {
+.DivSuperior .filtroDePesquisa form .btn-filter:hover {
   background-color: #0056b3;
 }
 
-/* Container de produtos */
+/* ================== CONTAINER DE PRODUTOS ================== */
 .exibirProdutosContainer {
   width: 90%;
   max-width: 1200px;
@@ -123,7 +140,7 @@ body {
   color: #222;
 }
 
-/* Grade de produtos */
+/* ================== GRADE DE PRODUTOS ================== */
 .produtosGrade {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -133,7 +150,7 @@ body {
   margin: auto;
 }
 
-/* Item de produto */
+/* ================== ITEM DE PRODUTO ================== */
 .produtoItem {
   background: #fff;
   border: 1px solid #ddd;
@@ -147,7 +164,6 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-
 .produtoItem img {
   width: 100%;
   height: 150px;
@@ -160,7 +176,6 @@ body {
   font-size: 1.1em;
   color: #333;
 }
-
 .detalhesHover {
   padding: 10px;
 }
@@ -190,7 +205,6 @@ body {
   display: block;
   margin-top: 4px;
 }
-
 .quantidadeContainer {
   display: flex;
   align-items: center;
@@ -224,13 +238,11 @@ body {
 .iconeCarrinho:hover {
   transform: scale(1.2);
 }
-
 .quantidadeValor {
   font-size: 1.2em;
   min-width: 20px;
   text-align: center;
 }
-
 .no-results {
   text-align: center;
   color: #666;
