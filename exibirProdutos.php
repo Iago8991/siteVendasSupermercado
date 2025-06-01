@@ -75,7 +75,7 @@
 
                 <!-- Segundo bloco: select de categoria (canto esquerdo) -->
                 <div class="categoria select-bloco">
-                    <select name="categoria" id="categoria">
+                    <select name="categoria" id="categoria" onchange="filtrarCategoria()">
                         <option value="">Todas as Categorias</option>
                         <option value="cestaBasica" <?= ($categoria == "cestaBasica") ? 'selected' : '' ?>>Cesta Básica</option>
                         <option value="carne" <?= ($categoria == "carne") ? 'selected' : '' ?>>Carne</option>
@@ -87,7 +87,6 @@
                         <option value="higienePessoal" <?= ($categoria == "higienePessoal") ? 'selected' : '' ?>>Higiene Pessoal</option>
                         <option value="outrosProdutos" <?= ($categoria == "outrosProdutos") ? 'selected' : '' ?>>Outros</option>
                     </select>
-                    <span class="clear-cat" onclick="clearCategory()">&#10006;</span>
                 </div>
 
                 <!-- Botão de filtrar (fica à direita do campo de busca) -->
@@ -158,6 +157,9 @@
             document.getElementById('categoria').selectedIndex = 0;
         }
 
+        function filtrarCategoria() {
+            document.getElementById('searchForm').submit();
+        }
         function alterarQuantidade(btn, delta) {
             const container = btn.parentElement;
             const valorEl = container.querySelector('.quantidadeValor');
