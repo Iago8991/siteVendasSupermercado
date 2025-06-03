@@ -61,7 +61,7 @@
     <div class="DivSuperior">
         <div class="filtroDePesquisa">
             <form action="exibirProdutos.php" method="GET" id="searchForm">
-                <!-- Primeiro bloco: campo de busca (centralizado) -->
+                <!-- ========== CAMPO DE BUSCA (CENTRALIZADO) ========== -->
                 <div class="categoria busca-bloco">
                     <input 
                         type="text" 
@@ -73,7 +73,7 @@
                     <span class="clear-btn" onclick="clearSearch()">&#10006;</span>
                 </div>
 
-                <!-- Segundo bloco: select de categoria (canto esquerdo) -->
+                <!-- ========== SELECT DE CATEGORIA (CANTO DIREITO) ========== -->
                 <div class="categoria select-bloco">
                     <select name="categoria" id="categoria" onchange="filtrarCategoria()">
                         <option value="">Todas as Categorias</option>
@@ -89,7 +89,7 @@
                     </select>
                 </div>
 
-                <!-- Botão de filtrar (fica à direita do campo de busca) -->
+                <!-- ========== BOTÃO “FILTRAR” (POSICIONADO À DIREITA DO BUSCA-BLOCO) ========== -->
                 <button type="submit" class="btn-filter">Filtrar</button>
             </form>
         </div>
