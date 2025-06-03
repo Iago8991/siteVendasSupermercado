@@ -26,14 +26,14 @@ body {
   z-index: 1000;
 }
 
-/* Container interno na DivSuperior */
+/* ================== Container interno na DivSuperior ================== */
 .DivSuperior .filtroDePesquisa {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  position: relative;
+  position: relative;           /* necessário para posicionar .select-bloco */
   display: flex;
-  justify-content: center; /* centraliza o formulário inteiro */
+  justify-content: center;      /* centraliza o conteúdo (busca + botão) */
   align-items: center;
   gap: 10px;
 }
@@ -42,12 +42,12 @@ body {
 .DivSuperior .filtroDePesquisa form {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;      /* mantém cursor de busca e botão no centro */
   gap: 10px;
   width: 100%;
 }
 
-/* ================== CAMPO DE BUSCA ================== */
+/* ================== CAMPO DE BUSCA (CENTRALIZADO) ================== */
 .DivSuperior .filtroDePesquisa form .busca-bloco {
   position: relative;
   background: #fff;
@@ -56,8 +56,8 @@ body {
   display: flex;
   align-items: center;
   padding: 5px 8px;
-  flex: 1;           /* para o campo de busca crescer conforme disponível */
-  max-width: 400px;  /* limite máximo de largura, para não extrapolar */
+  flex: 1;             /* ocupa todo o espaço central possível */
+  max-width: 400px;    /* máximo de largura, para não ficar enorme */
 }
 
 .DivSuperior .filtroDePesquisa form #busca {
@@ -75,12 +75,12 @@ body {
   color: #888;
 }
 
-/* ================== SELECT DE CATEGORIA ================== */
-/* Coloca o select no canto esquerdo absoluto dentro da DivSuperior */
+/* ================== SELECT DE CATEGORIA (CANTO DIREITO) ================== */
+/* Agora posicionamos no canto direito usando RIGHT em vez de LEFT */
 .DivSuperior .filtroDePesquisa form .select-bloco {
   position: absolute;
   top: 50%;
-  left: 20px;               /* distância do canto esquerdo */
+  right: 20px;              /* distância do canto direito */
   transform: translateY(-50%);
   background: #fff;
   border: 1px solid #ccc;
@@ -94,16 +94,8 @@ body {
   background: transparent;
   font-size: 1rem;
   outline: none;
-  width: auto;         /* largura mínima para caber o texto */
-  min-width: 100px;    /* define um mínimo razoável */
-}
-
-/* Ícone “×” para limpar categoria (fica ao lado do select) */
-.DivSuperior .filtroDePesquisa form .clear-cat {
-  cursor: pointer;
-  margin-left: 6px;
-  font-size: 1.1rem;
-  color: #888;
+  width: auto;         /* a largura se ajusta ao conteúdo */
+  min-width: 100px;    /* evita ficar muito estreito */
 }
 
 /* ================== BOTÃO DE FILTRAR ================== */
@@ -116,7 +108,7 @@ body {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-left: auto; /* empurra o botão para a direita relativa ao bloco de busca */
+  margin-left: auto;   /* empurra o botão para a direita dentro do fluxo centralizado */
 }
 .DivSuperior .filtroDePesquisa form .btn-filter:hover {
   background-color: #0056b3;
