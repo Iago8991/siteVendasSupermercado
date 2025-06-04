@@ -51,17 +51,14 @@
     <meta charset="UTF-8">
     <title>Exibir Produtos</title>
     <link rel="stylesheet" href="./css/exibirProdutos.css">
-    <!-- Ícones Material Icons para a lupa da pesquisa -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <?php menuLateral::render(); ?>
 
-    <!-- BARRA SUPERIOR FIXA -->
     <div class="DivSuperior">
         <div class="filtroDePesquisa">
             <form action="exibirProdutos.php" method="GET" id="searchForm">
-                <!-- ========== CAMPO DE BUSCA (CENTRALIZADO) ========== -->
                 <div class="categoria busca-bloco">
                     <input 
                         type="text" 
@@ -73,7 +70,6 @@
                     <span class="clear-btn" onclick="clearSearch()">&#10006;</span>
                 </div>
 
-                <!-- ========== SELECT DE CATEGORIA (CANTO DIREITO) ========== -->
                 <div class="categoria select-bloco">
                     <select name="categoria" id="categoria" onchange="filtrarCategoria()">
                         <option value="">Todas as Categorias</option>
@@ -89,7 +85,6 @@
                     </select>
                 </div>
 
-                <!-- ========== BOTÃO “FILTRAR” (POSICIONADO À DIREITA DO BUSCA-BLOCO) ========== -->
                 <button type="submit" class="btn-filter">Filtrar</button>
             </form>
         </div>
