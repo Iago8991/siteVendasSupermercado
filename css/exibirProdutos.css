@@ -1,53 +1,47 @@
-/* ================== Reset básico ================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ================== Estilo geral do body ================== */
 body {
-  padding-top: 70px; /* Espaço para a DivSuperior fixa */
+  padding-top: 70px;
   font-family: Arial, sans-serif;
   background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
   background-size: cover;
   color: #333;
 }
 
-/* ================== DIV SUPERIOR FIXA ================== */
 .DivSuperior {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #f9f9f9;  /* tom claro para destacar */
+  background-color: #f9f9f9; 
   padding: 10px 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   z-index: 1000;
 }
 
-/* ================== Container interno na DivSuperior ================== */
 .DivSuperior .filtroDePesquisa {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  position: relative;           /* necessário para posicionar .select-bloco */
+  position: relative;          
   display: flex;
-  justify-content: center;      /* centraliza o conteúdo (busca + botão) */
+  justify-content: center;      
   align-items: center;
   gap: 10px;
 }
 
-/* ================== FORMULÁRIO ================== */
 .DivSuperior .filtroDePesquisa form {
   display: flex;
   align-items: center;
-  justify-content: center;      /* mantém cursor de busca e botão no centro */
+  justify-content: center;     
   gap: 10px;
   width: 100%;
 }
 
-/* ================== CAMPO DE BUSCA (CENTRALIZADO) ================== */
 .DivSuperior .filtroDePesquisa form .busca-bloco {
   position: relative;
   background: #fff;
@@ -56,8 +50,8 @@ body {
   display: flex;
   align-items: center;
   padding: 5px 8px;
-  flex: 1;             /* ocupa todo o espaço central possível */
-  max-width: 400px;    /* máximo de largura, para não ficar enorme */
+  flex: 1;           
+  max-width: 400px;   
 }
 
 .DivSuperior .filtroDePesquisa form #busca {
@@ -67,7 +61,6 @@ body {
   flex: 1;
 }
 
-/* Ícone “×” para limpar busca */
 .DivSuperior .filtroDePesquisa form .clear-btn {
   cursor: pointer;
   margin-left: 6px;
@@ -75,12 +68,10 @@ body {
   color: #888;
 }
 
-/* ================== SELECT DE CATEGORIA (CANTO DIREITO) ================== */
-/* Agora posicionamos no canto direito usando RIGHT em vez de LEFT */
 .DivSuperior .filtroDePesquisa form .select-bloco {
   position: absolute;
   top: 50%;
-  right: 20px;              /* distância do canto direito */
+  right: 20px;              
   transform: translateY(-50%);
   background: #fff;
   border: 1px solid #ccc;
@@ -88,17 +79,15 @@ body {
   padding: 5px 8px;
 }
 
-/* Faz com que o <select> “encaixe” no tamanho do texto */
 .DivSuperior .filtroDePesquisa form #categoria {
   border: none;
   background: transparent;
   font-size: 1rem;
   outline: none;
-  width: auto;         /* a largura se ajusta ao conteúdo */
-  min-width: 100px;    /* evita ficar muito estreito */
+  width: auto;        
+  min-width: 100px;    
 }
 
-/* ================== BOTÃO DE FILTRAR ================== */
 .DivSuperior .filtroDePesquisa form .btn-filter {
   padding: 6px 14px;
   font-size: 1rem;
@@ -108,13 +97,12 @@ body {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-left: auto;   /* empurra o botão para a direita dentro do fluxo centralizado */
+  margin-left: auto;   
 }
 .DivSuperior .filtroDePesquisa form .btn-filter:hover {
   background-color: #0056b3;
 }
 
-/* ================== CONTAINER DE PRODUTOS ================== */
 .exibirProdutosContainer {
   width: 90%;
   max-width: 1200px;
@@ -132,7 +120,6 @@ body {
   color: #222;
 }
 
-/* ================== GRADE DE PRODUTOS ================== */
 .produtosGrade {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -142,7 +129,6 @@ body {
   margin: auto;
 }
 
-/* ================== ITEM DE PRODUTO ================== */
 .produtoItem {
   background: #fff;
   border: 1px solid #ddd;
