@@ -26,6 +26,7 @@ body {
   z-index: 1000;
 }
 
+/* Container interno da DivSuperior */
 .DivSuperior .filtroDePesquisa {
   width: 100%;
   max-width: 900px;
@@ -37,6 +38,7 @@ body {
   gap: 10px;
 }
 
+/* Formulário de busca + filtro */
 .DivSuperior .filtroDePesquisa form {
   display: flex;
   align-items: center;
@@ -45,6 +47,7 @@ body {
   width: 100%;
 }
 
+/* Campo de busca */
 .DivSuperior .filtroDePesquisa form .busca-bloco {
   position: relative;
   background: #fff;
@@ -53,8 +56,8 @@ body {
   display: flex;
   align-items: center;
   padding: 5px 8px;
-  flex: 1; /* para o campo de busca crescer conforme disponível */
-  max-width: 400px; /* limite máximo de largura */
+  flex: 1; /* cresce conforme disponível */
+  max-width: 400px;
 }
 
 .DivSuperior .filtroDePesquisa form #busca {
@@ -71,10 +74,11 @@ body {
   color: #888;
 }
 
+/* Select de categoria no canto direito */
 .DivSuperior .filtroDePesquisa form .select-bloco {
   position: absolute;
   top: 50%;
-  right: 20px; /* distância do canto direito */
+  right: 20px;
   transform: translateY(-50%);
   background: #fff;
   border: 1px solid #ccc;
@@ -87,10 +91,11 @@ body {
   background: transparent;
   font-size: 1rem;
   outline: none;
-  width: auto; /* a largura se ajusta ao conteúdo */
-  min-width: 100px; /* define um mínimo razoável */
+  width: auto;
+  min-width: 100px;
 }
 
+/* Botão Filtrar */
 .DivSuperior .filtroDePesquisa form .btn-filter {
   padding: 6px 14px;
   font-size: 1rem;
@@ -100,7 +105,7 @@ body {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-left: auto; /* empurra o botão para a direita relativa ao fluxo centralizado */
+  margin-left: auto; /* empurra para a direita */
 }
 .DivSuperior .filtroDePesquisa form .btn-filter:hover {
   background-color: #0056b3;
@@ -136,144 +141,115 @@ body {
 
 /* ================== ITEM DE PRODUTO ================== */
 .produtoItem {
-  position: relative;           /* para posicionar o hover */
+  position: relative;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
-  overflow: hidden;             /* recorta o conteúdo extra */
+  overflow: hidden;
   cursor: pointer;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s, height 0.2s;
-  
-  /* Altura inicial apenas para imagem + nome */
-  height: 200px;                
+
+  /* Altura inicial: imagem (150px) + título (~50px) */
+  height: 200px;
 }
 
-/* Ao “hover” levantamos e aumentamos a altura para mostrar detalhes */
 .produtoItem:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  height: 360px; /* expande verticalmente para mostrar imagem, nome, descrição, preço e botões */
+  /* Expande para mostrar detalhes */
+  height: 380px;
 }
 
-/* Imagem ocupa toda a largura e altura fixa */
+/* Imagem */
 .produtoItem img {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  display: block;
 }
 
-/* O título (nome do produto) sem fundo escuro */
+/* Título */
 .produtoItem h3 {
-  /* Removido background: agora é transparente */
-  background: transparent;
-  padding: 8px 5px;
-  font-size: 1em;
+  margin: 8px 0;
+  font-size: 1.1em;
   color: #333;
-  margin: 0;
-  line-height: 1.2;
+  background: transparent;
 }
 
-/* ================== CAMADA DE DETALHES (invisível por padrão) ================== */
+/* ================== DETALHES AO HOVER ================== */
 .produtoItem .detalhesHover {
   position: absolute;
-  top: 0; left: 0;
+  top: 200px; /* começa abaixo de imagem+título */
+  left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.97);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 150px; /* começa abaixo da imagem */
+  height: calc(100% - 200px);
+  background: rgba(255,255,255,0.97);
   box-sizing: border-box;
+  padding: 10px;
+
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
 }
 
-/* Ao passar o mouse, mostramos essa camada */
 .produtoItem:hover .detalhesHover {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* ================== DENTRO DE .detalhesHover ================== */
-
-/* Nome do produto repetido em detalhes (pode remover se não quiser) */
-.produtoItem .detalhesHover h3 {
-  margin-bottom: 8px;
-}
-
-/* Descrição embaixo do nome, justificada */
+/* Descrição */
 .produtoItem .detalhesHover .descricao {
   font-size: 0.9em;
   color: #555;
   text-align: justify;
-  margin: 5px 10px;
-  max-height: 50px;
-  overflow: auto;
+  margin-bottom: 8px;
+  max-height: 60px;
+  overflow-y: auto;
 }
 
-/* Preço embaixo da descrição, centralizado */
+/* Preços */
 .produtoItem .detalhesHover .precos {
   text-align: center;
-  margin: 8px 0;
+  margin-bottom: 8px;
 }
 .produtoItem .detalhesHover .precoAntigo {
   font-size: 0.85em;
   color: #888;
   text-decoration: line-through;
-  display: block;
 }
 .produtoItem .detalhesHover .precoAtual {
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: bold;
   color: #d00;
-  display: block;
 }
 .produtoItem .detalhesHover .labelDesconto {
   font-size: 0.9em;
   color: red;
-  margin-top: 4px;
 }
 
-/* Controles de quantidade + ícone do carrinho (embaixo) */
+/* Controles (–, valor, +, carrinho) */
 .produtoItem .detalhesHover .quantidadeContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   margin-top: 10px;
 }
 
-/* Botões “+” e “–” aumentados para 32×32 */
-.produtoItem .detalhesHover .btnQuantidade {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  transition: transform 0.2s;
-  border-radius: 50%;
-  border: 1px solid #333;
-  background: #fff center center no-repeat;
-  background-size: 16px 16px;
-  padding: 5px;
-}
-
-/* Ícone do carrinho também 32×32 */
+/* Botões maiores 40×40 */
+.produtoItem .detalhesHover .btnQuantidade,
 .produtoItem .detalhesHover .iconeCarrinho {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
+  padding: 6px;
+  background: #fff center center no-repeat;
+  background-size: 20px 20px;
+  border: 1px solid #333;
+  border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s;
-  border-radius: 50%;
-  border: 1px solid #333;
-  background: #fff center center no-repeat;
-  background-size: 16px 16px;
 }
 
-/* Ajuste das imagens de fundo dos botões (+, –, carrinho) */
 .produtoItem .detalhesHover .btnQuantidade.plus {
   background-image: url('../imagens/plus.png');
 }
@@ -284,16 +260,15 @@ body {
   background-image: url('../imagens/carrinho.png');
 }
 
-/* Efeito de “zoom” ao passar o mouse */
 .produtoItem .detalhesHover .btnQuantidade:hover,
 .produtoItem .detalhesHover .iconeCarrinho:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-/* Valor da quantidade (campo no meio dos botões) */
+/* Valor da quantidade */
 .produtoItem .detalhesHover .quantidadeValor {
   font-size: 1.2em;
-  min-width: 22px;
+  min-width: 24px;
   text-align: center;
 }
 
