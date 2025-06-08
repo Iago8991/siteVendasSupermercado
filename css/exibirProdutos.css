@@ -1,53 +1,47 @@
-/* ================== Reset básico ================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ================== Estilo geral do body ================== */
 body {
-  padding-top: 70px; /* Espaço para a DivSuperior fixa */
+  padding-top: 70px; 
   font-family: Arial, sans-serif;
   background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
   background-size: cover;
   color: #333;
 }
 
-/* ================== DIV SUPERIOR FIXA ================== */
 .DivSuperior {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #f9f9f9; /* tom claro para destacar */
+  background-color: #f9f9f9;
   padding: 10px 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   z-index: 1000;
 }
 
-/* Container interno da DivSuperior */
 .DivSuperior .filtroDePesquisa {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   position: relative;
   display: flex;
-  justify-content: center; /* centraliza o formulário inteiro */
+  justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-/* Formulário de busca + filtro */
 .DivSuperior .filtroDePesquisa form {
   display: flex;
   align-items: center;
-  justify-content: center; /* mantém campo de busca e botão no centro */
+  justify-content: center; 
   gap: 10px;
   width: 100%;
 }
 
-/* Campo de busca */
 .DivSuperior .filtroDePesquisa form .busca-bloco {
   position: relative;
   background: #fff;
@@ -56,7 +50,7 @@ body {
   display: flex;
   align-items: center;
   padding: 5px 8px;
-  flex: 1; /* cresce conforme disponível */
+  flex: 1;
   max-width: 400px;
 }
 
@@ -74,7 +68,6 @@ body {
   color: #888;
 }
 
-/* Select de categoria no canto direito */
 .DivSuperior .filtroDePesquisa form .select-bloco {
   position: absolute;
   top: 50%;
@@ -95,7 +88,6 @@ body {
   min-width: 100px;
 }
 
-/* Botão Filtrar */
 .DivSuperior .filtroDePesquisa form .btn-filter {
   padding: 6px 14px;
   font-size: 1rem;
@@ -105,13 +97,12 @@ body {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-left: auto; /* empurra para a direita */
+  margin-left: auto; 
 }
 .DivSuperior .filtroDePesquisa form .btn-filter:hover {
   background-color: #0056b3;
 }
 
-/* ================== CONTAINER DE PRODUTOS ================== */
 .exibirProdutosContainer {
   width: 90%;
   max-width: 1200px;
@@ -129,7 +120,6 @@ body {
   color: #222;
 }
 
-/* ================== GRADE DE PRODUTOS ================== */
 .produtosGrade {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -139,7 +129,6 @@ body {
   margin: auto;
 }
 
-/* ================== ITEM DE PRODUTO ================== */
 .produtoItem {
   position: relative;
   background: #fff;
@@ -150,25 +139,21 @@ body {
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s, height 0.2s;
 
-  /* Altura inicial: imagem (150px) + título (~50px) */
   height: 200px;
 }
 
 .produtoItem:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  /* Expande para mostrar detalhes */
   height: 380px;
 }
 
-/* Imagem */
 .produtoItem img {
   width: 100%;
   height: 150px;
   object-fit: cover;
 }
 
-/* Título */
 .produtoItem h3 {
   margin: 8px 0;
   font-size: 1.1em;
@@ -176,10 +161,9 @@ body {
   background: transparent;
 }
 
-/* ================== DETALHES AO HOVER ================== */
 .produtoItem .detalhesHover {
   position: absolute;
-  top: 200px; /* começa abaixo de imagem+título */
+  top: 200px; 
   left: 0;
   width: 100%;
   height: calc(100% - 200px);
@@ -197,7 +181,6 @@ body {
   pointer-events: auto;
 }
 
-/* Descrição */
 .produtoItem .detalhesHover .descricao {
   font-size: 0.9em;
   color: #555;
@@ -207,7 +190,6 @@ body {
   overflow-y: auto;
 }
 
-/* Preços */
 .produtoItem .detalhesHover .precos {
   text-align: center;
   margin-bottom: 8px;
@@ -227,7 +209,7 @@ body {
   color: red;
 }
 
-/* Controles (–, valor, +, carrinho) */
+
 .produtoItem .detalhesHover .quantidadeContainer {
   display: flex;
   align-items: center;
@@ -239,8 +221,8 @@ body {
 /* Botões maiores 40×40 */
 .produtoItem .detalhesHover .btnQuantidade,
 .produtoItem .detalhesHover .iconeCarrinho {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   padding: 6px;
   background: #fff center center no-repeat;
   background-size: 20px 20px;
@@ -265,14 +247,12 @@ body {
   transform: scale(1.1);
 }
 
-/* Valor da quantidade */
 .produtoItem .detalhesHover .quantidadeValor {
   font-size: 1.2em;
   min-width: 24px;
   text-align: center;
 }
 
-/* Caso não haja resultados */
 .no-results {
   text-align: center;
   color: #666;
