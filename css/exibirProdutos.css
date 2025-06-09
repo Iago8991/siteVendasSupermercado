@@ -1,28 +1,30 @@
+/* ================== Reset básico ================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ================== Estilo geral do body ================== */
 body {
-  padding-top: 70px; 
+  padding-top: 70px; /* Espaço para a DivSuperior fixa */
   font-family: Arial, sans-serif;
   background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
   background-size: cover;
   color: #333;
 }
 
+/* ================== DIV SUPERIOR FIXA ================== */
 .DivSuperior {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* tom claro para destacar */
   padding: 10px 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   z-index: 1000;
 }
-
 .DivSuperior .filtroDePesquisa {
   width: 100%;
   max-width: 900px;
@@ -33,15 +35,13 @@ body {
   align-items: center;
   gap: 10px;
 }
-
 .DivSuperior .filtroDePesquisa form {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   gap: 10px;
   width: 100%;
 }
-
 .DivSuperior .filtroDePesquisa form .busca-bloco {
   position: relative;
   background: #fff;
@@ -53,21 +53,18 @@ body {
   flex: 1;
   max-width: 400px;
 }
-
 .DivSuperior .filtroDePesquisa form #busca {
   border: none;
   outline: none;
   font-size: 1rem;
   flex: 1;
 }
-
 .DivSuperior .filtroDePesquisa form .clear-btn {
   cursor: pointer;
   margin-left: 6px;
   font-size: 1.1rem;
   color: #888;
 }
-
 .DivSuperior .filtroDePesquisa form .select-bloco {
   position: absolute;
   top: 50%;
@@ -78,7 +75,6 @@ body {
   border-radius: 4px;
   padding: 5px 8px;
 }
-
 .DivSuperior .filtroDePesquisa form #categoria {
   border: none;
   background: transparent;
@@ -87,7 +83,6 @@ body {
   width: auto;
   min-width: 100px;
 }
-
 .DivSuperior .filtroDePesquisa form .btn-filter {
   padding: 6px 14px;
   font-size: 1rem;
@@ -97,12 +92,13 @@ body {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-left: auto; 
+  margin-left: auto;
 }
 .DivSuperior .filtroDePesquisa form .btn-filter:hover {
   background-color: #0056b3;
 }
 
+/* ================== CONTAINER DE PRODUTOS ================== */
 .exibirProdutosContainer {
   width: 90%;
   max-width: 1200px;
@@ -112,7 +108,6 @@ body {
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
-
 .exibirProdutosContainer > h1 {
   text-align: center;
   font-size: 2em;
@@ -120,6 +115,7 @@ body {
   color: #222;
 }
 
+/* ================== GRADE DE PRODUTOS ================== */
 .produtosGrade {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -129,6 +125,7 @@ body {
   margin: auto;
 }
 
+/* ================== ITEM DE PRODUTO ================== */
 .produtoItem {
   position: relative;
   background: #fff;
@@ -138,22 +135,27 @@ body {
   cursor: pointer;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s, height 0.2s;
-
-  height: 200px;
+  height: 200px; /* 150px imagem + ~50px título */
 }
-
 .produtoItem:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  height: 380px;
+  height: 380px; /* expande para mostrar detalhes */
 }
 
+/* ================== IMAGEM CENTRALIZADA ================== */
 .produtoItem img {
-  width: 100%;
+  /* Ajuste para centralizar e conter a imagem inteira */
+  width: auto;
+  max-width: 100%;
   height: 150px;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: 0 auto;
 }
 
+/* ================== TÍTULO ================== */
 .produtoItem h3 {
   margin: 8px 0;
   font-size: 1.1em;
@@ -161,26 +163,26 @@ body {
   background: transparent;
 }
 
+/* ================== DETALHES AO HOVER ================== */
 .produtoItem .detalhesHover {
   position: absolute;
-  top: 200px; 
+  top: 200px;
   left: 0;
   width: 100%;
   height: calc(100% - 200px);
   background: rgba(255,255,255,0.97);
   box-sizing: border-box;
   padding: 10px;
-
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out;
 }
-
 .produtoItem:hover .detalhesHover {
   opacity: 1;
   pointer-events: auto;
 }
 
+/* Descrição justificada */
 .produtoItem .detalhesHover .descricao {
   font-size: 0.9em;
   color: #555;
@@ -190,6 +192,7 @@ body {
   overflow-y: auto;
 }
 
+/* Preços centralizados */
 .produtoItem .detalhesHover .precos {
   text-align: center;
   margin-bottom: 8px;
@@ -209,7 +212,7 @@ body {
   color: red;
 }
 
-
+/* Controles de quantidade + carrinho */
 .produtoItem .detalhesHover .quantidadeContainer {
   display: flex;
   align-items: center;
@@ -217,8 +220,6 @@ body {
   gap: 12px;
   margin-top: 10px;
 }
-
-/* Botões maiores 40×40 */
 .produtoItem .detalhesHover .btnQuantidade,
 .produtoItem .detalhesHover .iconeCarrinho {
   width: 50px;
@@ -231,7 +232,6 @@ body {
   cursor: pointer;
   transition: transform 0.2s;
 }
-
 .produtoItem .detalhesHover .btnQuantidade.plus {
   background-image: url('../imagens/plus.png');
 }
@@ -241,18 +241,18 @@ body {
 .produtoItem .detalhesHover .iconeCarrinho {
   background-image: url('../imagens/carrinho.png');
 }
-
 .produtoItem .detalhesHover .btnQuantidade:hover,
 .produtoItem .detalhesHover .iconeCarrinho:hover {
   transform: scale(1.1);
 }
-
+/* Valor da quantidade */
 .produtoItem .detalhesHover .quantidadeValor {
   font-size: 1.2em;
   min-width: 24px;
   text-align: center;
 }
 
+/* Caso não haja resultados */
 .no-results {
   text-align: center;
   color: #666;
