@@ -58,35 +58,34 @@
 
     <div class="DivSuperior">
         <div class="filtroDePesquisa">
+        <div class="barraPesquisaYT">
             <form action="exibirProdutos.php" method="GET" id="searchForm">
-                <div class="categoria busca-bloco">
-                    <input 
-                        type="text" 
-                        id="busca" 
-                        name="busca" 
-                        placeholder="Pesquisar por nome ou descrição" 
-                        value="<?= htmlspecialchars($busca) ?>"
-                    >
-                    <span class="clear-btn" onclick="clearSearch()">&#10006;</span>
-                </div>
-
-                <div class="categoria select-bloco">
-                    <select name="categoria" id="categoria" onchange="filtrarCategoria()">
-                        <option value="">Todas as Categorias</option>
-                        <option value="cestaBasica" <?= ($categoria == "cestaBasica") ? 'selected' : '' ?>>Cesta Básica</option>
-                        <option value="carne" <?= ($categoria == "carne") ? 'selected' : '' ?>>Carne</option>
-                        <option value="bebidas" <?= ($categoria == "bebidas") ? 'selected' : '' ?>>Bebidas</option>
-                        <option value="padaria" <?= ($categoria == "padaria") ? 'selected' : '' ?>>Padaria</option>
-                        <option value="hortifruti" <?= ($categoria == "hortifruti") ? 'selected' : '' ?>>Hortifrúti</option>
-                        <option value="alimentosCongelados" <?= ($categoria == "alimentosCongelados") ? 'selected' : '' ?>>Alimentos Congelados</option>
-                        <option value="produtosDeLimpeza" <?= ($categoria == "produtosDeLimpeza") ? 'selected' : '' ?>>Produtos de Limpeza</option>
-                        <option value="higienePessoal" <?= ($categoria == "higienePessoal") ? 'selected' : '' ?>>Higiene Pessoal</option>
-                        <option value="outrosProdutos" <?= ($categoria == "outrosProdutos") ? 'selected' : '' ?>>Outros</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn-filter">Filtrar</button>
+                <input 
+                type="text" 
+                id="busca" name="busca" 
+                placeholder="Pesquisar por nome ou descrição" 
+                value="<?=htmlspecialchars($busca)?>"
+                >
+                <button type="submit" class="btn-search">
+                <span class="material-icons">search</span>
+                </button>
             </form>
+            </div>
+
+            <div class="categoria select-bloco">
+            <select name="categoria" id="categoria" onchange="filtrarCategoria()">
+                <option value="">Todas as Categorias</option>
+                <option value="cestaBasica" <?= ($categoria == "cestaBasica") ? 'selected' : '' ?>>Cesta Básica</option>
+                <option value="carne" <?= ($categoria == "carne") ? 'selected' : '' ?>>Carne</option>
+                <option value="bebidas" <?= ($categoria == "bebidas") ? 'selected' : '' ?>>Bebidas</option>
+                <option value="padaria" <?= ($categoria == "padaria") ? 'selected' : '' ?>>Padaria</option>
+                <option value="hortifruti" <?= ($categoria == "hortifruti") ? 'selected' : '' ?>>Hortifrúti</option>
+                <option value="alimentosCongelados" <?= ($categoria == "alimentosCongelados") ? 'selected' : '' ?>>Alimentos Congelados</option>
+                <option value="produtosDeLimpeza" <?= ($categoria == "produtosDeLimpeza") ? 'selected' : '' ?>>Produtos de Limpeza</option>
+                <option value="higienePessoal" <?= ($categoria == "higienePessoal") ? 'selected' : '' ?>>Higiene Pessoal</option>
+                <option value="outrosProdutos" <?= ($categoria == "outrosProdutos") ? 'selected' : '' ?>>Outros</option>
+            </select>
+            </div>
         </div>
     </div>
 
