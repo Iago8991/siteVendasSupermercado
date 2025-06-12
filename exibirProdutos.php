@@ -72,19 +72,24 @@
             </form>
             </div>
 
-            <div class="categoria select-bloco">
-            <select name="categoria" id="categoria" onchange="filtrarCategoria()">
-                <option value="">Todas as Categorias</option>
-                <option value="cestaBasica" <?= ($categoria == "cestaBasica") ? 'selected' : '' ?>>Cesta Básica</option>
-                <option value="carne" <?= ($categoria == "carne") ? 'selected' : '' ?>>Carne</option>
-                <option value="bebidas" <?= ($categoria == "bebidas") ? 'selected' : '' ?>>Bebidas</option>
-                <option value="padaria" <?= ($categoria == "padaria") ? 'selected' : '' ?>>Padaria</option>
-                <option value="hortifruti" <?= ($categoria == "hortifruti") ? 'selected' : '' ?>>Hortifrúti</option>
-                <option value="alimentosCongelados" <?= ($categoria == "alimentosCongelados") ? 'selected' : '' ?>>Alimentos Congelados</option>
-                <option value="produtosDeLimpeza" <?= ($categoria == "produtosDeLimpeza") ? 'selected' : '' ?>>Produtos de Limpeza</option>
-                <option value="higienePessoal" <?= ($categoria == "higienePessoal") ? 'selected' : '' ?>>Higiene Pessoal</option>
-                <option value="outrosProdutos" <?= ($categoria == "outrosProdutos") ? 'selected' : '' ?>>Outros</option>
-            </select>
+            <div class="categoriaDropdown">
+                <button type="button" class="btn-categoria" onclick="toggleDropdown()">
+                    <span id="categoriaSelecionada"><?= $categoriaLabel ?? 'Todas as Categorias' ?></span>
+                    <span class="seta"></span> 
+                </button>
+                <ul class="dropdownOpcoes" id="dropdownOpcoes">
+                    <li onclick="selecionarCategoria('', 'Todas as Categorias')">Todas as Categorias</li>
+                    <li onclick="selecionarCategoria('cestaBasica', 'Cesta Básica')">Cesta Básica</li>
+                    <li onclick="selecionarCategoria('carne', 'Carne')">Carne</li>
+                    <li onclick="selecionarCategoria('bebidas', 'Bebidas')">Bebidas</li>
+                    <li onclick="selecionarCategoria('padaria', 'Padaria')">Padaria</li>
+                    <li onclick="selecionarCategoria('hortifruti', 'Hortifrúti')">Hortifrúti</li>
+                    <li onclick="selecionarCategoria('alimentosCongelados', 'Alimentos Congelados')">Alimentos Congelados</li>
+                    <li onclick="selecionarCategoria('produtosDeLimpeza', 'Produtos De Limpeza')">Produtos De Limpeza</li>
+                    <li onclick="selecionarCategoria('higienePessoal', 'Higiene Pessoal')">Higiene Pessoal</li>
+                    <li onclick="selecionarCategoria('outrosProdutos', 'Outros')">Outros</li>
+                </ul>
+                <input type="hidden" name="categoria" id="categoriaInput" value="<?= htmlspecialchars($categoria) ?>"> 
             </div>
         </div>
     </div>
@@ -147,13 +152,20 @@
         function clearSearch(){
             document.getElementById('busca').value = '';
         }
-        function clearCategory(){
-            document.getElementById('categoria').selectedIndex = 0;
+        function toggleDropdown() {
+            document.getElementById('dropdownOpcoes').classList.toggle('show');
         }
-
-        function filtrarCategoria() {
-            document.getElementById('searchForm').submit();
+        function selecionarCategoria(valor, texto) {
+            document.getElementById('categoriaInput').value = valor;
+            document.getElementById('categoriaSelecionada').textContent = texto;
+            toggleDropdown();
+            document.getElementById('searchFrom').submit();
         }
+        document.addEventListener('click', e => {
+            if (!e.target.closet('.categoriaDropdown')) {
+                document.getElementById('dropdownOpcoes').classList.remove('show');
+            }
+        });
         function alterarQuantidade(btn, delta) {
             const container = btn.parentElement;
             const valorEl = container.querySelector('.quantidadeValor');

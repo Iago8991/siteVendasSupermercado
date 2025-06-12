@@ -27,10 +27,11 @@ body {
   width: 100%; max-width: 900px;
   margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
-  position: relative; gap: 10px;
+  position: relative;
+  gap: 10px;
 }
 
-/* ===== Barra de pesquisa ===== */
+/* ===== Barra de pesquisa estilo YouTube ===== */
 .barraPesquisaYT {
   flex: 1; max-width: 640px;
 }
@@ -59,34 +60,50 @@ body {
   color: #fff; font-size: 20px;
 }
 
-/* ===== Select de categoria ===== */
-.filtroDePesquisa .select-bloco {
+/* ===== Dropdown de categoria custom (estilo botão GitHub) ===== */
+.categoriaDropdown {
+  position: relative;
   flex-shrink: 0;
 }
-.filtroDePesquisa #categoria {
-  padding: 6px 12px;
-  font-size: 14px;
+.btn-categoria {
+  background: #000;
   color: #fff;
+  border: 2px solid #000;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+.btn-categoria .seta {
+  font-size: 12px;
+}
+.dropdownOpcoes {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
   background: #000;
   border: 2px solid #000;
   border-radius: 4px;
-  appearance: none; /* remove seta */
-  width: auto;
+  list-style: none;
+  display: none;
+  min-width: max-content;
+  padding: 4px 0;
+  z-index: 1001;
+}
+.dropdownOpcoes.show {
+  display: block;
+}
+.dropdownOpcoes li {
+  padding: 6px 12px;
+  color: #fff;
+  cursor: pointer;
   white-space: nowrap;
 }
-
-/* seta custom usando pseudo-elemento */
-.filtroDePesquisa #categoria {
-  background-image: none;
-}
-.filtroDePesquisa .select-bloco::after {
-  content: '▾';
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #fff;
-  pointer-events: none;
+.dropdownOpcoes li:hover {
+  background: #222;
 }
 
 /* ================== CONTAINER DE PRODUTOS ================== */
@@ -180,7 +197,7 @@ body {
 .produtoItem .detalhesHover .iconeCarrinho {
   width:50px; height:50px; padding:6px;
   background:#fff center center no-repeat;
-  background-size:20px 20px; border:1px solid#333;
+  background-size:20px 20px; border:1px solid #333;
   border-radius:50%; cursor:pointer; transition:transform .2s;
 }
 .produtoItem .detalhesHover .btnQuantidade.plus {
