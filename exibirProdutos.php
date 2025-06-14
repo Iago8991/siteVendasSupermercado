@@ -1,6 +1,7 @@
 <?php
     header('Content-Type: text/html; charset=utf-8');
     session_start();
+    error_reporting(0);
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
         require("bd_config.php");
         require("menuLateral.php");
@@ -58,20 +59,25 @@
 
     <div class="DivSuperior">
         <div class="filtroDePesquisa">
-        <div class="barraPesquisaYT">
-            <form action="exibirProdutos.php" method="GET" id="searchForm">
-                <input 
-                type="text" 
-                id="busca" name="busca" 
-                placeholder="Pesquisar por nome ou descrição" 
-                value="<?=htmlspecialchars($busca)?>"
-                >
-                <button type="submit" class="btn-search">
-                <span class="material-icons">search</span>
-                </button>
-            </form>
+            <div class="barraPesquisaYT">
+                <form action="exibirProdutos.php" method="GET" id="searchForm">
+                    <input 
+                    type="text" 
+                    id="busca" name="busca" 
+                    placeholder="Pesquisar por nome ou descrição" 
+                    value="<?=htmlspecialchars($busca)?>"
+                    >
+                    <button type="submit" class="btn-search">
+                    <span class="material-icons">search</span>
+                    </button>
+                </form>
             </div>
 
+            <form action="exibirProdutos.php" method="GET" id="categoriaForm" style="display:none;">
+                <input type="hidden" name="busca" value="<?= htmlspecialchars($busca) ?>">
+                <input type="hidden" name="categoria" id="categoriaInput" value="<?= htmlspecialchars($categoria) ?>">
+            </form>
+            
             <div class="categoriaDropdown">
                 <button type="button" class="btn-categoria" onclick="toggleDropdown()">
                     <span id="categoriaSelecionada"><?= $categoriaLabel ?? 'Todas as Categorias' ?></span>
@@ -149,9 +155,10 @@
     <?php mysqli_close($con); ?>
 
     <script>
-        function clearSearch(){
+        function clearSearch() {
             document.getElementById('busca').value = '';
         }
+
         function toggleDropdown() {
             document.getElementById('dropdownOpcoes').classList.toggle('show');
         }
@@ -159,13 +166,16 @@
             document.getElementById('categoriaInput').value = valor;
             document.getElementById('categoriaSelecionada').textContent = texto;
             toggleDropdown();
-            document.getElementById('searchFrom').submit();
+            document.getElementById('categoriaForm').submit();
         }
-        document.addEventListener('click', e => {
-            if (!e.target.closet('.categoriaDropdown')) {
-                document.getElementById('dropdownOpcoes').classList.remove('show');
+
+        document.addEventListener('click', function(e) {
+            const dropdown = document.querySelector('.categoriaDropdown');
+            if (!dropdown.contains(e.target)) {
+            document.getElementById('dropdownOpcoes').classList.remove('show');
             }
         });
+
         function alterarQuantidade(btn, delta) {
             const container = btn.parentElement;
             const valorEl = container.querySelector('.quantidadeValor');
@@ -174,7 +184,8 @@
             qtd = Math.max(1, Math.min(estoque, qtd + delta));
             valorEl.textContent = qtd;
         }
-    </script>
+        </script>
+
 </body>
 </html>
 
