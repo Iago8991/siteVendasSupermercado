@@ -28,31 +28,31 @@ body {
   gap: 10px;
 }
 
-.barraPesquisaYT {
+.barraPesquisa {
   flex: 1; max-width: 640px;
 }
-.barraPesquisaYT form {
+.barraPesquisa form {
   display: flex; width: 100%;
   background: #121212; border-radius: 24px; overflow: hidden;
 }
-.barraPesquisaYT input {
+.barraPesquisa input {
   flex: 1; padding: 8px 16px;
   background: transparent; border: none;
   color: #fff; font-size: 14px;
 }
-.barraPesquisaYT input::placeholder {
+.barraPesquisa input::placeholder {
   color: #aaa;
 }
-.barraPesquisaYT .btn-search {
+.barraPesquisa .btn-search {
   width: 48px; height: 48px;
   background: #383838; border: none;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; transition: background 0.2s;
 }
-.barraPesquisaYT .btn-search:hover {
+.barraPesquisa .btn-search:hover {
   background: #4d4d4d;
 }
-.barraPesquisaYT .btn-search .material-icons {
+.barraPesquisa .btn-search .material-icons {
   color: #fff; font-size: 20px;
 }
 
