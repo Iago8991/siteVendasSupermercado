@@ -59,7 +59,7 @@
 
     <div class="DivSuperior">
         <div class="filtroDePesquisa">
-            <div class="barraPesquisaYT">
+            <div class="barraPesquisa">
                 <form action="exibirProdutos.php" method="GET" id="searchForm">
                     <input 
                     type="text" 
