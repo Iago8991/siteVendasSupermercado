@@ -92,54 +92,57 @@
                 <meta charset="UTF-8">
             </head>
             <body>
+
                 <?php menuLateral::render(); ?>
+                <div id="mainContent">
 
-                <div id="containerCentral" id="mainContent">
-                    <h1>Editar Produto</h1>
+                    <div id="containerCentral">
+                        <h1>Editar Produto</h1>
 
-                    <form action="editarProdutos.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
+                        <form action="editarProdutos.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
 
-                        <input type="hidden" name="imagemAntiga" value="<?= htmlspecialchars($produto['produtos_imagem']) ?> ">
+                            <input type="hidden" name="imagemAntiga" value="<?= htmlspecialchars($produto['produtos_imagem']) ?> ">
 
-                        <label for="nome">Nome:</label>
-                        <input type="text" name="nome" id="nome" value="<?= htmlspecialchars($produto['produtos_nome']) ?>" required>
+                            <label for="nome">Nome:</label>
+                            <input type="text" name="nome" id="nome" value="<?= htmlspecialchars($produto['produtos_nome']) ?>" required>
 
-                        <label for="descricao">Descrição:</label>
-                        <input type="text" name="descricao" id="descricao" value="<?= htmlspecialchars($produto['produtos_descricao']) ?>" required>
+                            <label for="descricao">Descrição:</label>
+                            <input type="text" name="descricao" id="descricao" value="<?= htmlspecialchars($produto['produtos_descricao']) ?>" required>
 
-                        <label for="preco">Preço (R$):</label>
-                        <input type="number" name="preco" id="preco" step="0.01" value="<?= $produto['produtos_preco'] ?>" required>
+                            <label for="preco">Preço (R$):</label>
+                            <input type="number" name="preco" id="preco" step="0.01" value="<?= $produto['produtos_preco'] ?>" required>
 
-                        <label for="desconto">Desconto (%):</label>
-                        <input type="number" name="desconto" id="desconto" step="0.01" value="<?= $produto['produtos_desconto'] ?>" required>
+                            <label for="desconto">Desconto (%):</label>
+                            <input type="number" name="desconto" id="desconto" step="0.01" value="<?= $produto['produtos_desconto'] ?>" required>
 
-                        <label for="estoque">Estoque:</label>
-                        <input type="number" name="estoque" id="estoque" value="<?= $produto['produtos_estoque'] ?>" required>
+                            <label for="estoque">Estoque:</label>
+                            <input type="number" name="estoque" id="estoque" value="<?= $produto['produtos_estoque'] ?>" required>
 
-                        <div class="imagemAtualContainer">
-                            <label>Imagem atual:</label>
-                            <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="Imagem do produto" class="imagemAtual">
-                        </div>
+                            <div class="imagemAtualContainer">
+                                <label>Imagem atual:</label>
+                                <img src="<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="Imagem do produto" class="imagemAtual">
+                            </div>
 
-                        <label for="imagem">Nova imagem (opcional):</label>
-                        <input type="file" name="imagem" id="imagem" accept="image/*">
+                            <label for="imagem">Nova imagem (opcional):</label>
+                            <input type="file" name="imagem" id="imagem" accept="image/*">
 
-                        <label for="categoria">Categoria:</label>
-                        <select name="categoria" id="categoria" required>
-                            <option value="selecione" <?= ($produto['categoria'] === 'selecione') ? 'selected' : '' ?>>Selecione</option>
-                            <option value="cestaBasica" <?= ($produto['categoria'] === 'cestaBasica') ? 'selected' : '' ?>>Cesta Básica</option>
-                            <option value="carne" <?= ($produto['categoria'] === 'carne') ? 'selected' : '' ?>>Carne</option>
-                            <option value="bebidas" <?= ($produto['categoria'] === 'bebidas') ? 'selected' : '' ?>>Bebidas</option>
-                            <option value="padaria" <?= ($produto['categoria'] === 'padaria') ? 'selected' : '' ?>>Padaria</option>
-                            <option value="hortifruti" <?= ($produto['categoria'] === 'hortifruti') ? 'selected' : '' ?>>Hortifrúti</option>
-                            <option value="alimentosCongelados" <?= ($produto['categoria'] === 'alimentosCongelados') ? 'selected' : '' ?>>Alimentos Congelados</option>
-                            <option value="produtosDeLimpeza" <?= ($produto['categoria'] === 'produtosDeLimpeza') ? 'selected' : '' ?>>Produtos de Limpeza</option>
-                            <option value="higienePessoal" <?= ($produto['categoria'] === 'higienePessoal') ? 'selected' : '' ?>>Higiene Pessoal</option>
-                            <option value="outros" <?= ($produto['categoria'] === 'outros') ? 'selected' : '' ?>>Outros</option>
-                        </select>
+                            <label for="categoria">Categoria:</label>
+                            <select name="categoria" id="categoria" required>
+                                <option value="selecione" <?= ($produto['categoria'] === 'selecione') ? 'selected' : '' ?>>Selecione</option>
+                                <option value="cestaBasica" <?= ($produto['categoria'] === 'cestaBasica') ? 'selected' : '' ?>>Cesta Básica</option>
+                                <option value="carne" <?= ($produto['categoria'] === 'carne') ? 'selected' : '' ?>>Carne</option>
+                                <option value="bebidas" <?= ($produto['categoria'] === 'bebidas') ? 'selected' : '' ?>>Bebidas</option>
+                                <option value="padaria" <?= ($produto['categoria'] === 'padaria') ? 'selected' : '' ?>>Padaria</option>
+                                <option value="hortifruti" <?= ($produto['categoria'] === 'hortifruti') ? 'selected' : '' ?>>Hortifrúti</option>
+                                <option value="alimentosCongelados" <?= ($produto['categoria'] === 'alimentosCongelados') ? 'selected' : '' ?>>Alimentos Congelados</option>
+                                <option value="produtosDeLimpeza" <?= ($produto['categoria'] === 'produtosDeLimpeza') ? 'selected' : '' ?>>Produtos de Limpeza</option>
+                                <option value="higienePessoal" <?= ($produto['categoria'] === 'higienePessoal') ? 'selected' : '' ?>>Higiene Pessoal</option>
+                                <option value="outros" <?= ($produto['categoria'] === 'outros') ? 'selected' : '' ?>>Outros</option>
+                            </select>
 
-                        <input type="submit" value="Salvar Alterações" class="botaoSalvar">
-                    </form>
+                            <input type="submit" value="Salvar Alterações" class="botaoSalvar">
+                        </form>
+                    </div>
                 </div>
             </body>
         </html>
