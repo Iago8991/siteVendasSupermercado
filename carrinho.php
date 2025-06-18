@@ -8,6 +8,12 @@
 
 <?php menuLateral::render(); ?>
 
+    <div id="mainContent">
+
+
+
+    
+    </div>
 <?php
     } else {
         echo "Realize login para acessar a página!";
