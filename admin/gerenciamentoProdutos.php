@@ -1,8 +1,9 @@
 <?PHP 
     header('Content-Type: text/html; charset=utf-8');
     session_start();
+    require_once __DIR__ . '/../urlConfig.php';
+    require_once __DIR__ . '/../menuLateral.php';
     require('../bd_config.php');
-    require('../menuLateral.php');
 
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
 
@@ -16,7 +17,7 @@
     <!DOCTYPE html>
     <html lang="pt-BR">
         <head>
-            <link rel="stylesheet" href="../css/gerenciamentoProdutos.css">
+            <link rel="stylesheet" href="<?= BASE_URL ?>css/gerenciamentoProdutos.css">
             <title> Gerenciador de Produtos </title>
             <meta charset="UTF-8">
         </head>

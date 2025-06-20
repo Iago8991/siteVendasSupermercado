@@ -1,8 +1,9 @@
 <?php 
     header('Content-Type: text/html; charset=utf-8');
     session_start();
+    require_once __DIR__ . '/urlConfig.php';
+    require_once __DIR__ . '/menuLateral.php';
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
-        require("menuLateral.php");
         require("bd_config.php");
         $sqlEmDestaque = "SELECT * FROM produtos WHERE produtos_desconto > 0 ORDER BY RAND()";
         $resultadoEmDestaque = mysqli_query($con, $sqlEmDestaque);
@@ -14,7 +15,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Página Principal</title>
-        <link rel="stylesheet" href="./css/paginaPrincipal.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/paginaPrincipal.css">
     </head>
     <body>
         <h1 class="tituloSite">Bem-vindo à Loja</h1>

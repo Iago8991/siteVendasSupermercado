@@ -2,9 +2,10 @@
     header('Content-Type: text/html; charset=utf-8');
     session_start();
     error_reporting(0);
+    require_once __DIR__ . '/urlConfig.php';
+    require_once __DIR__ . '/menuLateral.php';
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
         require("bd_config.php");
-        require("menuLateral.php");
 
         $busca = "";
         $categoria = "";
@@ -51,7 +52,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Exibir Produtos</title>
-    <link rel="stylesheet" href="./css/exibirProdutos.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>css/exibirProdutos.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -61,7 +62,7 @@
         <div class="DivSuperior">
             <div class="filtroDePesquisa">
                 <div class="barraPesquisa">
-                    <form action="exibirProdutos.php" method="GET" id="searchForm">
+                    <form action="<?= BASE_URL ?>exibirProdutos.php" method="GET" id="searchForm">
                         <input 
                         type="text" 
                         id="busca" name="busca" 
@@ -74,7 +75,7 @@
                     </form>
                 </div>
 
-                <form action="exibirProdutos.php" method="GET" id="categoriaForm" style="display:none;">
+                <form action="<?= BASE_URL ?>exibirProdutos.php" method="GET" id="categoriaForm" style="display:none;">
                     <input type="hidden" name="busca" value="<?= htmlspecialchars($busca) ?>">
                     <input type="hidden" name="categoria" id="categoriaInput" value="<?= htmlspecialchars($categoria) ?>">
                 </form>

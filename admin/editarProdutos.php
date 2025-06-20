@@ -1,9 +1,9 @@
 <?php
     header('Content-Type: text/html; charset=utf-8');
     session_start();
+    require_once __DIR__ . '/../urlConfig.php';
+    require_once __DIR__ . '/../menuLateral.php';
     require('../bd_config.php');
-    require('../menuLateral.php'); 
-    error_reporting(0);
     if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){
 
         if(isset($_GET['id'])) {
@@ -87,7 +87,7 @@
         <!DOCTYPE html>
         <html lang="pt-BR">
             <head>
-                <link rel="stylesheet" href="../css/editarProdutos.css">
+                <link rel="stylesheet" href="<?= BASE_URL ?>css/editarProdutos.css">
                 <title>Editar Produto</title>
                 <meta charset="UTF-8">
             </head>
@@ -99,7 +99,7 @@
                     <div id="containerCentral">
                         <h1>Editar Produto</h1>
 
-                        <form action="editarProdutos.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?= BASE_URL ?>editarProdutos.php?id=<?= $id ?>" method="POST" enctype="multipart/form-data">
 
                             <input type="hidden" name="imagemAntiga" value="<?= htmlspecialchars($produto['produtos_imagem']) ?> ">
 
