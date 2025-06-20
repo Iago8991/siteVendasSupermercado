@@ -1,15 +1,16 @@
 <?php
     header('Content-Type: text/html; charset=utf-8');
     session_start();
+    require_once __DIR__ . '/urlConfig.php';
+    require_once __DIR__ . '/menuLateral.php';
 if (isset($_SESSION['login']) && $_SESSION['login'] == "logado") {
-    require("menuLateral.php");
     require("bd_config.php");
     
 ?>
     <!DOCTYPE html>
     <html lang="pt-BR">
         <head>
-            <link rel="stylesheet" href="./css/contato.css">
+            <link rel="stylesheet" href="<?= BASE_URL ?>css/contato.css">
             <meta charset="UTF-8">
             <title>Contato</title>
         </head>

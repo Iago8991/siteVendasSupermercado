@@ -1,15 +1,16 @@
 <?php
     header('Content-Type: text/html; charset=utf-8');
     session_start();
+    require_once __DIR__ . '/../urlConfig.php';
+    require_once __DIR__ . '/../menuLateral.php';
     if(isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado') {
-    require('../menuLateral.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <title>Inserir Produtos</title>
-        <link rel="stylesheet" href="../css/inserirProdutos.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/inserirProdutos.css">
     </head>
     <body>
         
@@ -32,7 +33,7 @@
                     $categoriaSelecionada = $_POST['categoria'] ?? '';
                 ?>
 
-                <form class="formularioInserir" action="inserirProdutosCodigo.php" method="POST" enctype="multipart/form-data">
+                <form class="formularioInserir" action="<?= BASE_URL ?>inserirProdutosCodigo.php" method="POST" enctype="multipart/form-data">
                     <label for="nome">Nome:</label>
                     <input type="text" name="nome" id="nome" required>
 
