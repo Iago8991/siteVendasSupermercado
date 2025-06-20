@@ -33,7 +33,7 @@
                     $categoriaSelecionada = $_POST['categoria'] ?? '';
                 ?>
 
-                <form class="formularioInserir" action="<?= BASE_URL ?>inserirProdutosCodigo.php" method="POST" enctype="multipart/form-data">
+                <form class="formularioInserir" action="inserirProdutosCodigo.php" method="POST" enctype="multipart/form-data">
                     <label for="nome">Nome:</label>
                     <input type="text" name="nome" id="nome" required>
 
@@ -68,7 +68,7 @@
 
                     <input type="submit" value="Enviar">
                 </form>
-                <button class="btnVoltar" onclick="location.href='../paginaPrincipal.php'">Voltar</button>
+                <button class="btnVoltar" onclick="location.href='paginaPrincipal.php'">Voltar</button>
             </div>
         </div>
     </body>
