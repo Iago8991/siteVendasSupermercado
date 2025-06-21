@@ -1,228 +1,130 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
-    background-size: cover;
-}
-
-.tituloGerenciador {
-    text-align: center;
-    font-size: 2em;
-    color: #fff;
-    margin: 20px 0;
-}
-
-.containerGerenciador {
-    width: 80%;
-    max-width: 1200px;
-    margin: 20px auto 50px auto;
-    background-size: cover;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 30px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
-
-.produtosContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.produtoCard {
-    background: #f1f1f1; 
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    padding: 15px;
-    width: 280px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.produtoCard:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.produtoCard img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.produtoInfo {
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-.produtoInfo h3 {
-    font-size: 1.3em;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.produtoInfo p {
-    font-size: 0.9em;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.produtoInfo .categoria {
-    font-style: italic;
-    color: #555;
-}
-
-.acoesProduto {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 10px;
-}
-.acoesProduto a {
-    flex: 1;
-    text-align: center;
-    padding: 8px;
-    background: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.acoesProduto a:hover {
-    background: red;
-    transform: scale(1.05);
-}
-
-@media (max-width: 900px) {
-    .produtoCard { width: 45%; }
-}
-
-@media (max-width: 600px) {
-    .produtoCard { width: 90%; }
-}
-
-.rodape {
-    width: 100%;
-    background: #777; 
-    padding: 10px 20px;
-    text-align: center;
-    color: #fff;
-    font-size: 0.9em;
-    margin-top: 20px;
-}
-
-.produto-info .estoque {
-    font-size: 0.9em;
-    color: #555;
-    margin-top: 5px;
-}
-
-
-* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.barraSuperior {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  background: #fff;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  padding: 8px 16px;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-}
-.caixaBusca {
-  display: flex;
-  width: 100%; max-width: 640px;
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 24px;
-  overflow: hidden;
-}
-.caixaBusca input {
-  flex: 1;
-  border: none;
-  padding: 8px 16px;
-  font-size: 16px;
-  outline: none;
-}
-.caixaBusca button {
-  background: none;
-  border: none;
-  padding: 0 16px;
-  cursor: pointer;
-}
-.caixaBusca .material-icons {
-  font-size: 24px;
-  color: #606060;
-}
-.caixaBusca button:hover .material-icons {
-  color: #000;
-}
-
-.barraLateral {
-  position: fixed;
-  top: 56px; 
-  left: 0;
-  width: 200px;
-  bottom: 0;
-  background: #fff;
-  border-right: 1px solid #ddd;
-  padding: 16px;
-  overflow-y: auto;
-}
-.barraLateral h2 {
-  margin-bottom: 12px;
-  font-size: 1.2em;
-}
-.barraLateral a {
-  display: block;
-  margin-bottom: 8px;
-  text-decoration: none;
-  color: #333;
-  padding: 6px 8px;
-  border-radius: 4px;
-}
-.barraLateral a.selecionada,
-.barraLateral a:hover {
-  background: #eee;
-}
-
 body {
-  padding-top: 56px;   
+  padding-top: 70px;
   font-family: Arial, sans-serif;
-  background: url('../imagens/fundoMercado.png') center/cover fixed;
+  background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+  background-size: cover;
   color: #333;
 }
-.containerProdutos {
-  margin: 24px;
-  margin-left: 224px;  
-}
-.containerProdutos > h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 2em;
+
+#mainContent {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: rgba(255,255,255,0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.produtosGrade {
+.tituloGerenciador {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.produtosContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
 }
 
-.produtoItem { /* ... */ }
-.produtoItem img { /* ... */ }
-.produtoItem h3 { /* ... */ }
+.produtoCard {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
 
+.produtoCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.produtoCard img {
+  width: auto;
+  max-width: 100%;
+  height: 150px;
+  object-fit: contain;
+  object-position: center;
+  margin: 16px auto 8px;
+}
+
+.produtoInfo {
+  flex: 1;
+  padding: 0 12px;
+}
+
+.produtoInfo h3 {
+  font-size: 1.1em;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.produtoInfo p {
+  font-size: 0. nine em;
+  margin-bottom: 4px;
+  color: #555;
+  line-height: 1.2;
+}
+
+.produtoInfo .preco {
+  font-weight: bold;
+  color: #d00;
+  margin-top: 6px;
+}
+
+.produtoInfo .categoria,
+.produtoInfo .estoque {
+  font-style: italic;
+  font-size: 0.85em;
+  color: #777;
+}
+
+.produtoInfo .desconto {
+  font-size: 0.85em;
+  color: red;
+  margin-top: 4px;
+}
+
+.acoesProduto {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  justify-content: center;
+  border-top: 1px solid #eee;
+}
+
+.acoesProduto a {
+  flex: 1;
+  text-decoration: none;
+  background: #000000;
+  color: #fff;
+  padding: 8px 0;
+  border-radius: 4px;
+  font-size: 0. nine em;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.acoesProduto a:hover {
+  background: red;
+  transform: scale(1.05);
+}
+
+.rodape {
+  text-align: center;
+  color: #666;
+  font-size: 0. nine em;
+  margin-top: 30px;
+}
