@@ -1,13 +1,11 @@
 <?php
 
-    $script = $_SERVER['SCRIPT_NAME'];
+    $docRoot = realpath($_SERVER['DOCUMENT_ROOT']);
 
-    $parts = explode('/', trim($script, '/'));
+    $projRoot = realpath(__DIR__);
 
-    if (count($parts) > 1 && $parts[0] !== basename($script)) {
-        define('BASE_URL', '/' . $parts[0] . '/');
-    } else {
-        define('BASE_URL', '/'); 
-    }
+    $basePath = str_replace('\\','/', str_replace($docRoot, '', $projRoot));
+
+    define('BASE_URL', ($basePath === '' ? '/' : $basePath . '/'));
 
 ?>
