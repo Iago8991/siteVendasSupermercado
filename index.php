@@ -23,13 +23,13 @@
             <div class="sessaoLoginRegistro">
                 <div class="caixaLogin" onclick="location.href='loginRegistro/login.php'">
                     <h2>Login</h2>
-                    <div class="mensagem">Entre na sua conta <br/> 
+                    <div class="tooltip">Entre na sua conta <br/> 
                                                                 Importante realizar registro para obter mais funções!!!
                                                             </div>
                 </div>
                 <div class="caixaRegistro" onclick="location.href='loginRegistro/registro.php'">
                     <h2>Registro</h2>
-                    <div class="mensagem">Crie uma nova conta</div>
+                    <div class="tooltip">Crie uma nova conta</div>
                 </div>
             </div>
 
