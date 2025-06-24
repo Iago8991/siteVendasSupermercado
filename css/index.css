@@ -9,7 +9,7 @@ body {
   background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
   background-size: cover;
   color: #333;
-  padding-bottom: 60px; 
+  padding-bottom: 80px; 
 }
 
 .containerArredondado {
@@ -38,42 +38,49 @@ body {
   gap: 40px;
   margin-bottom: 30px;
 }
+
 .caixaLogin, .caixaRegistro {
+  position: relative;
   width: 150px;
   height: 80px;
   background: #fff;
   border: 2px solid #ccc;
   border-radius: 15px;
   cursor: pointer;
-  transition: transform .2s, border-color .2s, background .2s;
+  transition: transform .2s, border-color .2s;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: relative;
+  justify-content: center;
 }
+
 .caixaLogin:hover, .caixaRegistro:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
   border-color: #007bff;
-  background: #007bff;
-  color: #fff;
 }
-.mensagem {
-  display: none;
+
+.caixaLogin .tooltip, .caixaRegistro .tooltip {
   position: absolute;
-  bottom: -30px;
+  top: 100%;
   left: 50%;
-  transform: translateX(-50%);
-  background: #333;
+  transform: translate(-50%, 8px);
+  background: rgba(0,0,0,0.8);
   color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.85em;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+  min-width: 170px;
+  text-align: center;
 }
-.caixaLogin:hover .mensagem,
-.caixaRegistro:hover .mensagem {
-  display: block;
+
+.caixaLogin:hover .tooltip, .caixaRegistro:hover .tooltip {
+  opacity: 1;
+  transform: translate(-50%, 12px);
 }
+
 .loginTeste {
   max-width: 400px;
   margin: 0 auto 30px;
@@ -84,7 +91,6 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   text-align: left;
   font-size: 0.9em;
-  color: #333;
 }
 
 .gradeDescontos {
@@ -116,7 +122,7 @@ body {
   max-width: 100%;
   height: 150px;
   object-fit: contain;
-  margin: 0 auto 12px;
+  margin-bottom: 12px;
 }
 
 .produtoItem h3 {
@@ -142,7 +148,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 12px;
 }
 .btnQuantidade {
   width: 36px;
@@ -168,7 +173,8 @@ body {
 .iconeCarrinho {
   width: 36px;
   height: 36px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-top: 8px;
   cursor: pointer;
   transition: transform .2s;
 }
@@ -177,22 +183,29 @@ body {
 }
 
 .rodape {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 16px 0;
-  background: rgba(0,0,0,0.7);
   position: fixed;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  background: rgba(51, 51, 51, 0.8);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  z-index: 1000;
 }
 .rodape a {
-  color: #fff;
   text-decoration: none;
   font-size: 0.9em;
   padding: 6px 12px;
   border-radius: 4px;
-  transition: background .2s;
+  color: #fff;
 }
 .rodape a:hover {
-  background: red;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.rodape a:hover {
+  background: #555;
 }
