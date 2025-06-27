@@ -1,98 +1,163 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
-    background-size: cover;
+  font-family: Arial, sans-serif;
+  background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
-.conteinerCentral {
-    width: 400px; 
-    margin: 80px auto;
-    padding: 30px 20px 60px; 
-    background-size: cover;
-    background-color: white; 
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    position: relative;
-    text-align: center;
+.tituloSite {
+  text-align: center;
+  font-size: 2.5em;
+  color: #000;
+  margin: 20px 0;
 }
 
-.siteTitulo {
-    text-align: center;
-    font-size: 2em;
-    margin-top: 40px;
-    color: #333;
+.containerProdutos {
+  max-width: 1100px;     
+  margin: 0 auto 50px;  
+  padding: 20px;          
+  background: rgba(255,255,255,0.6);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;       
 }
 
-.formularioInserir {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: left;
-    margin-top: 20px;
+.secaoEmDestaque,
+.secaoProdutos {
+  margin: 30px 0;      
+}
+.tituloSecao {
+  text-align: center;
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 15px;
 }
 
-.formularioInserir label {
-    font-weight: bold;
-    margin-bottom: 5px;
+.sliderContainer {
+  width: 100%;           
+  position: relative;
 }
 
-.formularioInserir input[type="text"],
-.formularioInserir input[type="number"],
-.formularioInserir input[type="file"],
-.formularioInserir select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    width: 100%;
+.sliderProdutos {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;              
+  padding: 10px 0;
 }
 
-.formularioInserir input[type="submit"] {
-    padding: 10px;
-    background: #333;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
+.sliderProdutos::before,
+.sliderProdutos::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  pointer-events: none;
+  z-index: 1;
+}
+.sliderProdutos::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+.sliderProdutos::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
 }
 
-.formularioInserir input[type="submit"]:hover {
-    background: red;
-    transform: scale(1.03);
+.navegacaoSlider {
+  position: absolute;
+  top: 50%; left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 2;
+}
+.navegacaoSlider .setaAnterior,
+.navegacaoSlider .setaProxima {
+  pointer-events: auto;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  width: 40px; height: 40px;
+  line-height: 40px; text-align: center;
+  font-size: 1.5em;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity .3s, transform .2s;
+  cursor: pointer;
+}
+.navegacaoSlider .setaAnterior { left: 10px; }
+.navegacaoSlider .setaProxima { right: 10px; }
+.sliderContainer:hover .setaAnterior,
+.sliderContainer:hover .setaProxima {
+  opacity: 1;
+}
+.sliderContainer:hover .setaAnterior:hover,
+.sliderContainer:hover .setaProxima:hover {
+  transform: scale(1.2);
 }
 
-.btnVoltar {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    padding: 8px 12px;
-    background: #333;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
+.produtoCard {
+  flex: 0 0 200px;       
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform .3s;
+}
+.produtoCard:hover {
+  transform: scale(1.05);
+}
+.produtoImagem {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  background: #f9f9f9;
+}
+.produtoNome {
+  text-align: center;
+  margin: 8px 0;
+  font-size: 1.1em;
+  color: #333;
+}
+.produtoPreco,
+.produtoDesconto {
+  text-align: center;
+  margin-bottom: 6px;
+}
+.produtoDesconto {
+  font-size: 0.9em;
+  color: red;
+  margin-top: -6px;
 }
 
-.btnVoltar:hover {
-    background: red;
-    transform: scale(1.05);
+.produtoInfoExtra {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s;
+  text-align: justify;
+  font-size: 0.85em;
+}
+.produtoCard:hover .produtoInfoExtra {
+  opacity: 1;
+  visibility: visible;
 }
 
-.mensagem {
-    color: blue;
-    text-align: center;
-    margin-bottom: 10px;
+.containerProdutos .sliderContainer {
+  overflow: hidden;
 }
-
-.mensagemSucesso {
-    color: green;
-    text-align: center;
-    margin-bottom: 10px;
+.containerProdutos .sliderProdutos {
+  overflow-x: auto;
 }
