@@ -26,7 +26,6 @@
                 
                 <div id="mainContent">
                     <h1 class="tituloGerenciador"> Gerenciador de Produtos</h1>
-
                     <div class="containerGerenciador">
                         <div class="produtosContainer">
                             <?php while ($produto = mysqli_fetch_assoc($resultado)) { ?>
