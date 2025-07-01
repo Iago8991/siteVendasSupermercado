@@ -87,7 +87,7 @@
         <!DOCTYPE html>
         <html lang="pt-BR">
             <head>
-                <link rel="stylesheet" href="../css/editarProdutos.css">
+                <link rel="stylesheet" href="<?= BASE_URL ?>css/editarProdutos.css">
                 <title>Editar Produto</title>
                 <meta charset="UTF-8">
             </head>
@@ -142,6 +142,8 @@
 
                             <input type="submit" value="Salvar Alterações" class="botaoSalvar">
                         </form>
+                        
+                        <button class="btn-voltar" onclick="location.href='gerenciamentoProdutos.php'">Voltar</button>
                     </div>
                 </div>
             </body>
