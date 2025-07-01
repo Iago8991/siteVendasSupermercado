@@ -20,6 +20,8 @@ body {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-left: 50px;
+  transition: margin-left 0.3s;
 }
 
 .tituloGerenciador {
@@ -127,4 +129,10 @@ body {
   color: #666;
   font-size: 0. nine em;
   margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  #mainContent {
+    margin-left: 50px;
+  }
 }
