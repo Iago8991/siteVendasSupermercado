@@ -12,16 +12,24 @@ body {
   color: #333;
 }
 
+/* ===== centraliza o painel dinamicamente ===== */
 #mainContent {
+  position: relative;
   width: 90%;
   max-width: 1200px;
-  margin: 40px auto;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 40px;
   background-color: rgba(255,255,255,0.95);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-left: 50px;
-  transition: margin-left 0.3s;
+  transition: left 0.3s;
+}
+
+/* quando o menu lateral estiver expandido, adicione a classe "menu-open" no <body> via JS */
+body.menu-open #mainContent {
+  left: calc(50% + 92.5px);
 }
 
 .tituloGerenciador {
@@ -29,6 +37,11 @@ body {
   font-size: 2em;
   margin-bottom: 20px;
   color: #222;
+}
+
+.containerGerenciador {
+  display: grid;
+  gap: 20px;
 }
 
 .produtosContainer {
@@ -75,7 +88,7 @@ body {
 }
 
 .produtoInfo p {
-  font-size: 0. nine em;
+  font-size: 0.9em;
   margin-bottom: 4px;
   color: #555;
   line-height: 1.2;
@@ -111,11 +124,11 @@ body {
 .acoesProduto a {
   flex: 1;
   text-decoration: none;
-  background: #000000;
+  background: #000;
   color: #fff;
   padding: 8px 0;
   border-radius: 4px;
-  font-size: 0. nine em;
+  font-size: 0.9em;
   transition: background 0.2s, transform 0.2s;
 }
 
@@ -127,12 +140,13 @@ body {
 .rodape {
   text-align: center;
   color: #666;
-  font-size: 0. nine em;
+  font-size: 0.9em;
   margin-top: 30px;
 }
 
 @media (max-width: 768px) {
   #mainContent {
-    margin-left: 50px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

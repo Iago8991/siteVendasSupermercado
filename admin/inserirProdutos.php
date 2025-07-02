@@ -10,7 +10,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Inserir Produtos</title>
-        <link rel="stylesheet" href="<?= BASE_URL ?>css/inserirProdutos.css">
+        <link rel="stylesheet" href="../css/inserirProdutos.css">
     </head>
     <body>
         
