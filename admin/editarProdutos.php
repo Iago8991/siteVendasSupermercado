@@ -1,6 +1,7 @@
 <?php
     header('Content-Type: text/html; charset=utf-8');
     session_start();
+    error_reporting(0);
     require_once __DIR__ . '/../urlConfig.php';
     require_once __DIR__ . '/../menuLateral.php';
     require('../bd_config.php');
@@ -142,7 +143,6 @@
 
                             <input type="submit" value="Salvar Alterações" class="botaoSalvar">
                         </form>
-                        
                         <button class="btn-voltar" onclick="location.href='gerenciamentoProdutos.php'">Voltar</button>
                     </div>
                 </div>
