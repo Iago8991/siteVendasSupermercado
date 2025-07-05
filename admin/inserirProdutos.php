@@ -68,7 +68,6 @@
 
                     <input type="submit" value="Enviar">
                 </form>
-                <button class="btnVoltar" onclick="location.href='paginaPrincipal.php'">Voltar</button>
             </div>
         </div>
     </body>

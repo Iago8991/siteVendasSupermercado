@@ -1,17 +1,30 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f4f8;
-    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+#mainContent {
+    margin-left: 250px;     
+    min-height: 100%;
+    display: flex;
+    justify-content: center;  
+    align-items: flex-start;  
+    padding-top: 60px;       /
+}
+
 #containerCentral {
-    margin-left: 250px; 
+    width: 90%;
+    max-width: 800px;
     padding: 40px;
     background-color: #fff;
-    max-width: 800px;
-    margin-top: 60px;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -45,39 +58,35 @@ select {
 }
 
 .imagemAtualContainer {
-    text-align: center;  
-    margin: 20px 0;      
+    text-align: center;
+    margin: 20px 0;
 }
-
 .imagemAtual {
     max-width: 150px;
     border-radius: 8px;
-    margin: 10px auto;   
+    margin: 10px auto;
     border: 1px solid #ccc;
-    display: block;      
+    display: block;
 }
-
 
 .botaoSalvar {
     margin-top: 25px;
     padding: 12px;
     background-color: #28a745;
-    color: white;
+    color: #fff;
     font-size: 16px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .botaoSalvar:hover {
     background-color: #218838;
 }
 
 .btn-voltar {
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
+    display: block;
+    margin: 20px 0 0;
     padding: 5px 10px;
     background: #333;
     color: #fff;
@@ -86,7 +95,6 @@ select {
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
-
 .btn-voltar:hover {
     background: red;
     transform: scale(1.05);
