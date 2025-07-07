@@ -18,10 +18,19 @@
         <link rel="stylesheet" href="<?= BASE_URL ?>css/carrinho.css">
     </head>
     <body>
-            <div id="mainContent">
-                <h1> Carrinho de compras</h1>
+        <div id="topo">
+            Logo do ite                          nome do usuario(imagem ilustrativa)
+                                                            Opcão de apagar a conta
+        </div>    
+        <div id="mainContent">
+            <h1> Carrinho de compras</h1>
+            <div id="carrinhoDeCompras">
+                <div id="produtosCard">
 
+                </div>
+                <button id="comprar" onclick= finalizarCompra()>Finalizar Compra</button>
             </div>
+        </div>
     </body>
 </html>
 <?php
