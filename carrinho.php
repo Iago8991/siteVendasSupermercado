@@ -9,19 +9,33 @@
 
 <?php menuLateral::render(); ?>
 
-    <div id="mainContent">
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Carrinho</title>
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/carrinho.css">
+    </head>
+    <body>
+        <div id="topo">
+            Logo do ite                          nome do usuario(imagem ilustrativa)
+                                                            Opcão de apagar a conta
+        </div>    
+        <div id="mainContent">
+            <h1> Carrinho de compras</h1>
+            <div id="carrinhoDeCompras">
+                <div id="produtosCard">
 
-
-
-    
-    </div>
+                </div>
+                <button id="comprar" onclick= finalizarCompra()>Finalizar Compra</button>
+            </div>
+        </div>
+    </body>
+</html>
 <?php
     } else {
         echo "Realize login para acessar a página!";
         echo "<button class='btn-voltar' onclick=\"location.href='index.php'\">Voltar</button>";
     }
 ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-</html>
