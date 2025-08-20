@@ -3,6 +3,8 @@
     session_start();
     require_once __DIR__ . '/urlConfig.php';
     require_once __DIR__ . '/menuLateral.php';
+    $logoArquivoLocal = __DIR__ . '/imagens/logoSite.png';
+    $logoArquivoWeb = BASE_URL . 'imagens/logoSite.png';
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado') {
         require("bd_config.php");
 ?>
@@ -19,8 +21,7 @@
     </head>
     <body>
         <div id="topo">
-            Logo do ite                          nome do usuario(imagem ilustrativa)
-                                                            Opcão de apagar a conta
+            
         </div>    
         <div id="mainContent">
             <h1> Carrinho de compras</h1>
