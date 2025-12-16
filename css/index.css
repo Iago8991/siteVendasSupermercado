@@ -143,45 +143,6 @@ body {
   margin-bottom: 12px;
 }
 
-.quantidadeContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.btnQuantidade {
-  width: 36px;
-  height: 36px;
-  border: 2px solid #333;
-  border-radius: 50%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform .2s;
-}
-.btnQuantidade:hover {
-  transform: scale(1.2);
-}
-.quantidadeValor {
-  font-size: 1.2em;
-  min-width: 24px;
-  text-align: center;
-}
-
-.iconeCarrinho {
-  width: 36px;
-  height: 36px;
-  margin-left: auto;
-  margin-top: 8px;
-  cursor: pointer;
-  transition: transform .2s;
-}
-.iconeCarrinho:hover {
-  transform: scale(1.2);
-}
-
 .rodape {
   position: fixed;
   bottom: 0;

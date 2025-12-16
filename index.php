@@ -15,6 +15,7 @@
         <meta charset="UTF-8">
         <title>Mercadinho IRR</title>
         <link rel="stylesheet" href="./css/index.css">
+        <script src="index.js" defer></script>
     </head>
     <body>
         <div class="containerArredondado">
@@ -24,8 +25,8 @@
                 <div class="caixaLogin" onclick="location.href='loginRegistro/login.php'">
                     <h2>Login</h2>
                     <div class="tooltip">Entre na sua conta <br/> 
-                                                                Importante realizar registro para obter mais funções!!!
-                                                            </div>
+                                          Importante realizar registro para obter mais funções!!!
+                                        </div>
                 </div>
                 <div class="caixaRegistro" onclick="location.href='loginRegistro/registro.php'">
                     <h2>Registro</h2>
@@ -50,13 +51,7 @@
                         <h3><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
                         <p class="precoAntigo"><del>R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></del></p>
                         <p class="precoDesconto"><strong>R$ <?= number_format($precoComDesconto, 2, ',', '.') ?></strong></p>
-                        <div class="quantidadeContainer" data-stock="<?= htmlspecialchars($produto['produtos_estoque']) ?>">
-                            <img src="imagens/minus.png" alt="Diminuir" class="btnQuantidade" onclick="alterarQuantidade(this, -1)">
-                            <span class="quantidadeValor">1</span>
-                            <img src="imagens/plus.png" alt="Aumentar" class="btnQuantidade" onclick="alterarQuantidade(this, 1)">
-                            <img src="imagens/carrinho.png" alt="Carrinho" class="iconeCarrinho" onclick="location.href='carrinho.php'">
                         </div>
-                    </div>
                 <?php } ?>
             </div>
         </div>
