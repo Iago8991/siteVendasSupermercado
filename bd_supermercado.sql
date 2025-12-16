@@ -19,6 +19,27 @@ CREATE TABLE produtos (
     categoria VARCHAR(100) NOT NULL DEFAULT 'OUTROS'
 );
 
+-- Tabela para armazenar os produtos no carrinho de compras do usuário antes da finalização.
+CREATE TABLE carrinho_itens (
+    carrinho_id INT AUTO_INCREMENT PRIMARY KEY,
+    -- ID do usuário que adicionou o item ao carrinho
+    usuario_id INT NOT NULL,
+    -- ID do produto que foi adicionado
+    produto_id INT NOT NULL,
+    -- Quantidade desse produto no carrinho
+    quantidade INT NOT NULL DEFAULT 1,
+    -- Data/hora de quando o item foi adicionado ou atualizado (opcional, mas útil para limpeza)
+    data_adicao DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    -- Restrições de Chave Estrangeira
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (produto_id) REFERENCES produtos(produtos_id) ON DELETE CASCADE,
+    
+    -- Restrição para garantir que um produto só pode aparecer uma vez para um usuário no carrinho.
+    -- Se o usuário adicionar o mesmo produto novamente, a quantidade deve ser atualizada, não inserida nova linha.
+    UNIQUE KEY uk_usuario_produto (usuario_id, produto_id)
+);
+
 CREATE TABLE pedidos (
     pedidos_id INT AUTO_INCREMENT PRIMARY KEY,
     pedidos_usuario_id INT NOT NULL,
