@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -14,52 +15,78 @@ body {
 
 .DivSuperior {
   position: fixed;
-  top: 0; left: 0; width: 100%;
+  top: 0; 
+  left: 0; 
+  width: 100%;
   background-color: #181818;
   padding: 10px 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   z-index: 1000;
 }
+
 .DivSuperior .filtroDePesquisa {
-  width: 100%; max-width: 900px;
+  width: 100%; 
+  max-width: 900px;
   margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
   position: relative;
   gap: 10px;
 }
 
 .barraPesquisa {
-  flex: 1; max-width: 640px;
+  flex: 1; 
+  max-width: 640px;
 }
+
 .barraPesquisa form {
-  display: flex; width: 100%;
-  background: #121212; border-radius: 24px; overflow: hidden;
+  display: flex; 
+  width: 100%;
+  background: #121212; 
+  border-radius: 24px; 
+  overflow: hidden;
 }
+
 .barraPesquisa input {
-  flex: 1; padding: 8px 16px;
-  background: transparent; border: none;
-  color: #fff; font-size: 14px;
+  flex: 1; 
+  padding: 8px 16px;
+  background: transparent; 
+  border: none;
+  color: #fff; 
+  font-size: 14px;
 }
+
 .barraPesquisa input::placeholder {
   color: #aaa;
 }
+
 .barraPesquisa .btn-search {
-  width: 48px; height: 48px;
-  background: #383838; border: none;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: background 0.2s;
+  width: 48px; 
+  height: 48px;
+  background: #383838; 
+  border: none;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  cursor: pointer; 
+  transition: background 0.2s;
 }
+
 .barraPesquisa .btn-search:hover {
   background: #4d4d4d;
 }
+
 .barraPesquisa .btn-search .material-icons {
-  color: #fff; font-size: 20px;
+  color: #fff; 
+  font-size: 20px;
 }
 
 .categoriaDropdown {
   position: relative;
   flex-shrink: 0;
 }
+
 .btn-categoria {
   background: #000;
   color: #fff;
@@ -72,9 +99,7 @@ body {
   gap: 6px;
   font-size: 14px;
 }
-.btn-categoria .seta {
-  font-size: 12px;
-}
+
 .dropdownOpcoes {
   position: absolute;
   top: calc(100% + 4px);
@@ -88,122 +113,161 @@ body {
   padding: 4px 0;
   z-index: 1001;
 }
+
 .dropdownOpcoes.show {
   display: block;
 }
+
 .dropdownOpcoes li {
   padding: 6px 12px;
   color: #fff;
   cursor: pointer;
   white-space: nowrap;
 }
+
 .dropdownOpcoes li:hover {
   background: #222;
 }
 
 .exibirProdutosContainer {
-  width: 90%; max-width: 1200px;
+  width: 90%; 
+  max-width: 1200px;
   margin: 40px auto;
   background: rgba(255,255,255,0.95);
-  padding: 30px; border-radius: 12px;
+  padding: 30px; 
+  border-radius: 12px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
 .exibirProdutosContainer > h1 {
-  text-align: center; font-size: 2em;
-  margin-bottom: 20px; color: #222;
+  text-align: center; 
+  font-size: 2em;
+  margin-bottom: 20px; 
+  color: #222;
 }
 
 .produtosGrade {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
-  gap: 20px; padding: 20px;
-  max-width: 1000px; margin: auto;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px; 
+  padding: 20px;
+  max-width: 1000px; 
+  margin: auto;
 }
 
 .produtoItem {
-  position: relative; background: #fff;
-  border: 1px solid #ddd; border-radius: 10px;
-  overflow: hidden; cursor: pointer; text-align: center;
-  transition: transform .2s,box-shadow .2s,height .2s;
-  height: 200px;
+  position: relative; 
+  background: #fff;
+  border: 1px solid #ddd; 
+  border-radius: 10px;
+  overflow: hidden; 
+  cursor: pointer; 
+  text-align: center;
+  transition: transform .2s, box-shadow .2s, height .2s;
+  height: 250px; 
 }
+
 .produtoItem:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  height: 380px;
+  height: 400px; 
 }
 
 .produtoItem img {
-  width: auto; max-width: 100%;
-  height: 150px; object-fit: contain;
-  object-position: center; display: block; margin: 0 auto;
+  width: auto; 
+  max-width: 100%;
+  height: 150px; 
+  object-fit: contain;
+  margin: 10px auto;
 }
 
 .produtoItem h3 {
-  margin: 8px 0; font-size: 1.1em;
-  color: #333; background: transparent;
+  margin: 8px 0; 
+  font-size: 1.1em;
+  color: #333;
 }
 
+
 .produtoItem .detalhesHover {
-  position: absolute; top: 200px; left: 0;
-  width: 100%; height: calc(100% - 200px);
+  position: absolute; 
+  top: 220px; 
+  left: 0;
+  width: 100%; 
+  height: calc(100% - 220px);
   background: rgba(255,255,255,0.97);
-  padding: 10px; opacity: 0;
-  pointer-events: none; transition: opacity .2s;
+  padding: 15px; 
+  opacity: 0;
+  pointer-events: none; 
+  transition: opacity .2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
 }
+
 .produtoItem:hover .detalhesHover {
-  opacity: 1; pointer-events: auto;
+  opacity: 1; 
+  pointer-events: auto;
 }
 
 .produtoItem .detalhesHover .descricao {
-  font-size:.9em; color:#555;
-  text-align:justify; margin-bottom:8px;
-  max-height:60px; overflow-y:auto;
+  font-size: 0.9em; 
+  color: #555;
+  text-align: justify; 
+  margin-bottom: 8px;
+  max-height: 60px; 
+  overflow-y: auto;
 }
 
 .produtoItem .detalhesHover .precos {
-  text-align:center; margin-bottom:8px;
-}
-.produtoItem .detalhesHover .precoAntigo {
-  font-size:.85em; color:#888;
-  text-decoration:line-through;
-}
-.produtoItem .detalhesHover .precoAtual {
-  font-size:1.3em; font-weight:bold; color:#d00;
-}
-.produtoItem .detalhesHover .labelDesconto {
-  font-size:.9em; color:red;
+  text-align: center; 
+  margin-bottom: 8px;
 }
 
-.produtoItem .detalhesHover .quantidadeContainer {
-  display:flex; align-items:center; justify-content:center;
-  gap:12px; margin-top:10px;
+.produtoItem .detalhesHover .precoAntigo {
+  font-size: 0.85em; 
+  color: #888888;
 }
-.produtoItem .detalhesHover .btnQuantidade,
-.produtoItem .detalhesHover .iconeCarrinho {
-  width:50px; height:50px; padding:6px;
-  background:#fff center center no-repeat;
-  background-size:20px 20px; border:1px solid #333;
-  border-radius:50%; cursor:pointer; transition:transform .2s;
+
+.produtoItem .detalhesHover .precoAtual {
+  font-size: 1.3em; 
+  font-weight: bold; 
+  color: #d00;
+  display: block;
 }
-.produtoItem .detalhesHover .btnQuantidade.plus {
-  background-image:url('../imagens/plus.png');
+
+.produtoItem .detalhesHover .labelDesconto {
+  font-size: 0.9em; 
+  color: red;
+  font-weight: bold;
 }
-.produtoItem .detalhesHover .btnQuantidade.minus {
-  background-image:url('../imagens/minus.png');
+
+
+#comprar {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745; 
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background 0.3s, transform 0.2s;
 }
-.produtoItem .detalhesHover .iconeCarrinho {
-  background-image:url('../imagens/carrinho.png');
+
+#comprar:hover {
+  background-color: #218838;
+  transform: scale(1.03);
 }
-.produtoItem .detalhesHover .btnQuantidade:hover,
-.produtoItem .detalhesHover .iconeCarrinho:hover {
-  transform:scale(1.1);
-}
-.produtoItem .detalhesHover .quantidadeValor {
-  font-size:1.2em; min-width:24px; text-align:center;
+
+#comprar:active {
+  transform: scale(0.98);
 }
 
 .no-results {
-  text-align:center; color:#666;
-  font-size:1.1em; padding:20px;
+  text-align: center; 
+  color: #666;
+  font-size: 1.1em; 
+  padding: 20px;
 }
