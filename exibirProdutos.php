@@ -14,7 +14,6 @@
 
         if (isset($_GET['busca']) && !empty(trim($_GET['busca']))) {
             $busca = trim(mysqli_real_escape_string($con, $_GET['busca']));
-
             $palavras = array_filter(explode(" ", $busca), function($p) {
                 return trim($p) !== "";
             });
@@ -36,8 +35,6 @@
 
         if (count($conditions) > 0) {
             $whereClause = " WHERE " . implode(" AND ", $conditions);
-        } else {
-            $whereClause = "";
         }
 
         $sql = "SELECT * FROM produtos $whereClause ORDER BY produtos_nome";
@@ -54,6 +51,7 @@
     <title>Exibir Produtos</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>css/exibirProdutos.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="<?= BASE_URL ?>js/paginaPrincipal.js" defer></script>
 </head>
 <body>
     <?php menuLateral::render(); ?>
@@ -63,23 +61,13 @@
             <div class="filtroDePesquisa">
                 <div class="barraPesquisa">
                     <form action="<?= BASE_URL ?>exibirProdutos.php" method="GET" id="searchForm">
-                        <input 
-                        type="text" 
-                        id="busca" name="busca" 
-                        placeholder="Pesquisar por nome ou descrição" 
-                        value="<?=htmlspecialchars($busca)?>"
-                        >
+                        <input type="text" id="busca" name="busca" placeholder="Pesquisar por nome ou descrição" value="<?=htmlspecialchars($busca)?>">
                         <button type="submit" class="btn-search">
-                        <span class="material-icons">search</span>
+                            <span class="material-icons">search</span>
                         </button>
                     </form>
                 </div>
 
-                <form action="<?= BASE_URL ?>exibirProdutos.php" method="GET" id="categoriaForm" style="display:none;">
-                    <input type="hidden" name="busca" value="<?= htmlspecialchars($busca) ?>">
-                    <input type="hidden" name="categoria" id="categoriaInput" value="<?= htmlspecialchars($categoria) ?>">
-                </form>
-                
                 <div class="categoriaDropdown">
                     <button type="button" class="btn-categoria" onclick="toggleDropdown()">
                         <span id="categoriaSelecionada"><?= $categoriaLabel ?? 'Todas as Categorias' ?></span>
@@ -97,7 +85,6 @@
                         <li onclick="selecionarCategoria('higienePessoal', 'Higiene Pessoal')">Higiene Pessoal</li>
                         <li onclick="selecionarCategoria('outrosProdutos', 'Outros')">Outros</li>
                     </ul>
-                    <input type="hidden" name="categoria" id="categoriaInput" value="<?= htmlspecialchars($categoria) ?>"> 
                 </div>
             </div>
         </div>
@@ -107,12 +94,10 @@
 
             <div class="produtosGrade">
                 <?php 
-                $numRows = mysqli_num_rows($resultado);
-                if ($numRows > 0) {
+                if (mysqli_num_rows($resultado) > 0) {
                     while ($produto = mysqli_fetch_assoc($resultado)) { ?>
                         <div class="produtoItem">
-                            <img src="uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>"
-                                alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                            <img src="uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
                             <h3><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
 
                             <div class="detalhesHover">
@@ -120,30 +105,18 @@
 
                                 <div class="precos">
                                     <span class="precoAntigo">
-                                        <?php if ($produto['produtos_desconto']>0): ?>
-                                            <del>R$ <?= number_format($produto['produtos_preco'],2,',','.') ?></del>
+                                        <?php if ($produto['produtos_desconto'] > 0): ?>
+                                            <del>R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></del>
                                         <?php endif; ?>
                                     </span>
                                     <span class="precoAtual">
-                                        R$ <?= number_format(
-                                            $produto['produtos_preco'] * (1 - $produto['produtos_desconto']/100),
-                                            2,',','.'
-                                        ) ?>
+                                        R$ <?= number_format($produto['produtos_preco'] * (1 - $produto['produtos_desconto']/100), 2, ',', '.') ?>
                                     </span>
-                                    <?php if ($produto['produtos_desconto']>0): ?>
-                                        <span class="labelDesconto"><?= $produto['produtos_desconto'] ?> %</span>
-                                    <?php endif; ?>
                                 </div>
 
-                                <div class="quantidadeContainer" data-stock="<?= intval($produto['produtos_estoque']) ?>">
-                                    <img src="imagens/minus.png" alt="–" class="btnQuantidade"
-                                        onclick="alterarQuantidade(this,-1)">
-                                    <span class="quantidadeValor">1</span>
-                                    <img src="imagens/plus.png" alt="+" class="btnQuantidade"
-                                        onclick="alterarQuantidade(this,1)">
-                                    <img src="imagens/carrinho.png" alt="Carrinho" class="iconeCarrinho"
-                                        onclick="location.href='carrinho.php?adicionar=<?= $produto['produtos_id'] ?>&qtd='+this.previousElementSibling.textContent">
-                                </div>
+                                <button id="comprar" onclick="adicionarAoCarrinho(<?= $produto['produtos_id'] ?>)">
+                                    Comprar
+                                </button>
                             </div>
                         </div>
                     <?php } 
@@ -153,14 +126,10 @@
                 ?>  
             </div>
         </div>
-
         <?php mysqli_close($con); ?>
-
-        
     </div>
 </body>
 </html>
-
 <?php
     } else {
         echo "Realize login para acessar a página!";
