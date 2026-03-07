@@ -4,6 +4,7 @@
     error_reporting(0);
     require_once __DIR__ . '/urlConfig.php';
     require_once __DIR__ . '/menuLateral.php';
+
     if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado'){
         require("bd_config.php");
 
@@ -12,6 +13,7 @@
         $whereClause = "";
         $conditions = [];
 
+        // Filtro de Busca por Texto
         if (isset($_GET['busca']) && !empty(trim($_GET['busca']))) {
             $busca = trim(mysqli_real_escape_string($con, $_GET['busca']));
             $palavras = array_filter(explode(" ", $busca), function($p) {
@@ -28,6 +30,7 @@
             }
         }
 
+        // Filtro de Categoria
         if (isset($_GET['categoria']) && !empty(trim($_GET['categoria']))) {
             $categoria = trim(mysqli_real_escape_string($con, $_GET['categoria']));
             $conditions[] = "categoria = '$categoria'";
@@ -43,96 +46,121 @@
         if (!$resultado) {
             die("Erro na consulta: " . mysqli_error($con));
         }
+
+        // Mapeamento de nomes para exibição no botão
+        $nomesCategorias = [
+            'cestaBasica' => 'Cesta Básica',
+            'carne' => 'Carne',
+            'bebidas' => 'Bebidas',
+            'padaria' => 'Padaria',
+            'hortifruti' => 'Hortifrúti',
+            'alimentosCongelados' => 'Alimentos Congelados',
+            'produtosDeLimpeza' => 'Produtos De Limpeza',
+            'higienePessoal' => 'Higiene Pessoal',
+            'outrosProdutos' => 'Outros'
+        ];
+        $labelCategoriaAtiva = isset($nomesCategorias[$categoria]) ? $nomesCategorias[$categoria] : 'Todas as Categorias';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Exibir Produtos</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>css/exibirProdutos.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="<?= BASE_URL ?>js/paginaPrincipal.js" defer></script>
-</head>
-<body>
-    <?php menuLateral::render(); ?>
-    
-    <div id="mainContent">
-        <div class="DivSuperior">
-            <div class="filtroDePesquisa">
-                <div class="barraPesquisa">
-                    <form action="<?= BASE_URL ?>exibirProdutos.php" method="GET" id="searchForm">
-                        <input type="text" id="busca" name="busca" placeholder="Pesquisar por nome ou descrição" value="<?=htmlspecialchars($busca)?>">
-                        <button type="submit" class="btn-search">
-                            <span class="material-icons">search</span>
-                        </button>
-                    </form>
-                </div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exibir Produtos</title>
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/exibirProdutos.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="<?= BASE_URL ?>js/paginaPrincipal.js" defer></script>
+    </head>
+    <body>
+        <?php menuLateral::render(); ?>
+        
+        <div id="mainContent">
+            <div class="DivSuperior">
+                <div class="filtroDePesquisa">
+                    <div class="barraPesquisa">
+                        <form action="<?= BASE_URL ?>exibirProdutos.php" method="GET" id="searchForm">
+                            <input type="text" id="busca" name="busca" placeholder="Pesquisar por nome ou descrição" value="<?=htmlspecialchars($busca)?>">
+                            <?php if(!empty($categoria)): ?>
+                                <input type="hidden" name="categoria" value="<?= htmlspecialchars($categoria) ?>">
+                            <?php endif; ?>
+                            <button type="submit" class="btn-search">
+                                <span class="material-icons">search</span>
+                            </button>
+                        </form>
+                    </div>
 
-                <div class="categoriaDropdown">
-                    <button type="button" class="btn-categoria" onclick="toggleDropdown()">
-                        <span id="categoriaSelecionada"><?= $categoriaLabel ?? 'Todas as Categorias' ?></span>
-                        <span class="seta"></span> 
-                    </button>
-                    <ul class="dropdownOpcoes" id="dropdownOpcoes">
-                        <li onclick="selecionarCategoria('', 'Todas as Categorias')">Todas as Categorias</li>
-                        <li onclick="selecionarCategoria('cestaBasica', 'Cesta Básica')">Cesta Básica</li>
-                        <li onclick="selecionarCategoria('carne', 'Carne')">Carne</li>
-                        <li onclick="selecionarCategoria('bebidas', 'Bebidas')">Bebidas</li>
-                        <li onclick="selecionarCategoria('padaria', 'Padaria')">Padaria</li>
-                        <li onclick="selecionarCategoria('hortifruti', 'Hortifrúti')">Hortifrúti</li>
-                        <li onclick="selecionarCategoria('alimentosCongelados', 'Alimentos Congelados')">Alimentos Congelados</li>
-                        <li onclick="selecionarCategoria('produtosDeLimpeza', 'Produtos De Limpeza')">Produtos De Limpeza</li>
-                        <li onclick="selecionarCategoria('higienePessoal', 'Higiene Pessoal')">Higiene Pessoal</li>
-                        <li onclick="selecionarCategoria('outrosProdutos', 'Outros')">Outros</li>
-                    </ul>
+                    <div class="categoriaDropdown">
+                        <form action="<?= BASE_URL ?>exibirProdutos.php" method="GET" id="categoriaForm">
+                            <input type="hidden" name="categoria" id="categoriaInput" value="<?= htmlspecialchars($categoria) ?>">
+                            <input type="hidden" name="busca" value="<?= htmlspecialchars($busca) ?>">
+                            
+                            <button type="button" class="btn-categoria" onclick="toggleDropdown()">
+                                <span id="categoriaSelecionada"><?= $labelCategoriaAtiva ?></span>
+                                <span class="seta"></span> 
+                            </button>
+                        </form>
+                        
+                        <ul class="dropdownOpcoes" id="dropdownOpcoes">
+                            <li onclick="selecionarCategoria('', 'Todas as Categorias')">Todas as Categorias</li>
+                            <li onclick="selecionarCategoria('cestaBasica', 'Cesta Básica')">Cesta Básica</li>
+                            <li onclick="selecionarCategoria('carne', 'Carne')">Carne</li>
+                            <li onclick="selecionarCategoria('bebidas', 'Bebidas')">Bebidas</li>
+                            <li onclick="selecionarCategoria('padaria', 'Padaria')">Padaria</li>
+                            <li onclick="selecionarCategoria('hortifruti', 'Hortifrúti')">Hortifrúti</li>
+                            <li onclick="selecionarCategoria('alimentosCongelados', 'Alimentos Congelados')">Alimentos Congelados</li>
+                            <li onclick="selecionarCategoria('produtosDeLimpeza', 'Produtos De Limpeza')">Produtos De Limpeza</li>
+                            <li onclick="selecionarCategoria('higienePessoal', 'Higiene Pessoal')">Higiene Pessoal</li>
+                            <li onclick="selecionarCategoria('outrosProdutos', 'Outros')">Outros</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="exibirProdutosContainer">
-            <h1>Produtos</h1>
+            <div class="exibirProdutosContainer">
+                <h1>Produtos</h1>
 
-            <div class="produtosGrade">
-                <?php 
-                if (mysqli_num_rows($resultado) > 0) {
-                    while ($produto = mysqli_fetch_assoc($resultado)) { ?>
-                        <div class="produtoItem">
-                            <img src="uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
-                            <h3><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
+                <div class="produtosGrade">
+                    <?php 
+                    if (mysqli_num_rows($resultado) > 0) {
+                        while ($produto = mysqli_fetch_assoc($resultado)) { ?>
+                            <div class="produtoItem">
+                                <img src="uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>" alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                                <h3><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
 
-                            <div class="detalhesHover">
-                                <p class="descricao"><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
+                                <div class="detalhesHover">
+                                    <p class="descricao"><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
 
-                                <div class="precos">
-                                    <span class="precoAntigo">
-                                        <?php if ($produto['produtos_desconto'] > 0): ?>
-                                            <del>R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></del>
-                                        <?php endif; ?>
-                                    </span>
-                                    <span class="precoAtual">
-                                        R$ <?= number_format($produto['produtos_preco'] * (1 - $produto['produtos_desconto']/100), 2, ',', '.') ?>
-                                    </span>
+                                    <div class="precos">
+                                        <span class="precoAntigo">
+                                            <?php if ($produto['produtos_desconto'] > 0): ?>
+                                                <del>R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></del>
+                                            <?php endif; ?>
+                                        </span>
+                                        <span class="precoAtual">
+                                            R$ <?= number_format($produto['produtos_preco'] * (1 - $produto['produtos_desconto']/100), 2, ',', '.') ?>
+                                        </span>
+                                    </div>
+
+                                    <button class="btn-comprar" onclick="adicionarAoCarrinho(<?= $produto['produtos_id'] ?>)">
+                                        Comprar
+                                    </button>
                                 </div>
-
-                                <button id="comprar" onclick="adicionarAoCarrinho(<?= $produto['produtos_id'] ?>)">
-                                    Comprar
-                                </button>
                             </div>
-                        </div>
-                    <?php } 
-                } else {
-                    echo "<p class='no-results'>Produto não encontrado.</p>";
-                }
-                ?>  
+                        <?php } 
+                    } else {
+                        echo "<p class='no-results'>Produto não encontrado para esta categoria ou busca.</p>";
+                    }
+                    ?>  
+                </div>
             </div>
+            <?php mysqli_close($con); ?>
         </div>
-        <?php mysqli_close($con); ?>
-    </div>
-</body>
+
+        <script src="<?= BASE_URL ?>js/exibirProdutos.js"></script>
+    </body>
 </html>
 <?php
     } else {
         echo "Realize login para acessar a página!";
-        echo "<button class='btn-voltar' onclick=\"location.href='index.php'\">Voltar</button>";
+        echo "<br><button class='btn-voltar' onclick=\"location.href='index.php'\">Voltar</button>";
     }
 ?>

@@ -242,7 +242,7 @@ body {
 }
 
 
-#comprar {
+.btn-comprar {
   width: 100%;
   padding: 12px;
   background-color: #28a745; 
@@ -256,12 +256,12 @@ body {
   transition: background 0.3s, transform 0.2s;
 }
 
-#comprar:hover {
+.btn-comprar:hover {
   background-color: #218838;
   transform: scale(1.03);
 }
 
-#comprar:active {
+.btn-comprar:active {
   transform: scale(0.98);
 }
 
