@@ -73,9 +73,12 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado') {
                                 </div>
                                 <div class="detalhesHover">
                                     <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
-                                    <button id="comprar" onclick="adicionarAoCarrinho(<?= $produto['produtos_id'] ?>)">
-                                        Comprar
-                                    </button>
+                                    <form action="adicionarCarrinho.php" method="POST" style="width: 100%;">
+                                        <input type="hidden" name="produto_id" value="<?= $produto['produtos_id'] ?>">
+                                        <button type="submit" id="comprar">
+                                            Comprar
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         <?php } ?>

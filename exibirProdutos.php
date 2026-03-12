@@ -139,10 +139,12 @@
                                             R$ <?= number_format($produto['produtos_preco'] * (1 - $produto['produtos_desconto']/100), 2, ',', '.') ?>
                                         </span>
                                     </div>
-
-                                    <button class="btn-comprar" onclick="adicionarAoCarrinho(<?= $produto['produtos_id'] ?>)">
-                                        Comprar
-                                    </button>
+                                    <form action="adicionarCarrinho.php" method="POST" style="width: 100%;">
+                                        <input type="hidden" name="produto_id" value="<?= $produto['produtos_id'] ?>">
+                                        <button type="submit" class="btn-comprar">
+                                            Comprar
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         <?php } 

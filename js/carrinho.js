@@ -1,4 +1,5 @@
 
+
 function alterarQuantidade(btn, delta) {
     const container = btn.parentElement;
     const quantidadeElemento = container.querySelector('.quantidadeValor');
