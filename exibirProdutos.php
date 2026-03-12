@@ -140,7 +140,7 @@
                                         </span>
                                     </div>
                                     <form action="adicionarCarrinho.php" method="POST" style="width: 100%;">
-                                        <input type="hidden" name="produto_id" value="<?= $produto['produtos_id'] ?>">
+                                        <input type="hidden" name="nome_produto" value="<?= htmlspecialchars($produto['produtos_nome']) ?>">
                                         <button type="submit" class="btn-comprar">
                                             Comprar
                                         </button>
@@ -156,8 +156,6 @@
             </div>
             <?php mysqli_close($con); ?>
         </div>
-
-        <script src="<?= BASE_URL ?>js/exibirProdutos.js"></script>
     </body>
 </html>
 <?php
