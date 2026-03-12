@@ -1,42 +1,53 @@
 <?php
-    session_start();
-    include 'db_config.php';
+session_start();
+include 'bd_config.php'; // Aqui ele carrega a variável $con
 
-    // 1. Verifica se o usuário está logado
-    if (!isset($_SESSION['user_id'])) {
-        // Se não estiver logado, manda para a página de login com um aviso
-        header("Location: login.php?erro=faca_login");
-        exit;
-    }
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php?erro=faca_login");
+    exit;
+}
 
-    // 2. Verifica se o ID do produto chegou via POST
-    if (isset($_POST['produto_id'])) {
-        $usuario_id = $_SESSION['user_id'];
-        $produto_id = intval($_POST['produto_id']);
+if (isset($_POST['nome_produto'])) {
+    $usuario_id = $_SESSION['user_id'];
+    $nome_produto = $_POST['nome_produto'];
 
-        // 3. Tenta inserir ou atualizar a quantidade (Lógica que você já tem)
-        $sql = "INSERT INTO carrinho_itens (usuario_id, produto_id, quantidade) 
-                VALUES (?, ?, 1) 
-                ON DUPLICATE KEY UPDATE quantidade = quantidade + 1";
+    // 1. Procurar o ID do produto pelo Nome usando $con
+    $sql_busca = "SELECT produtos_id FROM produtos WHERE produtos_nome = ?";
+    $stmt_busca = $con->prepare($sql_busca);
+    
+    if ($stmt_busca) {
+        $stmt_busca->bind_param("s", $nome_produto);
+        $stmt_busca->execute();
+        $resultado = $stmt_busca->get_result();
 
-        $stmt = $conn->prepare($sql);
-        
-        if ($stmt) {
-            $stmt->bind_param("ii", $usuario_id, $produto_id);
+        if ($produto_encontrado = $resultado->fetch_assoc()) {
+            $produto_id = $produto_encontrado['produtos_id'];
 
-            if ($stmt->execute()) {
-                // SUCESSO: Redireciona para o carrinho para o usuário ver o item lá
-                header("Location: carrinho.php?sucesso=adicionado");
-                exit;
-            } else {
-                echo "Erro ao inserir no banco: " . $conn->error;
+            // 2. Agora insere na tabela carrinho_itens usando $con
+            $sql_carrinho = "INSERT INTO carrinho_itens (usuario_id, produto_id, quantidade) 
+                             VALUES (?, ?, 1) 
+                             ON DUPLICATE KEY UPDATE quantidade = quantidade + 1";
+
+            $stmt_carrinho = $con->prepare($sql_carrinho);
+            
+            if ($stmt_carrinho) {
+                $stmt_carrinho->bind_param("ii", $usuario_id, $produto_id);
+
+                if ($stmt_carrinho->execute()) {
+                    header("Location: carrinho.php?sucesso=adicionado");
+                    exit;
+                } else {
+                    echo "Erro ao inserir no carrinho: " . $con->error;
+                }
             }
         } else {
-            echo "Erro na preparação do SQL: " . $conn->error;
+            echo "Produto não encontrado: " . htmlspecialchars($nome_produto);
         }
     } else {
-        // Se alguém tentar acessar o arquivo direto sem clicar no botão
-        header("Location: paginaPrincipal.php");
-        exit;
+        echo "Erro na busca do produto: " . $con->error;
     }
+} else {
+    header("Location: paginaPrincipal.php");
+    exit;
+}
 ?>

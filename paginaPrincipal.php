@@ -43,9 +43,13 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado') {
                                 </div>
                                 <div class="detalhesHover">
                                     <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
-                                    <button id="comprar" onclick="adicionarAoCarrinho(<?= $produto['produtos_id'] ?>)">
-                                        Comprar
-                                    </button>
+                                    <form action="adicionarCarrinho.php" method="POST" style="width: 100%;">
+                                        <input type="hidden" name="nome_produto" value="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                                        <button type="submit" id="comprar">
+                                            Comprar
+                                        </button>
+                                    </form>
+
                                 </div>
                             </div>
                         <?php } ?>
@@ -72,9 +76,9 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado') {
                                     </div>
                                 </div>
                                 <div class="detalhesHover">
-                                    <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
+                                    <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>          
                                     <form action="adicionarCarrinho.php" method="POST" style="width: 100%;">
-                                        <input type="hidden" name="produto_id" value="<?= $produto['produtos_id'] ?>">
+                                        <input type="hidden" name="nome_produto" value="<?= htmlspecialchars($produto['produtos_nome']) ?>">
                                         <button type="submit" id="comprar">
                                             Comprar
                                         </button>
@@ -91,7 +95,6 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado') {
             </div>
         </div>
     </div>
-    <script src="<?= BASE_URL ?>js/paginaPrincipal.js"></script>
 </body>
 </html>
 <?php
