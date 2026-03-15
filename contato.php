@@ -2,41 +2,61 @@
     header('Content-Type: text/html; charset=utf-8');
     session_start();
     require_once __DIR__ . '/urlConfig.php';
-    require_once __DIR__ . '/menuLateral.php';
-if (isset($_SESSION['login']) && $_SESSION['login'] == "logado") {
-    require("bd_config.php");
-    
-?>
-    <!DOCTYPE html>
-    <html lang="pt-BR">
-        <head>
-            <link rel="stylesheet" href="<?= BASE_URL ?>css/contato.css">
-            <meta charset="UTF-8">
-            <title>Contato</title>
-        </head>
-        <body>
-            <div class="containerCentral">
-                <h1>Contato</h1>
 
-                <?php menuLateral::render(); ?>
-
-                <p>Se você tiver alguma dúvida ou sugestão, entre em contato conosco através do e-mail:</p>
-                <p class="email">iagoadsprogramer@gmail.com</p>
-                <p>Ou pelo telefone:</p>
-                <p class="telefone">(11) 91373-4356</p>
-                <br/>
-                <p>Se preferir, preencha o formulário abaixo:</p>
-                <textarea class="mensagem" rows="4" cols="50" placeholder="Digite seu problema"> </textarea>
-
-                <a href="paginaPrincipal.php" class="btn btn-primary">Voltar</a>
-
-            </div>
-        </body>
-    </html>
-
-<?php
-    } else {
-        echo "Realize o login para acessar a página";
-        echo "<button class='btn-voltar' onclick=\"location.href='index.php'\">Voltar</button>";
+    // Lógica para processar o envio e mostrar o alerta
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        echo "<script>
+                alert('Reclamação enviada com sucesso responderemos em breve !!!');
+                window.location.href = 'contato.php';
+              </script>";
+        exit;
     }
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?= BASE_URL ?>css/contato.css">
+    <title>Contato - Mercadinho</title>
+</head>
+<body>
+    <div class="background-overlay">
+        <div class="container-contato">
+            <h1>Contate-nos</h1>
+            
+            <form action="contato.php" method="POST">
+                <div class="campo-grupo">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+                </div>
+
+                <div class="info-contato">
+                    <p><strong>Telefone para contato:</strong> xxxxx-xxxxxx</p>
+                    <p><strong>E-mail para contato:</strong> MercadinhoIRrsuporte@gmail.com</p>
+                </div>
+
+                <div class="botoes-acoes">
+                    <a href="index.php" class="btn-voltar">Voltar</a>
+                    <button type="submit" class="btn-enviar">Enviar reclamação</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
