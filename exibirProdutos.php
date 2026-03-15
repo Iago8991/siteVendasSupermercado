@@ -1,6 +1,6 @@
 <?php
-    header('Content-Type: text/html; charset=utf-8');
     session_start();
+    header('Content-Type: text/html; charset=utf-8');
     error_reporting(0);
     require_once __DIR__ . '/urlConfig.php';
     require_once __DIR__ . '/menuLateral.php';
@@ -13,7 +13,6 @@
         $whereClause = "";
         $conditions = [];
 
-        // Filtro de Busca por Texto
         if (isset($_GET['busca']) && !empty(trim($_GET['busca']))) {
             $busca = trim(mysqli_real_escape_string($con, $_GET['busca']));
             $palavras = array_filter(explode(" ", $busca), function($p) {
@@ -30,7 +29,6 @@
             }
         }
 
-        // Filtro de Categoria
         if (isset($_GET['categoria']) && !empty(trim($_GET['categoria']))) {
             $categoria = trim(mysqli_real_escape_string($con, $_GET['categoria']));
             $conditions[] = "categoria = '$categoria'";
@@ -47,7 +45,6 @@
             die("Erro na consulta: " . mysqli_error($con));
         }
 
-        // Mapeamento de nomes para exibição no botão
         $nomesCategorias = [
             'cestaBasica' => 'Cesta Básica',
             'carne' => 'Carne',
@@ -68,7 +65,7 @@
         <title>Exibir Produtos</title>
         <link rel="stylesheet" href="<?= BASE_URL ?>css/exibirProdutos.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="<?= BASE_URL ?>js/paginaPrincipal.js" defer></script>
+        <script src="<?= BASE_URL ?>js/exibirProdutos.js" defer></script>    
     </head>
     <body>
         <?php menuLateral::render(); ?>

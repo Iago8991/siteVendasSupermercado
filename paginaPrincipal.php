@@ -1,6 +1,7 @@
 <?php 
-header('Content-Type: text/html; charset=utf-8');
 session_start();
+header('Content-Type: text/html; charset=utf-8');
+error_reporting(0);
 require_once __DIR__ . '/urlConfig.php';
 require_once __DIR__ . '/menuLateral.php';
 
@@ -15,87 +16,87 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado') {
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Página Principal</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>css/paginaPrincipal.css">
-</head>
-<body>
-    <h1 class="tituloSite">Bem-vindo à Loja</h1>
-    <?php menuLateral::render(); ?>
+    <head>
+        <meta charset="UTF-8">
+        <title>Página Principal</title>
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/paginaPrincipal.css">
+    </head>
+    <body>
+        <h1 class="tituloSite">Bem-vindo à Loja</h1>
+        <?php menuLateral::render(); ?>
 
-    <div id="mainContent">
-        <div class="containerCentral">
-            <div class="secaoEmDestaque">
-                <h2 class="tituloSecao">Em Destaque</h2>
-                <div class="sliderContainer">
-                    <div class="sliderProdutos">
-                        <?php while ($produto = mysqli_fetch_array($resultadoEmDestaque)) { ?>
-                            <div class="produtoCard">
-                                <div class="cardMain">
-                                    <h3 class="produtoNome"><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
-                                    <img class="produtoImagem" src="./uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>"
-                                        alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
-                                    <div class="produtoPrecoDesconto">
-                                        <p class="produtoPreco">R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></p>
-                                        <p class="produtoDesconto">Desconto: <?= $produto['produtos_desconto'] ?> %</p>
+        <div id="mainContent">
+            <div class="containerCentral">
+                <div class="secaoEmDestaque">
+                    <h2 class="tituloSecao">Em Destaque</h2>
+                    <div class="sliderContainer">
+                        <div class="sliderProdutos">
+                            <?php while ($produto = mysqli_fetch_array($resultadoEmDestaque)) { ?>
+                                <div class="produtoCard">
+                                    <div class="cardMain">
+                                        <h3 class="produtoNome"><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
+                                        <img class="produtoImagem" src="./uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>"
+                                            alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                                        <div class="produtoPrecoDesconto">
+                                            <p class="produtoPreco">R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></p>
+                                            <p class="produtoDesconto">Desconto: <?= $produto['produtos_desconto'] ?> %</p>
+                                        </div>
+                                    </div>
+                                    <div class="detalhesHover">
+                                        <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
+                                        <form action="adicionarCarrinho.php" method="POST" style="width: 100%;">
+                                            <input type="hidden" name="nome_produto" value="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                                            <button type="submit" id="comprar">
+                                                Comprar
+                                            </button>
+                                        </form>
+
                                     </div>
                                 </div>
-                                <div class="detalhesHover">
-                                    <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>
-                                    <form action="adicionarCarrinho.php" method="POST" style="width: 100%;">
-                                        <input type="hidden" name="nome_produto" value="<?= htmlspecialchars($produto['produtos_nome']) ?>">
-                                        <button type="submit" id="comprar">
-                                            Comprar
-                                        </button>
-                                    </form>
-
-                                </div>
-                            </div>
-                        <?php } ?>
-                    </div>
-                    <div class="navegacaoSlider">
-                        <span class="setaAnterior">&#8249;</span>
-                        <span class="setaProxima">&#8250;</span>
+                            <?php } ?>
+                        </div>
+                        <div class="navegacaoSlider">
+                            <span class="setaAnterior">&#8249;</span>
+                            <span class="setaProxima">&#8250;</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="secaoProdutos">
-                <h2 class="tituloSecao">Produtos</h2>
-                <div class="sliderContainer">
-                    <div class="sliderProdutos">
-                        <?php while ($produto = mysqli_fetch_array($resultadoProdutos)) { ?>
-                            <div class="produtoCard">
-                                <div class="cardMain">
-                                    <h3 class="produtoNome"><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
-                                    <img class="produtoImagem" src="./uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>"
-                                        alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
-                                    <div class="produtoPrecoDesconto">
-                                        <p class="produtoPreco">R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></p>
+                <div class="secaoProdutos">
+                    <h2 class="tituloSecao">Produtos</h2>
+                    <div class="sliderContainer">
+                        <div class="sliderProdutos">
+                            <?php while ($produto = mysqli_fetch_array($resultadoProdutos)) { ?>
+                                <div class="produtoCard">
+                                    <div class="cardMain">
+                                        <h3 class="produtoNome"><?= htmlspecialchars($produto['produtos_nome']) ?></h3>
+                                        <img class="produtoImagem" src="./uploadProdutos/<?= htmlspecialchars($produto['produtos_imagem']) ?>"
+                                            alt="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                                        <div class="produtoPrecoDesconto">
+                                            <p class="produtoPreco">R$ <?= number_format($produto['produtos_preco'], 2, ',', '.') ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="detalhesHover">
+                                        <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>          
+                                        <form action="adicionarCarrinho.php" method="POST" style="width: 100%;">
+                                            <input type="hidden" name="nome_produto" value="<?= htmlspecialchars($produto['produtos_nome']) ?>">
+                                            <button type="submit" id="comprar">
+                                                Comprar
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
-                                <div class="detalhesHover">
-                                    <p><?= htmlspecialchars($produto['produtos_descricao']) ?></p>          
-                                    <form action="adicionarCarrinho.php" method="POST" style="width: 100%;">
-                                        <input type="hidden" name="nome_produto" value="<?= htmlspecialchars($produto['produtos_nome']) ?>">
-                                        <button type="submit" id="comprar">
-                                            Comprar
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        <?php } ?>
-                    </div>
-                    <div class="navegacaoSlider">
-                        <span class="setaAnterior">&#8249;</span>
-                        <span class="setaProxima">&#8250;</span>
+                            <?php } ?>
+                        </div>
+                        <div class="navegacaoSlider">
+                            <span class="setaAnterior">&#8249;</span>
+                            <span class="setaProxima">&#8250;</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
 <?php
 } else {

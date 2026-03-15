@@ -1,4 +1,3 @@
-/* --- ATUALIZAR QUANTIDADE --- */
 function alterarQtd(produtoId, delta) {
     const spanQtd = document.getElementById(`qtd-${produtoId}`);
     if (!spanQtd) return;
@@ -36,7 +35,6 @@ function alterarQtd(produtoId, delta) {
     .catch(err => console.error("Erro na atualização:", err));
 }
 
-/* --- RECALCULAR TOTAL --- */
 function recalcularTotal() {
     let totalGeral = 0;
     const itens = document.querySelectorAll('.itemNoCarrinho');
@@ -59,7 +57,6 @@ function recalcularTotal() {
     });
 }
 
-/* --- CONTROLE DO MODAL --- */
 function finalizarCompra() {
     const itens = document.querySelectorAll('.itemNoCarrinho');
     if (itens.length === 0) {
@@ -75,7 +72,6 @@ function fecharModal() {
     if (modal) modal.style.display = 'none';
 }
 
-/* --- FINALIZAÇÃO E LIMPEZA --- */
 const formPagamento = document.getElementById('formPagamento');
 if (formPagamento) {
     formPagamento.addEventListener('submit', function(e) {
@@ -93,14 +89,12 @@ if (formPagamento) {
             if (data.sucesso) {
                 fecharModal();
                 
-                // Limpa a tela
                 const produtosCard = document.getElementById('produtosCard');
                 if (produtosCard) produtosCard.innerHTML = "<p class='avisoVazio'>Seu carrinho ainda está vazio!</p>";
                 
                 const valorTotal = document.getElementById('valorTotal');
                 if (valorTotal) valorTotal.innerText = "0,00";
 
-                // Banner de sucesso
                 const banner = document.getElementById('bannerSucesso');
                 if (banner) {
                     banner.style.display = 'block';

@@ -1,5 +1,4 @@
 <?PHP
-    session_start();
     require('../bd_config.php');
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -27,14 +26,14 @@
                 VALUES (?, ?, ?, ?, ?, ?, ?)";
                 $stmt = mysqli_prepare($con, $sql);
                 mysqli_stmt_bind_param($stmt, "ssdsiis",
-                                                                    $nome, 
-                                                                   $descricao, 
-                                                                          $preco, 
-                                                                          $caminhoImagem, 
-                                                                          $estoque, 
-                                                                          $desconto, 
-                                                                          $categoria);
-                
+                                        $nome, 
+                                        $descricao, 
+                                        $preco, 
+                                        $caminhoImagem, 
+                                        $estoque, 
+                                        $desconto, 
+                                        $categoria);
+
                 if (mysqli_stmt_execute($stmt)){
                     $_SESSION['sucesso'] = 'Produto Inserido com sucesso!.';
                     header("Location: inserirProdutos.php");

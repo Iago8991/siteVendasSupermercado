@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require ("../bd_config.php");
 
     $nome = mysqli_real_escape_string($con, $_POST["nome"]);
