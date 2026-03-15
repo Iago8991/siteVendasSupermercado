@@ -1,0 +1,188 @@
+/* --- CONFIGURAÇÕES GERAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Fundamental para nada fugir do container */
+}
+
+body {
+    padding-top: 50px;
+    font-family: Arial, sans-serif;
+    background: url('../imagens/fundoMercado.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+/* --- BANNER DE SUCESSO --- */
+.mensagem-sucesso {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    z-index: 2000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+@keyframes slideDown {
+    from { top: -100px; opacity: 0; }
+    to { top: 20px; opacity: 1; }
+}
+
+/* --- CONTAINER DO CARRINHO --- */
+.containerCentral {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.tituloCarrinho {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* --- ITENS DO CARRINHO --- */
+.itemNoCarrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.sessaoImagem img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.nomeProduto { font-weight: bold; margin-bottom: 10px; }
+.valorOriginal { color: #000; }
+.valorDesconto { color: #ff0000; font-weight: bold; }
+
+.btn-qtd {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.btn-remover .material-icons {
+    color: #ff0000;
+    font-size: 28px;
+}
+
+/* --- SESSÃO FINALIZAR --- */
+.sessaoFinalizar {
+    margin-top: 30px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+#comprar {
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#comprar:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* --- MODAL (POP-UP) --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px); /* Efeito embaçado */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px; /* Aumentado levemente para caber tudo */
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.fechar-modal {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* --- FORMULÁRIO DO CARTÃO --- */
+.campo-grupo {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo-grupo label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.campo-grupo input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%; /* Ocupa todo o espaço disponível */
+}
+
+/* CORREÇÃO DO CVV: Lado a Lado */
+.campo-linha {
+    display: flex;
+    gap: 15px; /* Espaço entre Validade e CVV */
+}
+
+.flex-1 {
+    flex: 1; /* Divide o espaço igualmente */
+}
+
+.btn-final-comprar {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
