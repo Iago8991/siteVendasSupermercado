@@ -12,7 +12,6 @@ body {
   color: #333;
 }
 
-/* ===== centraliza o painel dinamicamente ===== */
 #mainContent {
   position: relative;
   width: 90%;
@@ -27,7 +26,6 @@ body {
   transition: left 0.3s;
 }
 
-/* quando o menu lateral estiver expandido, adicione a classe "menu-open" no <body> via JS */
 body.menu-open #mainContent {
   left: calc(50% + 92.5px);
 }

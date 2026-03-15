@@ -1,22 +1,27 @@
-
-function clearSearch() {
-    document.getElementById('busca').value = '';
-}
-
 function toggleDropdown() {
-    document.getElementById('dropdownOpcoes').classList.toggle('show');
+    const dropdown = document.getElementById('dropdownOpcoes');
+    dropdown.classList.toggle('show');
 }
+
 function selecionarCategoria(valor, texto) {
-    document.getElementById('categoriaInput').value = valor;
-    document.getElementById('categoriaSelecionada').textContent = texto;
-    toggleDropdown();
-    document.getElementById('categoriaForm').submit();
+    const inputCategoria = document.getElementById('categoriaInput');
+    const labelSelecionada = document.getElementById('categoriaSelecionada');
+    
+    if (inputCategoria && labelSelecionada) {
+        inputCategoria.value = valor;
+        labelSelecionada.textContent = texto;
+        
+        document.getElementById('dropdownOpcoes').classList.remove('show');
+        
+        document.getElementById('categoriaForm').submit();
+    }
 }
 
 document.addEventListener('click', function(e) {
-    const dropdown = document.querySelector('.categoriaDropdown');
-    if (!dropdown.contains(e.target)) {
-    document.getElementById('dropdownOpcoes').classList.remove('show');
+    const dropdownContainer = document.querySelector('.categoriaDropdown');
+    const opcoes = document.getElementById('dropdownOpcoes');
+    
+    if (dropdownContainer && !dropdownContainer.contains(e.target)) {
+        opcoes.classList.remove('show');
     }
 });
-

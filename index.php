@@ -1,6 +1,6 @@
 <?php
-    header('Content-Type: text/html; charset=utf-8');
     session_start();
+    header('Content-Type: text/html; charset=utf-8');
     require("bd_config.php");
 
     $sql = "SELECT * FROM produtos WHERE produtos_desconto > 0 ORDER BY RAND() LIMIT 8";
@@ -25,8 +25,8 @@
                 <div class="caixaLogin" onclick="location.href='loginRegistro/login.php'">
                     <h2>Login</h2>
                     <div class="tooltip">Entre na sua conta <br/> 
-                                          Importante realizar registro para obter mais funções!!!
-                                        </div>
+                        Importante realizar registro para obter mais funções!!!
+                    </div>
                 </div>
                 <div class="caixaRegistro" onclick="location.href='loginRegistro/registro.php'">
                     <h2>Registro</h2>

@@ -1,7 +1,6 @@
 <?php
-    header('Content-Type: text/html; charset=utf-8');
     session_start();
-    error_reporting(0);
+    header('Content-Type: text/html; charset=utf-8');
     require_once __DIR__ . '/../urlConfig.php';
     require_once __DIR__ . '/../menuLateral.php';
     require('../bd_config.php');

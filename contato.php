@@ -1,9 +1,8 @@
 <?php
-    header('Content-Type: text/html; charset=utf-8');
     session_start();
+    header('Content-Type: text/html; charset=utf-8');
     require_once __DIR__ . '/urlConfig.php';
 
-    // Lógica para processar o envio e mostrar o alerta
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script>
                 alert('Reclamação enviada com sucesso responderemos em breve !!!');
