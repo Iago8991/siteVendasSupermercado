@@ -1,4 +1,5 @@
 create database bd_supermercado; 
+
 use bd_supermercado;
 
 CREATE TABLE usuarios (
@@ -20,34 +21,19 @@ CREATE TABLE produtos (
 );
 
 CREATE TABLE carrinho_itens (
+
     carrinho_id INT AUTO_INCREMENT PRIMARY KEY,
+
     usuario_id INT NOT NULL,
+
     produto_id INT NOT NULL,
+
     quantidade INT NOT NULL DEFAULT 1,
-    data_adicao DATETIME DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (usuario_id) REFERENCES usuarios(user_id) ON DELETE CASCADE,
     FOREIGN KEY (produto_id) REFERENCES produtos(produtos_id) ON DELETE CASCADE,
     
     UNIQUE KEY uk_usuario_produto (usuario_id, produto_id)
-);
-
-CREATE TABLE pedidos (
-    pedidos_id INT AUTO_INCREMENT PRIMARY KEY,
-    pedidos_usuario_id INT NOT NULL,
-    pedidos_datas DATETIME DEFAULT CURRENT_TIMESTAMP,
-    pedidos_total DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (pedidos_usuario_id) REFERENCES usuarios(user_id)
-);
-
-CREATE TABLE itens_pedido (
-    ip_id INT AUTO_INCREMENT PRIMARY KEY,
-    ip_pedido_id INT NOT NULL,
-    ip_produto_id INT NOT NULL,
-    ip_quantidade INT NOT NULL,
-    ip_preco DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (ip_pedido_id) REFERENCES pedidos(pedidos_id),
-    FOREIGN KEY (ip_produto_id) REFERENCES produtos(produtos_id)
 );
 
 CREATE TABLE administrador (
@@ -60,3 +46,6 @@ INSERT INTO administrador (adminis_email, adminis_senha)
 VALUES ('administrador1@gmail.com', SHA2('admin2530', 256));
 
 Select * from produtos;
+
+Select * from carrinho_itens;
+
