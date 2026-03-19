@@ -18,7 +18,7 @@ class MenuLateral {
                 <img src="<?= BASE_URL ?>imagens/loja.png" alt="Loja">
                 <span>Loja</span>
             </a>
-            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 'logado'){ ?>
+            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] === 'logado'){ ?>
                 <a class="menuItem" onclick="location.href='<?= BASE_URL ?>admin/inserirProdutos.php';">
                     <img src="<?= BASE_URL ?>imagens/inserirProdutos.png" alt="Inserir Produtos">
                     <span>Inserir Produtos</span>
