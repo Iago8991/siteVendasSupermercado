@@ -96,6 +96,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 'logado') {
                 </div>
             </div>
         </div>
+        <script src="<?= BASE_URL ?>js/paginaPrincipal.js"></script>
+    </body>
     </body>
 </html>
 <?php

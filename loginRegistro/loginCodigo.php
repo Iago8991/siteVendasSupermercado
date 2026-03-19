@@ -20,6 +20,7 @@
             $usuario = mysqli_fetch_assoc($resultado);
 
         if(password_verify($senha, $usuario['user_senha'])) {
+            $_SESSION['admin'] = 'nao_e_admin';
             $_SESSION['user_id'] = $usuario['user_id'];
             $_SESSION['user_nome'] = $usuario['user_nome'];
             $_SESSION['login'] = 'logado';
